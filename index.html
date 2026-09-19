@@ -1,1 +1,222 @@
-<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Оптика Майкоп</title><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="styles.css"></head><body><header><div class="wrap head"><a class="logo" href="#"><span>👓</span><b>ОПТИКА<br><small>МАЙКОП</small></b></a><nav><a href="#catalog">Каталог</a><a href="#repair">Ремонт оправ</a><a href="#delivery">Доставка</a></nav><div class="actions"><button id="languageSwitcher">EN</button><button id="cartBtn">Корзина <i id="cartCount">0</i></button></div></div></header><main><section class="hero"><div class="wrap"><div><span class="pill">ОПТИКА МАЙКОП</span><h1>Очки и ремонт оправ<br><em>в Майкопе</em></h1><p>Солнцезащитные очки, оправы и услуги оптики.</p><a class="btn gold" href="#catalog">Смотреть каталог</a></div><div class="hero-glasses">🕶️</div></div></section><section id="catalog" class="wrap"><h2>Каталог</h2><p class="muted">Выберите товар, чтобы посмотреть подробности.</p><div class="grid"><article class="card"><div class="photo">🕶️</div><h3>Lacoste — авиатор</h3><p class="muted">Солнцезащитные очки</p><strong>9 999 ₽</strong><button class="btn gold add" data-id="1">В корзину</button></article><article class="card"><div class="photo">🕶️</div><h3>Солнцезащитные очки — градиент</h3><p class="muted">Солнцезащитные очки</p><strong>9 999 ₽</strong><button class="btn gold add" data-id="2">В корзину</button></article></div></section><section id="repair" class="wrap two"><div class="panel"><h2>Ремонт оправ</h2><p>Ремонт и восстановление оправ.</p><ul><li>Ремонт оправы — от 100 ₽</li><li>Замена крепежа и мелкий ремонт</li><li>Срок зависит от сложности работы</li></ul></div><div class="panel" id="delivery"><h2>Доставка и получение</h2><p>Условия получения заказа уточняются при оформлении.</p><p>Свяжитесь с салоном через WhatsApp после оформления.</p></div></section></main><footer><div class="wrap"><b>Оптика Майкоп</b><span>© 2026</span></div></footer><div id="drawer" class="drawer"><div class="drawer-head"><b>Корзина</b><button id="closeCart">×</button></div><div id="cartItems"></div><div class="drawer-foot"><b>Итого: <span id="total">0</span> ₽</b><button id="checkout" class="btn gold full">Оформить заказ</button></div></div><div id="toast"></div><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Оптика Майкоп — очки для зрения, солнцезащитные | ул. Крестьянская, 190</title>
+<meta name="description" content="Оптика Майкоп, ул. Крестьянская, 190: оправы для зрения с установкой линз, солнцезащитные, компьютерные очки, чехлы. Доставка по Майкопу, самовывоз бесплатно.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="language-switcher" aria-label="Language"><button type="button" id="languageSwitcher" aria-haspopup="listbox">EN</button></div>
+  <div class="container header-inner">
+    <a class="logo" href="#">
+      <span class="logo-mark">OM</span>
+      <span class="logo-text">Оптика Майкоп <small>Крестьянская, 190</small></span>
+    </a>
+    <nav class="nav">
+      <a href="#catalog">Каталог</a>
+      <a href="#lenses">Линзы</a>
+      <a href="#repair">Ремонт</a>
+      <a href="#delivery">Доставка</a>
+      <a href="#pickup">Самовывоз</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn" id="ordersBtn">Заказы</button>
+      <button class="btn btn-dark" id="cartBtn">Корзина <span class="cart-count" id="cartCount">0</span></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-pill">Майкоп • ул. Крестьянская, 190 • +7 962 765-77-18</div>
+      <h1>Оптика в Майкопе — <em>оправы + линзы</em> от 400 до 20 000 ₽</h1>
+      <p>Солнцезащитные, оправы для зрения с установкой линз и подбором диоптрий, компьютерные, чехлы. Доставка по Майкопу — 400 ₽, бесплатно от 5 000 ₽. Самовывоз — бесплатно.</p>
+      <div class="hero-btns">
+        <a href="#catalog" class="btn btn-dark btn-lg">Перейти в каталог</a>
+        <a href="tel:+79627657718" class="btn btn-lg">+7 962 765-77-18</a>
+      </div>
+      <div class="hero-badges"><span>✓ Установка линз</span><span>✓ Подбор диоптрий</span><span>✓ Ремонт оправ</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="container trust">
+  <div class="trust-item"><b>400 – 20 000 ₽</b><span>диапазон цен</span></div>
+  <div class="trust-item"><b>Только Майкоп</b><span>доставка 400 ₽</span></div>
+  <div class="trust-item"><b>Ремонт</b><span>оправ в салоне</span></div>
+</section>
+
+<main class="container" id="catalog">
+  <h2>Каталог</h2>
+  <p class="sub">Фото товаров подключаются автоматически из <b>images/</b>. Поддерживаются WebP, JPG, PNG и SVG; без фото показывается аккуратная заглушка.</p>
+  <div class="filters">
+    <input type="search" id="search" placeholder="Поиск: авиатор, титан, футляр...">
+    <select id="catFilter">
+      <option value="all">Все категории</option>
+      <option value="sun">Солнцезащитные</option>
+      <option value="vision">Оправы для зрения</option>
+      <option value="computer">Для компьютера</option>
+      <option value="accessories">Чехлы и аксессуары</option>
+    </select>
+    <select id="sort">
+      <option value="pop">По популярности</option>
+      <option value="cheap">Дешевле</option>
+      <option value="exp">Дороже</option>
+    </select>
+  </div>
+  <div class="grid" id="productGrid"></div>
+</main>
+
+<section class="container" id="lenses">
+  <h2>Линзы и диоптрии</h2>
+  <div class="cards2">
+    <div class="card-flat"><h3>Стандарт — +1 500 ₽</h3><p>Полимерные, с покрытием от царапин, диоптрии от −6 до +6. Срок — 1 день.</p></div>
+    <div class="card-flat"><h3>Премиум — +3 000 ₽</h3><p>Утончённые, антиблик + блю-блок + UV. Для сложных рецептов. Срок — 2–3 дня.</p></div>
+  </div>
+  <div class="cards2">
+    <div class="card-flat"><h3>Как заказать с диоптриями?</h3><p>1. Выберите оправу.<br>2. В карточке оправы выберите линзу и диоптрии.<br>3. В комментарии к заказу напишите рецепт или принесите в салон — проверим бесплатно.</p></div>
+    <div class="card-flat"><h3>Оправы для зрения</h3><p>В каталоге есть оправы до 6 900 ₽. Для рецептурных моделей в карточке можно выбрать стандартные или премиум-линзы и диоптрии.</p></div>
+  </div>
+</section>
+
+<section class="container" id="repair">
+  <h2>Ремонт оправ</h2>
+  <div class="cards2">
+    <div class="card-flat"><h3>🛠 Ремонт в салоне</h3><p>Ремонт оправ — от 100 ₽. Выправка дужек и другие работы выполняются в салоне.<br>Адрес: Майкоп, ул. Крестьянская, 190 • +7 962 765-77-18</p></div>
+  </div>
+</section>
+
+<section class="container" id="delivery">
+  <h2>Доставка и оплата — только Майкоп</h2>
+  <div class="cards2">
+    <div class="card-flat"><h3>Доставка — 400 ₽</h3><p>Только по Майкопу, в день заказа или ко времени. От 5 000 ₽ — бесплатно.</p><p style="margin-top:8px">Оплата:<br>• картой после подтверждения заказа<br>• картой / наличными при получении</p></div>
+    <div class="card-flat"><h3>Самовывоз — бесплатно</h3><p>Майкоп, ул. Крестьянская, 190.<br>Часы уточняйте: +7 962 765-77-18<br>Готовность через 2 часа, с линзами — 1–3 дня.</p></div>
+  </div>
+</section>
+
+<section class="container" id="pickup">
+  <h2>Самовывоз — ул. Крестьянская, 190</h2>
+  <div class="cards2">
+    <div class="card-flat"><h3>Оптика Майкоп</h3><p>Майкоп, ул. Крестьянская, 190<br>+7 962 765-77-18<br><a href="tel:+79627657718" style="color:#e8c547">Позвонить</a> • <a href="https://wa.me/79627657718" target="_blank" style="color:#e8c547">WhatsApp</a></p>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><a class="btn btn-dark" href="#catalog">Выбрать очки</a></div>
+    </div>
+    <div class="card-flat"><iframe title="Майкоп Крестьянская 190" width="100%" height="230" style="border:0;border-radius:12px" src="https://www.openstreetmap.org/export/embed.html?bbox=40.09%2C44.60%2C40.13%2C44.63&layer=mapnik&marker=44.615%2C40.11"></iframe><small style="color:#b8b0a0">Точную точку уточните по телефону</small></div>
+  </div>
+</section>
+
+<footer class="footer" id="contacts">
+  <div class="container footer-inner">
+    <div><b>Оптика Майкоп</b><p>Майкоп, ул. Крестьянская, 190<br>+7 962 765-77-18</p></div>
+    <div><b>Связь</b><p><a href="tel:+79627657718" style="color:#e8c547">+7 962 765-77-18</a><br><a href="https://wa.me/79627657718" target="_blank" style="color:#e8c547">WhatsApp</a></p></div>
+    <div class="footer-orders"><b>Заказы</b><p>После оформления заказ открывается в WhatsApp для отправки в салон.<br><button class="btn btn-sm" id="adminBtn" style="margin-top:6px">Мои заказы</button></p><img class="footer-site-icon" src="images/site-icon.png" alt="Оптика Майкоп"> </div>
+  </div>
+</footer>
+
+<div class="messengers">
+  <a href="https://wa.me/79627657718" target="_blank">WA</a>
+  <a href="tel:+79627657718">Позвонить</a>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="cartDrawer">
+  <div class="drawer-head"><h3>Корзина</h3><button class="icon-btn" id="closeCart">✕</button></div>
+  <div class="drawer-body">
+    <div id="cartItems"></div>
+    <div class="totals" id="cartTotals"></div>
+  </div>
+  <div class="drawer-foot"><button class="btn btn-dark btn-block" id="checkoutBtn">Оформить заказ</button></div>
+</aside>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-box">
+    <div class="drawer-head"><h3>Оформление — Майкоп</h3><button class="icon-btn" data-close>✕</button></div>
+    <form id="orderForm">
+      <label>Имя*<input required name="name" placeholder="Как к вам обращаться"></label>
+      <label>Телефон*<input required name="phone" placeholder="+7 ..."></label>
+      <label><input type="radio" name="dtype" value="courier" checked style="width:auto"> Курьер по Майкопу (+400 ₽ / бесплатно от 5 000 ₽)</label>
+      <label><input type="radio" name="dtype" value="pickup" style="width:auto"> Самовывоз, ул. Крестьянская, 190 — бесплатно</label>
+      <label id="addressField">Адрес доставки*<input id="addressInput" name="address" placeholder="Майкоп, улица, дом, квартира"></label>
+      <label>Способ оплаты<select name="pay"><option value="online">Картой после подтверждения заказа</option><option value="upon">При получении — карта / наличные</option></select></label>
+      <label>Рецепт / комментарий<textarea name="comment" rows="2" placeholder="Диоптрии, время доставки..."></textarea></label>
+      <div class="totals" id="checkoutTotals"></div>
+      <button class="btn btn-dark btn-block" type="submit">Подтвердить заказ</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="productModal"><div class="modal-box" id="productModalBox"></div></div>
+<div class="modal" id="ordersModal">
+  <div class="modal-box"><div class="drawer-head"><h3>Заказы</h3><button class="icon-btn" data-close>✕</button></div>
+  <div id="ordersList"></div><button class="btn btn-sm" id="clearOrders">Очистить</button></div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+
+
+
+
+
+
+
+<script>
+(function(){
+  const DICT={"Оптика Майкоп":"Optika Maykop","Каталог":"Catalog","Солнцезащитные":"Sunglasses","Оправы для зрения":"Eyeglass Frames","Для компьютера":"Computer Glasses","Чехлы и аксессуары":"Cases & Accessories","Заказы":"Orders","Мои заказы":"My Orders","Корзина":"Cart","Добавить в корзину":"Add to cart","Купить":"Buy","Подробнее":"Details","Количество":"Quantity","Цена":"Price","Итого":"Total","Оформить заказ":"Place order","Продолжить покупки":"Continue shopping","Очистить":"Clear","Ремонт оправ":"Frame repair","от 100 ₽":"from 100 ₽","Доставка":"Delivery","Самовывоз":"Pickup","Отзывы":"Reviews","Характеристики":"Specifications","Описание":"Description","Выберите диоптрию":"Choose prescription","Без диоптрий":"No prescription","Контакты":"Contacts","Адрес":"Address","Телефон":"Phone","Бесплатная доставка":"Free delivery","Новая заявка":"Send a request","Отправить":"Send","Имя":"Name","Ваш телефон":"Your phone","Комментарий":"Comment","Закрыть":"Close","Товар":"Product","Товары":"Products","Сумма":"Subtotal","Доставка:":"Delivery:","Итого:":"Total:","Заказать":"Order","Удалить":"Remove","Назад":"Back","Оформить":"Checkout","Ваш заказ":"Your order","Пусто":"Empty","Корзина пуста":"Cart is empty","Найти":"Search","Поиск":"Search","Все":"All","шт.":"pcs.","руб.":"RUB","Поляризация":"Polarization","Металл":"Metal","Пластик TR90":"TR90 Plastic","Оставьте заявку":"Send a request","Заявка отправлена":"Request sent","Спасибо! Мы свяжемся с вами.":"Thank you! We will contact you.","Не найдено":"Nothing found","Солнцезащитные очки":"Sunglasses","Оправы":"Frames","Аксессуары":"Accessories","Для зрения":"Vision","Ремонт":"Repair","Сервис":"Service","Майкоп, ул. Крестьянская, 190":"Maykop, Krestyanskaya St, 190","Выберите вариант":"Choose an option","Стандартные линзы":"Standard lenses","Премиальные линзы":"Premium lenses","Оправа без линз":"Frame without lenses","Диоптрия":"Prescription","Выберите линзы":"Choose lenses","Добавить":"Add","Оформление заказа":"Checkout","Получатель":"Recipient","Способ получения":"Delivery method","Оплата":"Payment","Комментарий к заказу":"Order comment","Подтвердить заказ":"Confirm order","Заказ принят":"Order received","Номер заказа":"Order number","Спасибо за заказ":"Thank you for your order","Самовывоз из магазина":"Store pickup","Доставка по Майкопу":"Delivery in Maykop","Бесплатно":"Free","Отзывы покупателей":"Customer reviews","Написать отзыв":"Write a review","Оставить отзыв":"Leave a review","Сохранить":"Save","Сбросить":"Reset","Подробности":"Details","Выберите количество":"Choose quantity","Классический золотистый авиатор, поляризация и , металлическая оправа.":"Classic gold aviator with polarized lenses and a metal frame.","Классический золотистый авиатор, поляризация и  металлическая оправа.":"Classic gold aviator with polarized lenses and a metal frame.","Городская классика, тёмные линзы, удобная посадка.":"Urban classic style, dark lenses and a comfortable fit.","Лакост":"Lacoste","Солнцезащитные очки — градиент":"Sunglasses — gradient","Lacoste — авиатор":"Lacoste — aviator"};
+  const REVERSE={}; Object.keys(DICT).forEach(k=>REVERSE[DICT[k]]=k);
+  const originals=new WeakMap(), attrs=new WeakMap();
+  let lang=localStorage.getItem('siteLanguage')==='en'?'en':'ru';
+  const keys={en:Object.keys(DICT).sort((a,b)=>b.length-a.length),ru:Object.keys(REVERSE).sort((a,b)=>b.length-a.length)};
+  function tr(s,toEn){
+    const map=toEn?DICT:REVERSE; let out=s||'';
+    for(const k of keys[toEn?'en':'ru']) out=out.split(k).join(map[k]);
+    return out;
+  }
+  function applyElement(el,toEn){
+    if(el.nodeType===Node.TEXT_NODE){
+      if(!originals.has(el)) originals.set(el,el.nodeValue);
+      const raw=originals.get(el); if(raw.trim()) el.nodeValue=tr(raw,toEn);
+      return;
+    }
+    if(el.nodeType!==Node.ELEMENT_NODE) return;
+    if(el.tagName==='SCRIPT'||el.tagName==='STYLE'||el.tagName==='NOSCRIPT') return;
+    const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT); const ns=[]; while(w.nextNode()) ns.push(w.currentNode);
+    for(const n of ns){ if(!originals.has(n)) originals.set(n,n.nodeValue); const raw=originals.get(n); if(raw.trim()) n.nodeValue=tr(raw,toEn); }
+    for(const node of el.querySelectorAll('input,textarea,button,[title],[aria-label]')) translateAttrs(node,toEn);
+    if(el.matches('input,textarea,button,[title],[aria-label]')) translateAttrs(el,toEn);
+  }
+  function translateAttrs(el,toEn){
+    if(!attrs.has(el)) attrs.set(el,{placeholder:el.getAttribute('placeholder'),title:el.getAttribute('title'),aria:el.getAttribute('aria-label'),value:(el.tagName==='INPUT'||el.tagName==='BUTTON')?el.value:null});
+    const o=attrs.get(el);
+    if(o.placeholder!=null) el.setAttribute('placeholder',tr(o.placeholder,toEn));
+    if(o.title!=null) el.setAttribute('title',tr(o.title,toEn));
+    if(o.aria!=null) el.setAttribute('aria-label',tr(o.aria,toEn));
+    if(o.value!=null && el.id!=='languageSwitcher') el.value=tr(o.value,toEn);
+  }
+  function applyAll(toEn){
+    applyElement(document.body,toEn);
+    document.documentElement.lang=toEn?'en':'ru'; document.body.dataset.language=toEn?'en':'ru';
+    const b=document.getElementById('languageSwitcher'); if(b) b.textContent=toEn?'RU':'EN';
+    lang=toEn?'en':'ru'; localStorage.setItem('siteLanguage',lang);
+  }
+  function init(){
+    const b=document.getElementById('languageSwitcher');
+    if(b) b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();applyAll(lang!=='en');});
+    applyAll(lang==='en');
+    let scheduled=false;
+    const observer=new MutationObserver(muts=>{
+      if(lang!=='en'||scheduled) return; scheduled=true;
+      requestAnimationFrame(()=>{scheduled=false; for(const m of muts) for(const n of m.addedNodes) applyElement(n,true);});
+    });
+    observer.observe(document.body,{childList:true,subtree:true});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true}); else init();
+})();
+</script>
+
+</body>
+</html>
