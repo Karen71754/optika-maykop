@@ -3905,5 +3905,31 @@ button:active,.btn:active,.header-action-btn:active,.icon-btn:active,.mini-cart-
 })();
 </script>
 
+
+<style id="optika-mobile-header-fix">
+/* Keep header controls in stable positions on phones when language changes. */
+@media (max-width: 620px) {
+  .header-inner { flex-wrap: nowrap !important; gap: 4px !important; padding-left: 8px !important; padding-right: 8px !important; }
+  .header-inner > .logo { flex: 0 0 98px !important; width: 98px !important; min-width: 98px !important; }
+  .header-inner > .logo .logo-image { width: 98px !important; height: 48px !important; }
+  .header-actions { flex: 1 1 auto !important; min-width: 0 !important; display: flex !important; flex-wrap: nowrap !important; justify-content: space-between !important; gap: 3px !important; }
+  .header-actions > #ordersBtn { flex: 0 0 34px !important; width: 34px !important; min-width: 34px !important; padding: 0 !important; font-size: 0 !important; }
+  .header-actions > #cartBtn { flex: 0 0 40px !important; width: 40px !important; min-width: 40px !important; padding: 0 3px !important; font-size: 0 !important; }
+  .header-actions > #cartBtn .cart-count { font-size: 10px !important; padding: 1px 4px !important; margin-left: 0 !important; }
+  .header-actions > #languageToggle { flex: 0 0 36px !important; width: 36px !important; min-width: 36px !important; padding: 0 !important; font-size: 11px !important; letter-spacing: 0 !important; }
+  .header-actions > #themeToggle { flex: 0 0 38px !important; width: 38px !important; min-width: 38px !important; height: 42px !important; padding: 0 !important; }
+  .header-actions > #optikaProfileTrigger { flex: 0 0 32px !important; width: 32px !important; min-width: 32px !important; height: 36px !important; margin-left: 0 !important; }
+}
+/* No animation or rotation on the theme icon, including hover/tap/theme changes. */
+#themeToggle, #themeToggle:hover, #themeToggle:active,
+#themeToggle .theme-disc, #themeToggle .theme-disc-core,
+#themeToggle .theme-disc-core::after {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+}
+.logo-image { animation: none !important; transition: none !important; }
+</style>
+
 </body>
 </html>
