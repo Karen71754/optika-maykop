@@ -590,6 +590,20 @@ button .icon-inline{margin-right:6px}
 .theme-toggle.is-dark .theme-switch-thumb:after{content:'';color:#34445d;font-size:17px}
 .theme-toggle:focus-visible{outline:2px solid #6aa8ff;outline-offset:3px;border-radius:999px}
 
+
+
+/* OPTIKA logo theme adaptation */
+.logo-image {
+  background: transparent !important;
+  mix-blend-mode: multiply;
+  transition: background-color .2s ease;
+}
+html[data-theme="dark"] .logo-image {
+  mix-blend-mode: screen;
+}
+html[data-theme="light"] .logo-image {
+  mix-blend-mode: multiply;
+}
 </style>
 
 
