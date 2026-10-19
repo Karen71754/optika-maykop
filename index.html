@@ -4306,5 +4306,57 @@ button.icon-btn[data-close],button[data-close],button#closeCart {
 })();
 </script>
 
+
+<style id="optika-mobile-auth-final-fix">
+/* На телефоне окно входа скрыто, пока его действительно не открыли */
+#optikaAuthGate:not(.is-open) { display:none!important; }
+#optikaAuthGate.is-open {
+  position:fixed!important; inset:0!important;
+  display:flex!important; align-items:center!important; justify-content:center!important;
+  box-sizing:border-box!important;
+  padding:12px!important;
+  overflow:auto!important; overflow-x:hidden!important;
+  z-index:100500!important;
+}
+#optikaAuthGate .optika-auth-card {
+  position:relative!important;
+  box-sizing:border-box!important;
+  width: min(440px, calc(100vw - 24px))!important;
+  max-width: calc(100vw - 24px)!important;
+  max-height: calc(100dvh - 24px)!important;
+  margin:auto!important;
+  float:none!important;
+  overflow-y:auto!important; overflow-x:hidden!important;
+}
+#optikaAuthGate .optika-auth-close {
+  position:absolute!important; top:10px!important; right:10px!important;
+  display:flex!important; align-items:center!important; justify-content:center!important;
+  width:40px!important; height:40px!important; min-width:40px!important; min-height:40px!important;
+  padding:0!important; margin:0!important; z-index:100510!important;
+  pointer-events:auto!important; touch-action:manipulation!important; cursor:pointer!important;
+}
+@media(max-width:520px) {
+  #optikaAuthGate.is-open { padding:12px!important; }
+  #optikaAuthGate .optika-auth-card {
+    width:calc(100vw - 24px)!important;
+    max-width:calc(100vw - 24px)!important;
+    max-height:calc(100dvh - 24px)!important;
+    padding:62px 16px 18px!important;
+    border-radius:20px!important;
+  }
+  #optikaAuthGate .optika-auth-brand,
+  #optikaAuthGate .optika-auth-tabs,
+  #optikaAuthGate .optika-auth-form,
+  #optikaAuthGate .optika-provider-grid { width:100%!important; min-width:0!important; box-sizing:border-box!important; }
+  #optikaAuthGate .optika-auth-tabs { display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important; gap:8px!important; }
+  #optikaAuthGate .optika-auth-tabs button { min-width:0!important; width:100%!important; margin:0!important; box-sizing:border-box!important; }
+}
+/* Все кнопки закрытия остаются доступными для нажатия на сенсорном экране */
+button.icon-btn, button[data-close], button#closeCart, button.optika-modal-close,
+#optikaAuthGate .optika-auth-close {
+  pointer-events:auto!important; touch-action:manipulation!important; cursor:pointer!important;
+}
+</style>
+
 </body>
 </html>
