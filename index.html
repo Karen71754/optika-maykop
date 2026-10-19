@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem("optika_theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
 <title>OPTIKA Майкоп — солнцезащитные, для зрения, компьютерные, футляры</title>
 <meta name="description" content="OPTIKA Майкоп, центральный рынок, Пролетарская 224, пассаж. Солнцезащитные, оправы для зрения, компьютерные очки и футляры от 400 до 20 000 ₽. Доставка по Майкопу 200 ₽, бесплатно от 1 200 ₽.">
@@ -937,6 +937,34 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
 #contactFab .contact-link{visibility:hidden}
 #contactFab.open .contact-link{visibility:visible}
 </style>
+<style id="optika-requested-fixes-2026">
+#optikaAuthGate{position:fixed!important;inset:0!important;z-index:99999!important;display:flex;align-items:center!important;justify-content:center!important;padding:16px!important;overflow-y:auto!important;overscroll-behavior:contain}
+#optikaAuthGate .optika-auth-card{position:relative!important;width:min(100%,440px)!important;max-height:calc(100dvh - 32px)!important;overflow-y:auto!important;margin:auto!important;box-sizing:border-box!important;flex:0 1 auto!important}
+#optikaAuthGate .optika-auth-close{position:sticky!important;float:right!important;top:0!important;z-index:3!important}
+#optikaAuthGate .optika-auth-tabs{clear:both!important}
+@media(max-width:520px){#optikaAuthGate{padding:10px!important;align-items:center!important}#optikaAuthGate .optika-auth-card{width:100%!important;max-height:calc(100dvh - 20px)!important;padding:18px 15px!important}#optikaAuthGate .optika-auth-brand h2{font-size:22px!important}#optikaAuthGate .optika-auth-brand{margin-bottom:12px!important}#optikaAuthGate .optika-auth-divider{margin:11px 0!important}}
+#productModalBox .optika-modal-close{font-size:0!important}
+#productModalBox .optika-modal-close:before{content:"×"!important;font-size:30px!important;line-height:1!important}
+#productModalBox .product-detail .icon-btn,#productModalBox .product-detail [data-close]{display:none!important}
+#ordersModal .drawer-head .icon-btn{font-size:0!important;display:grid!important;place-items:center!important}
+#ordersModal .drawer-head .icon-btn:before{content:"×"!important;font-size:30px!important;line-height:1!important}
+#ordersModal .drawer-head .icon-btn svg{display:none!important}
+#checkoutModal .drawer-head .icon-btn,#ordersModal .drawer-head .icon-btn{background:linear-gradient(145deg,#201a0b,#765817)!important;border:1px solid #d4af37!important;color:#f5dc83!important;border-radius:50%!important;width:38px!important;height:38px!important}
+.hero-meta-row{align-items:center!important;gap:10px 18px!important}
+.hero-meta-row>span{display:inline-flex!important;align-items:center!important;gap:6px!important;font-size:clamp(12px,2.6vw,14px)!important;line-height:1.35!important}
+.hero-meta-row>span svg{flex:0 0 18px!important;width:18px!important;height:18px!important}
+.optika-provider-icon.google-g{background:conic-gradient(from -45deg,#4285f4 0deg 90deg,#34a853 90deg 180deg,#fbbc05 180deg 245deg,#ea4335 245deg 300deg,#4285f4 300deg)!important;color:#4285f4!important;border-radius:50%!important;position:relative!important;font-family:Arial,sans-serif!important;font-weight:900!important}
+.optika-provider-icon.google-g:before{content:"G";position:absolute;inset:2px;background:#111;border-radius:50%;display:grid;place-items:center;font-size:17px;color:#4285f4}
+.optika-provider-icon.yandex-ya{background:#f12b2c!important;color:#fff!important;border-radius:9px!important;font-weight:900!important;font-size:19px!important}
+.optika-provider-icon.vk-mark{background:#0077ff!important;color:#fff!important;border-radius:10px!important;font-weight:900!important;font-size:16px!important;font-family:Arial,sans-serif!important;letter-spacing:-1px}
+.optika-provider-icon.telegram-mark{background:#229ed9!important;color:#fff!important;border-radius:50%!important;font-size:20px!important;transform:none!important}
+#contactFab{z-index:100!important}
+#contactFab .contact-panel{transition:opacity .2s ease,transform .2s ease}
+#contactFab:not(.open) .contact-panel{pointer-events:none!important}
+#contactFab.open .contact-panel{pointer-events:auto!important}
+#contactFab .contact-link{visibility:hidden}
+#contactFab.open .contact-link{visibility:visible}
+</style>
 </head>
 <body>
 
@@ -963,8 +991,8 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
       <h1>Очки, которые <span class="grad">хочется носить</span></h1>
       <p class="hero-lead">Подберите модель онлайн и оформите заказ прямо на сайте. Реальные фото, понятные характеристики и доставка по Майкопу.</p>
       <div class="hero-meta-row">
-        <span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg> Пролетарская, 224 · пассаж</span>
-        <span>Сегодня 9:00–17:00</span>
+        <span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg> Пролетарская224 · Пассаж</span>
+        <span>График работы с&nbsp;9:00–17:00</span>
       </div>
       <div class="hero-btns">
         <a href="#catalog" class="btn btn-big btn-primary">Смотреть каталог</a>
@@ -1200,7 +1228,7 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
 
 <div class="modal" id="checkoutModal">
   <div class="modal-box">
-    <div class="drawer-head"><h3>Оформление заказа </h3><button class="icon-btn" data-close></button></div>
+    <div class="drawer-head"><h3>Оформление заказа </h3><button class="icon-btn" data-close aria-label="Закрыть" title="Закрыть">×</button></div>
     <form id="orderForm" novalidate>
       <label>Имя*<input required name="name" placeholder="Как к тебе обращаться"></label>
       <div class="row2">
@@ -1229,7 +1257,7 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
 
 <div class="modal" id="ordersModal">
   <div class="modal-box">
-    <div class="drawer-head"><h3><span class="icon-inline"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10l3 3v15H4V3h3Z"/><path d="M8 10h8M8 14h8M8 18h5M14 3v4h6"/></svg></span> Мои заказы</h3><button class="icon-btn" data-close></button></div>
+    <div class="drawer-head"><h3><span class="icon-inline"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10l3 3v15H4V3h3Z"/><path d="M8 10h8M8 14h8M8 18h5M14 3v4h6"/></svg></span> Мои заказы</h3><button class="icon-btn order-close-btn" data-close aria-label="Закрыть" title="Закрыть">×</button></div>
     <div id="ordersList"></div>
     <button class="btn btn-sm" id="clearOrders">Очистить историю</button>
   </div>
@@ -3727,7 +3755,7 @@ button:active,.btn:active,.header-action-btn:active,.icon-btn:active,.mini-cart-
   <div class="optika-auth-tabs"><button type="button" class="active" data-auth-mode="login">Вход</button><button type="button" data-auth-mode="register">Регистрация</button></div>
   <form class="optika-auth-form" id="optikaAuthForm"><input id="optikaAuthName" autocomplete="name" placeholder="Ваше имя" hidden><input id="optikaAuthEmail" type="email" autocomplete="email" placeholder="Электронная почта" required><input id="optikaAuthPassword" type="password" autocomplete="current-password" placeholder="Пароль (не менее 6 символов)" minlength="6" required><button class="optika-auth-primary" id="optikaAuthSubmit" type="submit">Войти в профиль</button><div class="optika-auth-error" id="optikaAuthError" role="status"></div></form>
   <div class="optika-auth-divider">или продолжите через</div>
-  <div class="optika-provider-grid"><button class="optika-provider" type="button" data-provider="Google"><span class="optika-provider-icon">G</span> Google</button><button class="optika-provider" type="button" data-provider="Яндекс"><span class="optika-provider-icon">Я</span> Яндекс</button><button class="optika-provider" type="button" data-provider="ВКонтакте"><span class="optika-provider-icon" style="background:#0077ff;color:#fff">ᴠκ</span> ВКонтакте</button><button class="optika-provider" type="button" data-provider="Telegram"><span class="optika-provider-icon" style="background:#229ed9;color:white">➤</span> Telegram</button></div>
+  <div class="optika-provider-grid"><button class="optika-provider" type="button" data-provider="Google"><span class="optika-provider-icon google-g" aria-hidden="true">G</span> Google</button><button class="optika-provider" type="button" data-provider="Яндекс"><span class="optika-provider-icon yandex-ya" aria-hidden="true">Я</span> Яндекс</button><button class="optika-provider" type="button" data-provider="ВКонтакте"><span class="optika-provider-icon vk-mark" aria-hidden="true">vk</span> ВКонтакте</button><button class="optika-provider" type="button" data-provider="Telegram"><span class="optika-provider-icon telegram-mark" aria-hidden="true">➤</span> Telegram</button></div>
   <p class="optika-auth-note">Демо-профиль сохраняется только в этом браузере. Для настоящего входа через Google, Яндекс, VK и Telegram необходимо подключить OAuth/API и серверную проверку.</p>
  </div>
 </div>
