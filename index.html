@@ -771,6 +771,41 @@ html[data-theme="light"] .popular-info p { color: #4b463b !important; }
 }
 </style>
 
+
+<style id="optika-mobile-responsive-v1">
+/* Мобильная адаптация OPTIKA — добавлена без изменения логики магазина */
+*,*::before,*::after{box-sizing:border-box}
+html{width:100%;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{width:100%;max-width:100%;overflow-x:hidden}
+img,video,canvas,svg{max-width:100%}
+input,select,textarea,button{max-width:100%;font:inherit}
+button,[role="button"],a{touch-action:manipulation}
+img{height:auto}
+@media (max-width: 768px){
+  body{font-size:15px}
+  header,nav,.header,.navbar,.topbar,.site-header{max-width:100%}
+  .container,.wrapper,.main,.content,.section,.catalog,.catalog-grid,.products,.product-grid{max-width:100%;min-width:0}
+  .container,.wrapper{padding-left:14px;padding-right:14px}
+  .catalogGrid,.catalog-grid,.product-grid,.products-grid,#catalogGrid,#productsGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .product-card,.productCard,.product-item,.product{min-width:0;max-width:100%}
+  .product-card img,.productCard img,.product-item img,.product img{max-width:100%;object-fit:contain}
+  .modal,.modal-content,.product-modal,.cart-modal,.orders-modal,[role="dialog"]{max-width:calc(100vw - 20px);max-height:calc(100dvh - 24px);overflow:auto}
+  .modal{margin:12px auto}
+  input,select,textarea{min-height:42px}
+  button,.btn,.button{min-height:40px}
+  .product-card button,.productCard button,.product button{white-space:normal}
+  table{display:block;max-width:100%;overflow-x:auto}
+}
+@media (max-width: 420px){
+  .catalogGrid,.catalog-grid,.product-grid,.products-grid,#catalogGrid,#productsGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .container,.wrapper{padding-left:10px;padding-right:10px}
+  h1{font-size:clamp(1.45rem,7vw,2rem)}
+  h2{font-size:clamp(1.2rem,5.5vw,1.6rem)}
+  .product-card,.productCard,.product-item,.product{border-radius:12px}
+  .product-card button,.productCard button,.product-item button{padding:9px 8px}
+}
+</style>
+
 </head>
 <body>
 
