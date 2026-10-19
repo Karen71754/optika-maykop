@@ -3821,7 +3821,7 @@ button:active,.btn:active,.header-action-btn:active,.icon-btn:active,.mini-cart-
   <p class="optika-auth-note">Демо-профиль сохраняется только в этом браузере. Для настоящего входа через Google, Яндекс, VK и Telegram необходимо подключить OAuth/API и серверную проверку.</p>
  </div>
 </div>
-<div class="optika-profile-panel" id="optikaProfilePanel" data-no-translate="true" aria-label="Профиль пользователя"><div class="optika-profile-head"><div class="optika-profile-avatar" id="optikaProfileAvatar">♙</div><div><strong id="optikaProfileName">Гость</strong><small id="optikaProfileMeta">Войдите в аккаунт</small></div></div><div class="optika-profile-actions"><button type="button" id="optikaProfileOrders">Мои заказы</button><button type="button" id="optikaSwitchAccount">Сменить аккаунт</button><button type="button" id="optikaSignOut" class="danger">Выйти</button></div></div>
+<div class="optika-profile-panel" id="optikaProfilePanel" data-no-translate="true" aria-label="Профиль пользователя"><div class="optika-profile-head"><div class="optika-profile-avatar" id="optikaProfileAvatar">♙</div><div><strong id="optikaProfileName">Гость</strong><small id="optikaProfileMeta">Войдите в аккаунт</small></div></div><div class="optika-profile-actions"><button type="button" id="optikaSwitchAccount">Сменить аккаунт</button><button type="button" id="optikaSignOut" class="danger">Выйти</button></div></div>
 <script id="optika-auth-profile-script">
 (function(){
  const $=id=>document.getElementById(id);const gate=$('optikaAuthGate'),form=$('optikaAuthForm'),panel=$('optikaProfilePanel');let mode='login';
@@ -4356,6 +4356,12 @@ button.icon-btn, button[data-close], button#closeCart, button.optika-modal-close
 #optikaAuthGate .optika-auth-close {
   pointer-events:auto!important; touch-action:manipulation!important; cursor:pointer!important;
 }
+</style>
+
+
+<style id="optika-profile-remove-orders-keep-contact">
+/* Убираем «Мои заказы» из выпадающего профиля; круглую кнопку связи оставляем */
+#optikaProfileOrders { display:none!important; }
 </style>
 
 </body>
