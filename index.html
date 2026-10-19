@@ -1035,7 +1035,7 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
       <button class="header-action-btn cart-header-btn" id="cartBtn" type="button" aria-label="Корзина"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg> Корзина <span class="cart-count" id="cartCount">0</span></button>
       <button class="header-action-btn language-toggle" id="languageToggle" type="button" aria-label="Переключить язык" aria-pressed="false">EN</button>
       <button class="header-action-btn theme-toggle" id="themeToggle" type="button" aria-label="Переключить на чёрную тему" title="Переключить на чёрную тему" aria-pressed="false"><span class="theme-disc" aria-hidden="true"><span class="theme-disc-core"></span></span></button>
-      <button class="header-action-btn optika-profile-trigger" id="optikaProfileTrigger" data-no-translate="true" type="button" aria-label="Войти или открыть профиль" title="Профиль"><span id="optikaProfileGlyph">♙</span></button>
+      <button class="header-action-btn optika-profile-trigger" id="optikaProfileTrigger" type="button" aria-label="Войти или открыть профиль" title="Профиль"><span id="optikaProfileGlyph">♙</span></button>
     </div>
   </div>
 </header>
@@ -3003,6 +3003,9 @@ html[data-theme="dark"] button:focus-visible,html[data-theme="dark"] a:focus-vis
     'OPTIKA — на главную':'OPTIKA — Home',
     'OPTIKA — очки, аксессуары, стиль':'OPTIKA — eyewear, accessories, style',
     'Мои заказы':'My orders',
+    'Профиль':'Profile',
+    'Профиль пользователя':'User profile',
+    'Войти или открыть профиль':'Log in or open profile',
     'Корзина':'Cart',
     'OPTIKA · МАЙКОП · ЦЕНТРАЛЬНЫЙ РЫНОК':'OPTIKA · MAYKOP · CENTRAL MARKET',
     'Очки, которые':'Eyewear you',
@@ -3931,6 +3934,55 @@ button:active,.btn:active,.header-action-btn:active,.icon-btn:active,.mini-cart-
   transform:none !important;
 }
 .logo-image { animation:none !important; transition:none !important; }
+</style>
+
+
+<style id="optika-mobile-header-width-language-profile-fix">
+/* Keep the mobile header controls inside the viewport, including the Profile label. */
+@media (max-width: 480px) {
+  .header-inner > .header-actions {
+    width:100% !important;
+    max-width:100% !important;
+    gap:4px !important;
+    justify-content:space-between !important;
+    padding:0 1px !important;
+  }
+  .header-actions > .header-action-btn {
+    min-width:0 !important;
+    flex:0 1 auto !important;
+    padding:7px 5px !important;
+    font-size:10px !important;
+    letter-spacing:-.15px !important;
+    border-radius:9px !important;
+  }
+  .header-actions > #ordersBtn,
+  .header-actions > #cartBtn {
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:3px !important;
+  }
+  .header-actions > #ordersBtn .ui-icon,
+  .header-actions > #cartBtn .ui-icon {
+    width:15px !important;
+    height:15px !important;
+    flex:0 0 15px !important;
+  }
+  .header-actions > #languageToggle { padding-left:6px !important; padding-right:6px !important; }
+  .header-actions > #themeToggle { flex:0 0 34px !important; width:34px !important; padding:5px !important; }
+  .header-actions > #optikaProfileTrigger {
+    flex:0 0 36px !important;
+    width:36px !important;
+    min-width:36px !important;
+    padding:4px !important;
+  }
+  .header-actions > #optikaProfileTrigger::after {
+    content:"Профиль";
+    font-size:9px !important;
+    letter-spacing:-.3px !important;
+  }
+  html[data-lang="en"] .header-actions > #optikaProfileTrigger::after { content:"Profile"; }
+}
 </style>
 
 </body>
