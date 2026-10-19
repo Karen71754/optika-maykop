@@ -930,6 +930,13 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
 }
 </style>
 
+<style id="optika-contact-toggle-css-fix">
+#contactFab .contact-panel{transition:opacity .2s ease,transform .2s ease}
+#contactFab:not(.open) .contact-panel{pointer-events:none!important}
+#contactFab.open .contact-panel{pointer-events:auto!important}
+#contactFab .contact-link{visibility:hidden}
+#contactFab.open .contact-link{visibility:visible}
+</style>
 </head>
 <body>
 
