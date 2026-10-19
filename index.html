@@ -889,6 +889,47 @@ img{height:auto}
 }
 </style>
 
+
+<style id="optika-final-close-profile-fix">
+/* Единый тёмно-золотой крестик: карточка товара, заказы, корзина и другие окна */
+button.icon-btn,button[data-close],button#closeCart,button.optika-modal-close{
+  box-sizing:border-box!important;appearance:none!important;-webkit-appearance:none!important;
+  width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;
+  padding:0!important;flex:0 0 38px!important;display:inline-flex!important;
+  align-items:center!important;justify-content:center!important;
+  border:1px solid #8b6b20!important;border-radius:10px!important;
+  background:linear-gradient(145deg,#292314,#11100c)!important;
+  color:#e7c75e!important;box-shadow:0 3px 12px rgba(0,0,0,.32),inset 0 1px rgba(255,225,140,.12)!important;
+  font-size:0!important;line-height:1!important;outline:none!important;
+}
+button.icon-btn::before,button[data-close]::before,button#closeCart::before,button.optika-modal-close::before{
+  content:"×"!important;display:block!important;color:#e7c75e!important;
+  font-family:Arial,sans-serif!important;font-size:29px!important;font-weight:400!important;line-height:1!important;
+  transform:translateY(-1px);
+}
+button.icon-btn svg,button[data-close] svg,button#closeCart svg,button.optika-modal-close svg{display:none!important}
+button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.optika-modal-close:hover{
+  background:linear-gradient(145deg,#3a2e12,#18140a)!important;border-color:#e2bd4d!important;
+  box-shadow:0 0 0 2px rgba(212,175,55,.14),0 4px 14px rgba(0,0,0,.4)!important;
+}
+#productModalBox{position:relative!important;padding-top:56px!important}
+#productModalBox>button.optika-modal-close{position:absolute!important;top:12px!important;right:12px!important;z-index:99!important}
+#ordersModal .drawer-head{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important}
+#ordersModal .drawer-head [data-close]{flex-shrink:0!important}
+@media(max-width:620px){
+  button.icon-btn,button[data-close],button#closeCart,button.optika-modal-close{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;flex-basis:38px!important}
+  #productModalBox{padding-top:54px!important}
+  .header-action-btn.optika-profile-trigger{
+    width:auto!important;min-width:76px!important;height:44px!important;min-height:44px!important;
+    padding:5px 10px!important;border-radius:12px!important;gap:5px!important;
+    display:inline-flex!important;flex-direction:row!important;white-space:nowrap!important;
+    font-size:12px!important;font-weight:800!important;
+  }
+  #optikaProfileGlyph{font-size:25px!important;line-height:1!important;display:inline-block!important}
+  .header-action-btn.optika-profile-trigger::after{content:"Профиль";font-size:12px!important;line-height:1!important;color:#72520c!important}
+}
+</style>
+
 </head>
 <body>
 
