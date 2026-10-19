@@ -984,6 +984,27 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
 #optikaAuthGate .optika-provider-icon.telegram-mark:before{content:"➤"!important;display:block!important;font-size:18px!important;line-height:25px!important;color:#fff!important;transform:rotate(-25deg)!important}
 @media(max-width:520px){#optikaAuthGate .optika-auth-close{top:14px!important;right:14px!important}#optikaAuthGate .optika-auth-logo{width:58px!important;height:58px!important;margin-bottom:10px!important}#optikaAuthGate .optika-provider{font-size:13px!important;gap:6px!important;padding:9px 5px!important}}
 </style>
+
+<style id="optika-auth-alignment-final">
+/* Logo, close button and social icons aligned consistently */
+#optikaAuthGate .optika-auth-card{position:relative!important}
+#optikaAuthGate .optika-auth-close{position:absolute!important;top:22px!important;right:22px!important;float:none!important;margin:0!important;width:38px!important;height:38px!important;min-width:38px!important;display:grid!important;place-items:center!important;padding:0!important;line-height:1!important;font-size:24px!important;transform:none!important}
+#optikaAuthGate .optika-auth-close:hover{transform:rotate(90deg)!important}
+#optikaAuthGate .optika-auth-brand{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;width:100%!important}
+#optikaAuthGate .optika-auth-logo{display:grid!important;place-items:center!important;width:58px!important;height:58px!important;min-width:58px!important;line-height:58px!important;font-size:28px!important;font-weight:800!important;font-family:Arial,sans-serif!important;text-align:center!important;padding:0!important;margin:0 auto 10px!important;border-radius:18px!important;transform:none!important}
+#optikaAuthGate .optika-auth-logo{line-height:1!important}
+#optikaAuthGate .optika-provider-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;align-items:stretch!important}
+#optikaAuthGate .optika-provider{display:flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;min-height:50px!important;padding:10px 12px!important;line-height:1.15!important;white-space:nowrap!important}
+#optikaAuthGate .optika-provider-icon{position:relative!important;flex:0 0 28px!important;width:28px!important;height:28px!important;min-width:28px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;margin:0!important;line-height:1!important;vertical-align:middle!important}
+#optikaAuthGate .optika-provider-icon.google-g{background:transparent!important;color:transparent!important;font-size:0!important;border-radius:0!important}
+#optikaAuthGate .optika-provider-icon.google-g:before{content:"G"!important;inset:0!important;background:conic-gradient(from -45deg,#4285f4,#34a853,#fbbc05,#ea4335,#4285f4)!important;color:transparent!important;-webkit-background-clip:text!important;background-clip:text!important;border-radius:0!important;font-size:27px!important;font-weight:900!important;line-height:28px!important;display:block!important}
+#optikaAuthGate .optika-provider-icon.yandex-ya{background:#fc3f1d!important;color:#fff!important;border-radius:7px!important;font-size:19px!important;font-weight:900!important}
+#optikaAuthGate .optika-provider-icon.vk-mark{background:#0077ff!important;color:#fff!important;border-radius:8px!important;font-size:15px!important;font-weight:900!important;letter-spacing:-.8px!important;text-transform:lowercase!important}
+#optikaAuthGate .optika-provider-icon.telegram-mark{background:transparent!important;color:transparent!important;font-size:0!important;border-radius:0!important}
+#optikaAuthGate .optika-provider-icon.telegram-mark:before{content:""!important;position:absolute!important;width:25px!important;height:25px!important;background:#27a7e7!important;clip-path:polygon(0 38%,100% 0,78% 100%,53% 73%,37% 89%,39% 60%)!important;border-radius:50%!important}
+#optikaAuthGate .optika-provider-icon.telegram-mark:after{content:""!important;position:absolute!important;width:9px!important;height:13px!important;background:#bceeff!important;clip-path:polygon(0 0,100% 0,0 100%)!important;left:11px!important;top:7px!important}
+@media(max-width:520px){#optikaAuthGate .optika-auth-close{top:14px!important;right:14px!important}#optikaAuthGate .optika-provider{gap:6px!important;padding:9px 6px!important;font-size:13px!important}#optikaAuthGate .optika-provider-icon{flex-basis:26px!important;width:26px!important;height:26px!important;min-width:26px!important}}
+</style>
 </head>
 <body>
 
@@ -3774,7 +3795,7 @@ button:active,.btn:active,.header-action-btn:active,.icon-btn:active,.mini-cart-
   <div class="optika-auth-tabs"><button type="button" class="active" data-auth-mode="login">Вход</button><button type="button" data-auth-mode="register">Регистрация</button></div>
   <form class="optika-auth-form" id="optikaAuthForm"><input id="optikaAuthName" autocomplete="name" placeholder="Ваше имя" hidden><input id="optikaAuthEmail" type="email" autocomplete="email" placeholder="Электронная почта" required><input id="optikaAuthPassword" type="password" autocomplete="current-password" placeholder="Пароль (не менее 6 символов)" minlength="6" required><button class="optika-auth-primary" id="optikaAuthSubmit" type="submit">Войти в профиль</button><div class="optika-auth-error" id="optikaAuthError" role="status"></div></form>
   <div class="optika-auth-divider">или продолжите через</div>
-  <div class="optika-provider-grid"><button class="optika-provider" type="button" data-provider="Google"><span class="optika-provider-icon google-g" aria-hidden="true">G</span> Google</button><button class="optika-provider" type="button" data-provider="Яндекс"><span class="optika-provider-icon yandex-ya" aria-hidden="true">Я</span> Яндекс</button><button class="optika-provider" type="button" data-provider="ВКонтакте"><span class="optika-provider-icon vk-mark" aria-hidden="true">vk</span> ВКонтакте</button><button class="optika-provider" type="button" data-provider="Telegram"><span class="optika-provider-icon telegram-mark" aria-hidden="true">➤</span> Telegram</button></div>
+  <div class="optika-provider-grid"><button class="optika-provider" type="button" data-provider="Google"><span class="optika-provider-icon google-g" aria-hidden="true">G</span> Google</button><button class="optika-provider" type="button" data-provider="Яндекс"><span class="optika-provider-icon yandex-ya" aria-hidden="true">Я</span> Yandex</button><button class="optika-provider" type="button" data-provider="ВКонтакте"><span class="optika-provider-icon vk-mark" aria-hidden="true">vk</span> VK</button><button class="optika-provider" type="button" data-provider="Telegram"><span class="optika-provider-icon telegram-mark" aria-hidden="true">➤</span> Telegram</button></div>
   <p class="optika-auth-note">Демо-профиль сохраняется только в этом браузере. Для настоящего входа через Google, Яндекс, VK и Telegram необходимо подключить OAuth/API и серверную проверку.</p>
  </div>
 </div>
