@@ -822,67 +822,17 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 </style>
 
 
-<style id="optika-close-buttons-everywhere">
-/* Единые заметные кнопки закрытия для всех модальных окон и выдвижных панелей */
-.icon-btn[data-close],.icon-btn.optika-close-x{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:0 0 42px;width:42px;height:42px;min-width:42px;min-height:42px;border-radius:13px!important;border:1px solid rgba(201,164,92,.45)!important;color:#ead7a3!important;background:rgba(201,164,92,.09)!important;font-size:0;cursor:pointer}
-.icon-btn[data-close]::before,.icon-btn.optika-close-x::before{content:"×";font-family:Arial,sans-serif;font-size:30px;font-weight:400;line-height:1;color:inherit}
-.icon-btn[data-close]:hover,.icon-btn.optika-close-x:hover,.optika-panel-close:hover{background:rgba(201,164,92,.2)!important;border-color:#c9a45c!important;transform:translateY(-1px)}
-.drawer-head{gap:12px}
-.drawer-head>h3{min-width:0;flex:1}
-.drawer-head .optika-close-x{margin-left:auto}
-.optika-panel-close{position:absolute;right:10px;top:10px;z-index:10;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:12px;border:1px solid rgba(201,164,92,.42);background:rgba(201,164,92,.1);color:#ead7a3;font:30px/1 Arial,sans-serif;cursor:pointer}
+<style id="optika-close-buttons-safe">
+/* Кнопки закрытия: только визуальное оформление, без вмешательства в работу сайта */
+button.icon-btn[data-close]{-webkit-appearance:none;appearance:none;position:relative;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;min-width:40px;min-height:40px;padding:0;border:1px solid #9b7b3e;border-radius:50%;background:#17140e;color:#ead7a3;font-size:0;line-height:1;box-shadow:none;cursor:pointer}
+button.icon-btn[data-close]::before{content:"×";font:normal 28px/1 Arial,sans-serif;color:#ead7a3}
+button.icon-btn[data-close]:hover{background:#302817;border-color:#c9a45c;color:#fff0c7}
+button.optika-panel-close{-webkit-appearance:none;appearance:none;position:absolute;right:10px;top:10px;z-index:20;width:38px;height:38px;padding:0;border:1px solid #9b7b3e;border-radius:50%;background:#17140e;color:#ead7a3;font:normal 28px/1 Arial,sans-serif;box-shadow:none;cursor:pointer}
+button.optika-panel-close:hover{background:#302817;border-color:#c9a45c;color:#fff0c7}
 #contactPanel,#optikaProfilePanel{position:relative}
-#contactPanel{padding-top:52px}
-#optikaProfilePanel{padding-top:52px}
-#productModal .drawer-head .optika-close-x{align-self:flex-start}
-@media(max-width:600px){.icon-btn[data-close],.icon-btn.optika-close-x{width:44px;height:44px;flex-basis:44px}.optika-panel-close{width:42px;height:42px}}
-</style>
-
-
-<style id="optika-close-blue-fix">
-/* Исправление синей оболочки крестиков: сброс системного оформления браузера */
-button.icon-btn[data-close],
-button.icon-btn.optika-close-x,
-button.photo-close,
-button.optika-panel-close,
-button.optika-auth-close{
-  -webkit-appearance:none!important;appearance:none!important;
-  box-sizing:border-box!important;
-  width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;
-  padding:0!important;flex:0 0 42px!important;
-  display:inline-flex!important;align-items:center!important;justify-content:center!important;
-  border:1px solid rgba(201,164,92,.65)!important;border-radius:50%!important;
-  background:#15130e!important;color:#ead7a3!important;
-  box-shadow:none!important;text-shadow:none!important;
-  outline:none;
-  font-family:Arial,sans-serif!important;font-size:30px!important;font-weight:400!important;line-height:1!important;
-  opacity:1!important;cursor:pointer!important;
-}
-button.icon-btn[data-close]::before,
-button.icon-btn.optika-close-x::before{content:"×"!important;display:block!important;font-size:30px!important;line-height:1!important;color:#ead7a3!important}
-button.icon-btn[data-close] svg,
-button.icon-btn.optika-close-x svg{display:none!important}
-button.icon-btn[data-close]:hover,
-button.icon-btn.optika-close-x:hover,
-button.photo-close:hover,
-button.optika-panel-close:hover,
-button.optika-auth-close:hover{
-  background:#302817!important;color:#fff0c7!important;border-color:#d5b56a!important;
-}
-button.icon-btn[data-close]:focus,
-button.icon-btn.optika-close-x:focus,
-button.photo-close:focus,
-button.optika-panel-close:focus,
-button.optika-auth-close:focus{
-  outline:2px solid rgba(201,164,92,.45)!important;outline-offset:2px!important;
-}
-button.optika-panel-close{position:absolute!important;right:10px!important;top:10px!important;z-index:20!important;font-size:30px!important}
-button.optika-auth-close{border-radius:50%!important}
-@media(max-width:600px){
- button.icon-btn[data-close],button.icon-btn.optika-close-x,button.photo-close,button.optika-panel-close,button.optika-auth-close{
- width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;flex-basis:44px!important
- }
-}
+#contactPanel{padding-top:48px}
+#optikaProfilePanel{padding-top:48px}
+@media(max-width:600px){button.icon-btn[data-close]{width:42px;height:42px;min-width:42px;min-height:42px}}
 </style>
 
 </head>
@@ -1094,7 +1044,7 @@ button.optika-auth-close{border-radius:50%!important}
 </footer>
 
 <div class="contact-fab" id="contactFab">
-  <div class="contact-panel" id="contactPanel" aria-label="Связаться с OPTIKA"><button type="button" class="optika-panel-close" aria-label="Закрыть контакты" onclick="document.getElementById('contactToggle')?.click()">×</button>
+  <div class="contact-panel" id="contactPanel" aria-label="Связаться с OPTIKA">
     <a class="contact-link wa" href="https://wa.me/79627657718" target="_blank" rel="noopener" aria-label="Открыть WhatsApp">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.52 2 2.04 6.48 2.04 12c0 1.76.46 3.42 1.34 4.94L2 22l5.22-1.36A9.96 9.96 0 0 0 12.04 22C17.56 22 22.04 17.52 22.04 12S17.56 2 12.04 2Zm0 18.12a8.08 8.08 0 0 1-4.12-1.13l-.3-.18-3.1.81.83-3.02-.2-.31A8.07 8.07 0 1 1 12.04 20.12Zm4.43-6.05c-.24-.12-1.4-.69-1.62-.77-.22-.08-.38-.12-.54.12-.16.24-.62.77-.76.93-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.4-1.33-1.64-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.41-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.11.16 1.53.1.47-.07 1.4-.57 1.6-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28Z"/></svg>
     </a>
@@ -1148,7 +1098,7 @@ button.optika-auth-close{border-radius:50%!important}
 
 <div class="modal" id="checkoutModal">
   <div class="modal-box">
-    <div class="drawer-head"><h3>Оформление заказа </h3><button class="icon-btn optika-close-x" data-close type="button" aria-label="Закрыть окно"></button></div>
+    <div class="drawer-head"><h3>Оформление заказа </h3><button class="icon-btn" data-close></button></div>
     <form id="orderForm" novalidate>
       <label>Имя*<input required name="name" placeholder="Как к тебе обращаться"></label>
       <div class="row2">
@@ -1367,7 +1317,7 @@ function openOrders(){
   const orders=readOrders();
   const list=$('ordersList');
   if(!list)return;
-  list.innerHTML=orders.length ? '<div class="orders-intro"><span class="orders-intro-icon">✓</span><div><strong>История покупок</strong><small>Здесь можно посмотреть ваши заказы</small></div></div>'+orders.map(o=>`<article class="order order-premium"><div class="order-topline"><span class="order-number">ЗАКАЗ № ${escapeHtml(o.id)}</span><span class="order-status">${escapeHtml(o.status || 'Новый заказ')}</span></div><div class="order-date">${escapeHtml(o.date)}</div><div class="order-product-line"><span class="order-product-icon">◈</span><div class="order-product-name">${escapeHtml(o.product)}</div></div><div class="order-bottomline"><span>Сумма заказа</span><strong>${fmt(o.total)}</strong></div></article>`).join('') : '<div class="orders-empty"><div class="orders-empty-icon">♧</div><h4>Пока нет заказов</h4><p>Когда оформите покупку, здесь появятся её детали и статус.</p><button type="button" class="btn btn-primary" onclick="closeAll();document.getElementById('catalog')?.scrollIntoView({behavior:'smooth'})">Перейти в каталог</button></div>';
+  list.innerHTML=orders.length ? '<div class="orders-intro"><span class="orders-intro-icon">✓</span><div><strong>История покупок</strong><small>Здесь можно посмотреть ваши заказы</small></div></div>'+orders.map(o=>`<article class="order order-premium"><div class="order-topline"><span class="order-number">ЗАКАЗ № ${escapeHtml(o.id)}</span><span class="order-status">${escapeHtml(o.status || 'Новый заказ')}</span></div><div class="order-date">${escapeHtml(o.date)}</div><div class="order-product-line"><span class="order-product-icon">◈</span><div class="order-product-name">${escapeHtml(o.product)}</div></div><div class="order-bottomline"><span>Сумма заказа</span><strong>${fmt(o.total)}</strong></div></article>`).join('') : '<div class="orders-empty"><div class="orders-empty-icon">♧</div><h4>Пока нет заказов</h4><p>Когда оформите покупку, здесь появятся её детали и статус.</p><button type="button" class="btn btn-primary" onclick="closeAll();document.getElementById(\'catalog\')?.scrollIntoView({behavior:\'smooth\'})">Перейти в каталог</button></div>';
   showModal('ordersModal');
 }
 $('clearOrders')?.addEventListener('click',()=>{localStorage.removeItem('optika_orders');openOrders();toast('История заказов очищена')});
@@ -2030,7 +1980,7 @@ function openProduct(id){
       <div class="photo-count"> ${photos.length} фото ${photos.length>1?'• можно листать':''}</div>
     </div>
     <div class="product-info">
-      <div class="drawer-head" style="padding:0 0 10px;border-bottom:1px solid #2e2716"><button type="button" class="icon-btn optika-close-x" aria-label="Закрыть карточку товара" onclick="document.getElementById('productModal').classList.remove('open')">×</button><div><div class="product-kicker">OPTIKA • ${escapeHtml(p.type||'Очки')}</div><h3 class="product-title">${escapeHtml(p.name)}</h3></div><button class="icon-btn" type="button" onclick="closeAll()"></button></div>
+      <div class="drawer-head" style="padding:0 0 10px;border-bottom:1px solid #2e2716"><div><div class="product-kicker">OPTIKA • ${escapeHtml(p.type||'Очки')}</div><h3 class="product-title">${escapeHtml(p.name)}</h3></div><button class="icon-btn" type="button" onclick="closeAll()"></button></div>
       <div class="product-rating"> <span>${rating.toFixed(1)} · Артикул OPT-${escapeHtml(p.id)}</span></div>
       <p class="product-desc">${escapeHtml(p.description||'')}</p>
       <div class="product-specs">
@@ -3679,7 +3629,7 @@ button:active,.btn:active,.header-action-btn:active,.icon-btn:active,.mini-cart-
   <p class="optika-auth-note">Демо-профиль сохраняется только в этом браузере. Для настоящего входа через Google, Яндекс, VK и Telegram необходимо подключить OAuth/API и серверную проверку.</p>
  </div>
 </div>
-<div class="optika-profile-panel" id="optikaProfilePanel" aria-label="Профиль пользователя"><button type="button" class="optika-panel-close" aria-label="Закрыть профиль" onclick="document.getElementById('optikaProfileTrigger')?.click()">×</button><div class="optika-profile-head"><div class="optika-profile-avatar" id="optikaProfileAvatar">♙</div><div><strong id="optikaProfileName">Гость</strong><small id="optikaProfileMeta">Войдите в аккаунт</small></div></div><div class="optika-profile-actions"><button type="button" id="optikaProfileOrders">Мои заказы</button><button type="button" id="optikaSwitchAccount">Сменить аккаунт</button><button type="button" id="optikaSignOut" class="danger">Выйти</button></div></div>
+<div class="optika-profile-panel" id="optikaProfilePanel" aria-label="Профиль пользователя"><div class="optika-profile-head"><div class="optika-profile-avatar" id="optikaProfileAvatar">♙</div><div><strong id="optikaProfileName">Гость</strong><small id="optikaProfileMeta">Войдите в аккаунт</small></div></div><div class="optika-profile-actions"><button type="button" id="optikaProfileOrders">Мои заказы</button><button type="button" id="optikaSwitchAccount">Сменить аккаунт</button><button type="button" id="optikaSignOut" class="danger">Выйти</button></div></div>
 <script id="optika-auth-profile-script">
 (function(){
  const $=id=>document.getElementById(id);const gate=$('optikaAuthGate'),form=$('optikaAuthForm'),panel=$('optikaProfilePanel');let mode='login';
