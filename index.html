@@ -4222,5 +4222,89 @@ button#closeCart {
 }
 </style>
 
+
+<style id="optika-close-working-mobile-frame-fix">
+/* Restore a reliable click target for close buttons; keep the cross centered. */
+#optikaAuthGate .optika-auth-close {
+  position:absolute!important;
+  top:12px!important;right:12px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  box-sizing:border-box!important;
+  width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;
+  padding:0!important;margin:0!important;
+  float:none!important;line-height:1!important;
+  font-family:Arial,sans-serif!important;font-size:27px!important;
+  cursor:pointer!important;pointer-events:auto!important;touch-action:manipulation!important;
+  z-index:100510!important;
+}
+#productModalBox > button.optika-modal-close,
+#ordersModal .drawer-head .icon-btn,
+#checkoutModal .drawer-head .icon-btn,
+button.icon-btn[data-close],button[data-close],button#closeCart {
+  position:relative!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  box-sizing:border-box!important;line-height:1!important;padding:0!important;
+  cursor:pointer!important;pointer-events:auto!important;touch-action:manipulation!important;
+}
+#optikaAuthGate .optika-auth-card {
+  box-sizing:border-box!important;
+  width:min(440px,calc(100vw - 32px))!important;
+  max-width:440px!important;
+  margin:0 auto!important;
+  float:none!important;clear:none!important;
+  overflow-x:hidden!important;
+}
+#optikaAuthGate .optika-auth-brand,
+#optikaAuthGate .optika-auth-tabs,
+#optikaAuthGate .optika-auth-form,
+#optikaAuthGate .optika-provider-grid {
+  box-sizing:border-box!important;width:100%!important;min-width:0!important;
+}
+#optikaAuthGate .optika-auth-tabs {display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+#optikaAuthGate .optika-auth-tabs button {min-width:0!important;width:100%!important;margin:0!important;box-sizing:border-box!important}
+#optikaAuthGate .optika-auth-form input,
+#optikaAuthGate .optika-auth-form button {width:100%;max-width:100%!important;box-sizing:border-box!important}
+@media(max-width:520px) {
+  #optikaAuthGate {
+    padding:12px!important;box-sizing:border-box!important;
+    align-items:center!important;justify-content:center!important;
+    overflow-x:hidden!important;
+  }
+  #optikaAuthGate .optika-auth-card {
+    width:calc(100vw - 32px)!important;
+    max-width:440px!important;
+    max-height:calc(100dvh - 24px)!important;
+    margin:0 auto!important;
+    padding:62px 16px 18px!important;
+    border-radius:20px!important;
+    border-width:1px!important;
+  }
+  #optikaAuthGate .optika-auth-close {top:10px!important;right:10px!important}
+  #optikaAuthGate .optika-auth-brand {margin:0 0 14px!important;padding:0!important}
+  #optikaAuthGate .optika-auth-tabs {margin:0 0 14px!important}
+  #optikaProfilePanel {
+    box-sizing:border-box!important;width:calc(100vw - 24px)!important;
+    max-width:330px!important;left:auto!important;right:12px!important;
+  }
+}
+</style>
+<script id="optika-close-click-fallback">
+(function(){
+  if (window.__optikaCloseClickFallback) return;
+  window.__optikaCloseClickFallback = true;
+  document.addEventListener('click', function(e) {
+    const close = e.target && e.target.closest ? e.target.closest('#optikaAuthClose') : null;
+    if (!close) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const gate = document.getElementById('optikaAuthGate');
+    const panel = document.getElementById('optikaProfilePanel');
+    if (gate) gate.classList.remove('is-open');
+    if (panel) panel.classList.remove('open');
+    try { sessionStorage.setItem('optika_auth_dismissed','1'); } catch (_) {}
+  }, true);
+})();
+</script>
+
 </body>
 </html>
