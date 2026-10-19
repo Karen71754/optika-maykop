@@ -837,6 +837,57 @@ img{height:auto}
 }
 </style>
 
+
+<style id="optika-dark-gold-close-buttons-v1">
+/* Единые тёмно-золотые кнопки закрытия для всех окон магазина */
+.icon-btn,[data-close],#closeCart,.optika-modal-close{
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex:0 0 38px!important;
+  width:38px!important;
+  min-width:38px!important;
+  height:38px!important;
+  min-height:38px!important;
+  padding:0!important;
+  border:1px solid #8c7026!important;
+  border-radius:11px!important;
+  background:linear-gradient(145deg,#242016,#100f0c)!important;
+  color:#e3c45b!important;
+  box-shadow:inset 0 1px 0 rgba(255,225,130,.10),0 3px 12px rgba(0,0,0,.25)!important;
+  font-size:0!important;
+  line-height:1!important;
+  cursor:pointer!important;
+  text-decoration:none!important;
+}
+.icon-btn::before,[data-close]::before,#closeCart::before,.optika-modal-close::before{
+  content:"×"!important;
+  display:block!important;
+  font-family:Arial,sans-serif!important;
+  font-size:28px!important;
+  font-weight:400!important;
+  line-height:1!important;
+  color:#e3c45b!important;
+  transform:translateY(-1px);
+}
+.icon-btn:hover,[data-close]:hover,#closeCart:hover,.optika-modal-close:hover{
+  border-color:#d8b64c!important;
+  background:linear-gradient(145deg,#332a13,#17140c)!important;
+  color:#ffe58a!important;
+  box-shadow:0 0 0 2px rgba(212,175,55,.12),0 5px 16px rgba(0,0,0,.35)!important;
+}
+#productModalBox{position:relative;padding-top:56px!important}
+#productModalBox>.optika-modal-close{position:absolute!important;top:12px!important;right:12px!important;z-index:5!important}
+#productModalBox .product-detail{margin-top:0}
+.drawer-head .icon-btn,.drawer-head [data-close]{margin-left:10px}
+@media(max-width:620px){
+  .icon-btn,[data-close],#closeCart,.optika-modal-close{width:36px!important;min-width:36px!important;flex-basis:36px!important;height:36px!important;min-height:36px!important}
+  #productModalBox{padding-top:52px!important}
+}
+</style>
+
 </head>
 <body>
 
@@ -1975,7 +2026,7 @@ function openProduct(id){
   const photo=photos[0]||'';
   const rating=Number(p.rating||SITE_PRODUCT.rating||5);
   let qty=1;
-  box.innerHTML=`<div class="product-detail">
+  box.innerHTML=`<button type="button" class="optika-modal-close" aria-label="Закрыть карточку товара" title="Закрыть" onclick="closeAll()"></button><div class="product-detail">
     <div>
       <div class="product-gallery" ${photo?`onclick="openPhotoViewer(document.getElementById('productMainImage').src,'${escapeHtml(p.name)}')"`:''}>${photo?`<img id="productMainImage" src="${escapeHtml(photo)}" alt="${escapeHtml(p.name)}">`:'<div class="product-no-photo" role="img" aria-label="Нет фото товара"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 10h3l2 7a3 3 0 0 0 6 0l1-5h1l1 5a3 3 0 0 0 6 0l2-7h-3M7 10h10M5 10l-2-2M19 10l2-2"/></svg><span>Фото скоро появится</span></div>'}</div>
       <div class="product-thumb-row" id="productThumbRow">${photos.map((src,i)=>`<button class="product-thumb ${i===0?'active':''}" type="button" onclick="event.stopPropagation();setProductPhoto(this.querySelector('img').src,${i})"><img src="${escapeHtml(src)}" alt="Фото ${i+1}"></button>`).join('')}</div>
