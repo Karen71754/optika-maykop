@@ -1035,7 +1035,7 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
       <button class="header-action-btn cart-header-btn" id="cartBtn" type="button" aria-label="Корзина"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg> Корзина <span class="cart-count" id="cartCount">0</span></button>
       <button class="header-action-btn language-toggle" id="languageToggle" type="button" aria-label="Переключить язык" aria-pressed="false">EN</button>
       <button class="header-action-btn theme-toggle" id="themeToggle" type="button" aria-label="Переключить на чёрную тему" title="Переключить на чёрную тему" aria-pressed="false"><span class="theme-disc" aria-hidden="true"><span class="theme-disc-core"></span></span></button>
-      <button class="header-action-btn optika-profile-trigger" id="optikaProfileTrigger" type="button" aria-label="Войти или открыть профиль" title="Профиль"><span id="optikaProfileGlyph">♙</span></button>
+      <button class="header-action-btn optika-profile-trigger" id="optikaProfileTrigger" data-no-translate="true" type="button" aria-label="Войти или открыть профиль" title="Профиль"><span id="optikaProfileGlyph">♙</span></button>
     </div>
   </div>
 </header>
@@ -3583,6 +3583,8 @@ html[data-theme="dark"] button:focus-visible,html[data-theme="dark"] a:focus-vis
       // root itself can be an element with attributes.
       if(root instanceof Element) translateAttrs(root,currentLanguage);
       for(const n of nodes){
+        const el=n.nodeType===1?n:n.parentElement;
+        if(el?.closest?.('[data-no-translate="true"]')) continue;
         if(n.nodeType===1){
           const tag=n.tagName;
           if(tag==='SCRIPT'||tag==='STYLE'||tag==='NOSCRIPT') continue;
@@ -3816,7 +3818,7 @@ button:active,.btn:active,.header-action-btn:active,.icon-btn:active,.mini-cart-
   <p class="optika-auth-note">Демо-профиль сохраняется только в этом браузере. Для настоящего входа через Google, Яндекс, VK и Telegram необходимо подключить OAuth/API и серверную проверку.</p>
  </div>
 </div>
-<div class="optika-profile-panel" id="optikaProfilePanel" aria-label="Профиль пользователя"><div class="optika-profile-head"><div class="optika-profile-avatar" id="optikaProfileAvatar">♙</div><div><strong id="optikaProfileName">Гость</strong><small id="optikaProfileMeta">Войдите в аккаунт</small></div></div><div class="optika-profile-actions"><button type="button" id="optikaProfileOrders">Мои заказы</button><button type="button" id="optikaSwitchAccount">Сменить аккаунт</button><button type="button" id="optikaSignOut" class="danger">Выйти</button></div></div>
+<div class="optika-profile-panel" id="optikaProfilePanel" data-no-translate="true" aria-label="Профиль пользователя"><div class="optika-profile-head"><div class="optika-profile-avatar" id="optikaProfileAvatar">♙</div><div><strong id="optikaProfileName">Гость</strong><small id="optikaProfileMeta">Войдите в аккаунт</small></div></div><div class="optika-profile-actions"><button type="button" id="optikaProfileOrders">Мои заказы</button><button type="button" id="optikaSwitchAccount">Сменить аккаунт</button><button type="button" id="optikaSignOut" class="danger">Выйти</button></div></div>
 <script id="optika-auth-profile-script">
 (function(){
  const $=id=>document.getElementById(id);const gate=$('optikaAuthGate'),form=$('optikaAuthForm'),panel=$('optikaProfilePanel');let mode='login';
@@ -3907,28 +3909,28 @@ button:active,.btn:active,.header-action-btn:active,.icon-btn:active,.mini-cart-
 
 
 <style id="optika-mobile-header-fix">
-/* Keep header controls in stable positions on phones when language changes. */
-@media (max-width: 620px) {
-  .header-inner { flex-wrap: nowrap !important; gap: 4px !important; padding-left: 8px !important; padding-right: 8px !important; }
-  .header-inner > .logo { flex: 0 0 98px !important; width: 98px !important; min-width: 98px !important; }
-  .header-inner > .logo .logo-image { width: 98px !important; height: 48px !important; }
-  .header-actions { flex: 1 1 auto !important; min-width: 0 !important; display: flex !important; flex-wrap: nowrap !important; justify-content: space-between !important; gap: 3px !important; }
-  .header-actions > #ordersBtn { flex: 0 0 34px !important; width: 34px !important; min-width: 34px !important; padding: 0 !important; font-size: 0 !important; }
-  .header-actions > #cartBtn { flex: 0 0 40px !important; width: 40px !important; min-width: 40px !important; padding: 0 3px !important; font-size: 0 !important; }
-  .header-actions > #cartBtn .cart-count { font-size: 10px !important; padding: 1px 4px !important; margin-left: 0 !important; }
-  .header-actions > #languageToggle { flex: 0 0 36px !important; width: 36px !important; min-width: 36px !important; padding: 0 !important; font-size: 11px !important; letter-spacing: 0 !important; }
-  .header-actions > #themeToggle { flex: 0 0 38px !important; width: 38px !important; min-width: 38px !important; height: 42px !important; padding: 0 !important; }
-  .header-actions > #optikaProfileTrigger { flex: 0 0 32px !important; width: 32px !important; min-width: 32px !important; height: 36px !important; margin-left: 0 !important; }
+/* Mobile header: logo stays on its own row; controls keep their original order and positions. */
+@media (max-width: 480px) {
+  .header-inner { display:flex !important; flex-direction:column !important; flex-wrap:nowrap !important; justify-content:center !important; align-items:center !important; gap:8px !important; padding:8px 12px !important; }
+  .header-inner > .logo { flex:0 0 auto !important; width:auto !important; min-width:0 !important; }
+  .header-inner > .logo .logo-image { width:min(160px,55vw) !important; height:auto !important; max-height:56px !important; }
+  .header-inner > .header-actions { width:100% !important; min-width:0 !important; max-width:100% !important; display:flex !important; flex-direction:row !important; flex-wrap:nowrap !important; justify-content:center !important; align-items:center !important; gap:6px !important; }
+  .header-actions > #ordersBtn { order:1 !important; }
+  .header-actions > #cartBtn { order:2 !important; }
+  .header-actions > #languageToggle { order:3 !important; }
+  .header-actions > #themeToggle { order:4 !important; }
+  .header-actions > #optikaProfileTrigger { order:5 !important; margin-left:0 !important; }
+  .header-actions > .header-action-btn { white-space:nowrap !important; flex-shrink:0 !important; font-size:12px !important; padding:8px 7px !important; }
 }
 /* No animation or rotation on the theme icon, including hover/tap/theme changes. */
 #themeToggle, #themeToggle:hover, #themeToggle:active,
 #themeToggle .theme-disc, #themeToggle .theme-disc-core,
 #themeToggle .theme-disc-core::after {
-  animation: none !important;
-  transition: none !important;
-  transform: none !important;
+  animation:none !important;
+  transition:none !important;
+  transform:none !important;
 }
-.logo-image { animation: none !important; transition: none !important; }
+.logo-image { animation:none !important; transition:none !important; }
 </style>
 
 </body>
