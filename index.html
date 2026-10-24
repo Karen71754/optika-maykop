@@ -1195,7 +1195,7 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
             <button type="button" class="appstore-star active" data-rating="5" role="radio" aria-label="5 звёзд"></button>
             <span class="appstore-rating-value" id="reviewRatingValue">5 из 5</span>
           </div>
-          <input type="hidden" name="stars" id="reviewStarsValue" value="5">
+          <input type="hidden" name="stars" id="reviewStarsValue" value="5"><input type="hidden" id="reviewEditingId" value="">
         </div>
         <label>Ваш отзыв*<textarea required name="text" rows="4" placeholder="Что вам понравилось?"></textarea></label>
         <button class="btn btn-primary" type="submit">Опубликовать отзыв</button>
@@ -1369,7 +1369,7 @@ function renderReviews(){
   if(avg)avg.textContent=rating;
   if(stars){const n=reviews.length ? Math.max(1,Math.round(total/reviews.length)) : 5;stars.textContent=''.repeat(n)+''.repeat(5-n)}
   if(cnt)cnt.textContent=`${reviews.length} ${reviews.length===1?'отзыв':(reviews.length>=2&&reviews.length<=4?'отзыва':'отзывов')}`;
-  box.innerHTML=reviews.length ? reviews.slice(0,12).map(r=>`<div class="rev"><b>${escapeHtml(r.n)}</b><br><span style="color:#d4af37;letter-spacing:1px">${''.repeat(r.s)}${''.repeat(5-r.s)}</span><p style="margin:6px 0 4px;color:#d7cfbc">${escapeHtml(r.t)}</p><small>${escapeHtml(r.d)}</small></div>`).join('') : '<div class="reviews-empty">Пока отзывов нет.<br>Станьте первым покупателем, который оставит отзыв.</div>';
+  box.innerHTML=reviews.length ? reviews.slice(0,12).map(r=>`<div class="rev"><b>${escapeHtml(r.n)}</b><br><span style="color:#d4af37;letter-spacing:1px">${'★'.repeat(r.s)}${'☆'.repeat(5-r.s)}</span><p style="margin:6px 0 4px;color:#d7cfbc">${escapeHtml(r.t)}</p><small>${escapeHtml(r.editedAt||r.d||'')}</small>${r.owner&&r.owner===localStorage.getItem("optika_review_owner")?`<div class="admin-actions" style="margin-top:8px"><button type="button" class="btn btn-sm review-edit-own" data-review-id="${escapeHtml(r.id||"")}" >Редактировать мой отзыв</button></div>`:""}</div>`).join('') : '<div class="reviews-empty">Пока отзывов нет.<br>Станьте первым покупателем, который оставит отзыв.</div>';
 }
 function escapeHtml(value){return String(value).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));}
 
@@ -1425,15 +1425,32 @@ $('reviewForm').onsubmit=e=>{
   const rating=Number(f.get('stars'))||0;
   if(!rating){toast('Выберите оценку');return}
   if(!n||!t){toast('Заполните имя и отзыв');return}
-  reviews.unshift({n,s:Math.max(1,Math.min(5,rating)),t,d:new Date().toLocaleString('ru-RU')});
+  const editingId=$('reviewEditingId')?.value||'';
+  let owner=localStorage.getItem('optika_review_owner');
+  if(!owner){owner=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random());localStorage.setItem('optika_review_owner',owner);}
+  if(editingId){
+    const idx=reviews.findIndex(r=>String(r.id||'')===editingId&&r.owner===owner);
+    if(idx<0){toast('Этот отзыв нельзя изменить с этого устройства');return;}
+    reviews[idx]={...reviews[idx],n,s:Math.max(1,Math.min(5,rating)),t,editedAt:new Date().toLocaleString('ru-RU')};
+    $('reviewEditingId').value='';e.target.querySelector('button[type="submit"]').textContent='Опубликовать отзыв';toast('Отзыв обновлён');
+  }else{
+    reviews.unshift({id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random()),owner,n,s:Math.max(1,Math.min(5,rating)),t,d:new Date().toLocaleString('ru-RU')});
+    toast('Спасибо за отзыв! ⭐');
+  }
   localStorage.setItem('optika_reviews',JSON.stringify(reviews));
-  e.target.reset();
-  setReviewRating(5);
-  renderReviews();
-  toast('Спасибо за отзыв! ⭐');
+  e.target.reset();setReviewRating(5);renderReviews();
 };
 
 renderReviews();
+$('reviewsList')?.addEventListener('click',e=>{
+  const btn=e.target.closest('.review-edit-own');if(!btn)return;
+  const owner=localStorage.getItem('optika_review_owner');
+  const r=reviews.find(x=>String(x.id||'')===btn.dataset.reviewId&&x.owner===owner);if(!r)return;
+  const form=$('reviewForm');form.elements.name.value=r.n;form.elements.text.value=r.t;
+  $('reviewEditingId').value=r.id;setReviewRating(r.s);
+  form.querySelector('button[type="submit"]').textContent='Сохранить изменения';
+  form.scrollIntoView({behavior:'smooth',block:'center'});
+});
 
 /* ===== Круглая кнопка связи ===== */
 const contactFab = $('contactFab');
@@ -2013,6 +2030,21 @@ function renderAdminStats(){
   if($('admOrders'))$('admOrders').textContent=readOrders().length;
   if($('admReviews'))$('admReviews').textContent=readJsonArray('optika_reviews').length;
 }
+function renderAdminReviews(){
+  const host=$('adminReviewsList');if(!host)return;
+  const all=readJsonArray('optika_reviews');
+  if(!all.length){host.innerHTML='<p class="meta">Пока нет отзывов.</p>';return;}
+  host.innerHTML=all.map(r=>`<div class="admin-card" style="margin:8px 0;padding:12px"><div style="display:flex;gap:10px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap"><div><b>${escapeHtml(r.n||'Клиент')}</b> · <span style="color:#d4af37">${'★'.repeat(Math.max(0,Math.min(5,Number(r.s)||0)))}</span><p>${escapeHtml(r.t||'')}</p><small>${escapeHtml(r.editedAt||r.d||'')}</small></div><button type="button" class="btn btn-sm admin-danger adm-review-delete" data-review-id="${escapeHtml(r.id||'')}" >Удалить</button></div></div>`).join('');
+}
+$('adminReviewsList')?.addEventListener('click',e=>{
+  const btn=e.target.closest('.adm-review-delete');if(!btn)return;
+  if(!confirm('Удалить этот отзыв?'))return;
+  const id=btn.dataset.reviewId;const raw=readJson('optika_reviews',[]);
+  if(Array.isArray(raw)){const ix=raw.findIndex(r=>String(r.id||'')===id);if(ix>=0)raw.splice(ix,1);localStorage.setItem('optika_reviews',JSON.stringify(raw));}
+  else {Object.keys(raw||{}).forEach(k=>{if(Array.isArray(raw[k])){const ix=raw[k].findIndex(r=>String(r.id||'')===id);if(ix>=0)raw[k].splice(ix,1);}});localStorage.setItem('optika_reviews',JSON.stringify(raw));}
+  reviews=readJsonArray('optika_reviews');renderReviews();renderAdminReviews();renderAdminStats();toast('Отзыв удалён');
+});
+$('admRefreshReviews')?.addEventListener('click',renderAdminReviews);
 function renderAdminOrders(){
   const list=$('adminOrdersList'); if(!list)return;
   const orders=readOrders();
@@ -2286,7 +2318,7 @@ updatePaymentUi();
       <button class="admin-tab active" data-admin-tab="dashboard">Обзор</button>
       <button class="admin-tab" data-admin-tab="analytics">Аналитика</button>
       <button class="admin-tab" data-admin-tab="product">Товар</button>
-      <button class="admin-tab" data-admin-tab="orders">Заказы</button>
+      <button class="admin-tab" data-admin-tab="orders">Заказы</button><button class="admin-tab" data-admin-tab="reviews">Отзывы</button>
     </div>
 
     <div class="admin-pane active" id="adminPaneDashboard">
@@ -2368,6 +2400,10 @@ updatePaymentUi();
       </div>
     </div>
 
+    <div class="admin-pane" id="adminPaneReviews">
+      <div class="admin-card"><div class="section-head"><h3>Модерация отзывов</h3><button class="btn btn-sm" type="button" id="admRefreshReviews">Обновить</button></div><p class="admin-note">Удаление отзывов работает в браузере, где сохранены эти отзывы. Для общей модерации между устройствами потребуется серверное хранилище.</p><div id="adminReviewsList"></div></div>
+    </div>
+
     <div class="admin-pane" id="adminPaneOrders">
       <div class="admin-card">
         <div class="section-head"><h3><span class="icon-inline"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10l3 3v15H4V3h3Z"/><path d="M8 10h8M8 14h8M8 18h5M14 3v4h6"/></svg></span> Заказы клиентов</h3><button class="btn btn-sm" type="button" id="admExport2">CSV</button></div>
@@ -2387,6 +2423,7 @@ updatePaymentUi();
     document.querySelectorAll('.admin-pane').forEach(p=>p.classList.toggle('active',p.id==='adminPane'+tab.charAt(0).toUpperCase()+tab.slice(1)));
     if(tab==='dashboard')renderAdminStats();
     if(tab==='analytics')renderAnalytics();
+    if(tab==='reviews')renderAdminReviews();
     if(tab==='product'){loadAdminProductForm();renderAdminProductList();}
     if(tab==='orders')renderAdminOrders();
   }
@@ -2406,6 +2443,7 @@ updatePaymentUi();
     $('admAddProduct')?.addEventListener('click',addManagedProduct);
     ['catalogSearch','catalogPrice','catalogSort'].forEach(id=>$(id)?.addEventListener(id==='catalogSearch'?'input':'change',applyManagedCatalogFilters));
     $('admOpenOrders')?.addEventListener('click',()=>switchAdminPane('orders'));
+    $('admRefreshReviews')?.addEventListener('click',renderAdminReviews);
     $('admOpenAnalytics')?.addEventListener('click',()=>switchAdminPane('analytics'));
     $('admResetStats')?.addEventListener('click',()=>{saveAdminStats({views:0,adds:0});renderAdminStats();toast('Статистика сброшена')});
     $('admExport')?.addEventListener('click',exportOrdersCSV);
