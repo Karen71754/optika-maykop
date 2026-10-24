@@ -1253,9 +1253,6 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
 </div>
 
 
-<div class="mobile-quick-order" id="mobileQuickOrder">
-  <button class="btn btn-primary" type="button" id="mobileQuickOrderBtn"><span class="icon-inline"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 14c-1 2-1 4-1 5 2 0 4 0 6-1M9 15l-3-3c2-5 6-8 13-9 0 7-4 11-9 13Z"/><circle cx="15" cy="8" r="2"/><path d="m6 18-2 2"/></svg></span> Быстрый заказ</button>
-</div>
 
 
 
@@ -4453,5 +4450,70 @@ button.icon-btn, button[data-close], button#closeCart, button.optika-modal-close
 #optikaAuthGate .optika-provider-icon.google-g:before{content:none!important;display:none!important}
 #optikaAuthGate .optika-provider-icon.google-g svg{width:25px!important;height:25px!important}
 </style>
+
+<style id="optika-auth-theme-and-viewport-fix">
+/* Авторизация следует выбранной теме и всегда помещается в экран */
+#optikaAuthGate{
+  box-sizing:border-box!important;
+  padding:clamp(8px,2.5vw,20px)!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:auto!important;
+  overscroll-behavior:contain;
+}
+#optikaAuthGate,#optikaAuthGate *{box-sizing:border-box}
+#optikaAuthGate .optika-auth-card{
+  width:min(460px,100%)!important;
+  max-width:100%!important;
+  max-height:calc(100dvh - 2 * clamp(8px,2.5vw,20px))!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  margin:auto!important;
+  flex:0 1 auto!important;
+  border-radius:22px!important;
+  scrollbar-gutter:stable;
+}
+#optikaAuthGate .optika-auth-form input{min-width:0;max-width:100%}
+html[data-theme="light"] #optikaAuthGate{background:rgba(30,30,30,.42)!important}
+html[data-theme="light"] #optikaAuthGate .optika-auth-card{
+  background:var(--card,#fff)!important;
+  color:var(--text,#222)!important;
+  border-color:var(--line,#ded7c7)!important;
+  box-shadow:0 24px 80px rgba(0,0,0,.24)!important;
+}
+html[data-theme="light"] #optikaAuthGate .optika-auth-brand p,
+html[data-theme="light"] #optikaAuthGate .optika-auth-note{color:var(--muted,#716b60)!important}
+html[data-theme="light"] #optikaAuthGate .optika-auth-tabs{background:var(--bg,#f4f1e8)!important}
+html[data-theme="light"] #optikaAuthGate .optika-auth-tabs button{color:var(--text,#333)!important}
+html[data-theme="light"] #optikaAuthGate .optika-auth-tabs button.active{color:#18140a!important}
+html[data-theme="light"] #optikaAuthGate .optika-auth-form input{
+  background:var(--bg,#fff)!important;color:var(--text,#222)!important;
+  border-color:var(--line,#d9d2c3)!important;
+}
+html[data-theme="light"] #optikaAuthGate .optika-auth-close{
+  background:var(--card,#fff)!important;color:var(--text,#222)!important;
+  border-color:var(--line,#d9d2c3)!important;
+}
+html[data-theme="light"] #optikaAuthGate .optika-provider{
+  background:var(--card,#fff)!important;color:var(--text,#222)!important;
+  border-color:var(--line,#d9d2c3)!important;
+}
+@media(max-width:520px){
+  #optikaAuthGate{padding:10px!important}
+  #optikaAuthGate .optika-auth-card{
+    width:100%!important;max-width:100%!important;
+    max-height:calc(100dvh - 20px)!important;
+    padding:20px 15px!important;border-radius:18px!important;
+  }
+  #optikaAuthGate .optika-auth-close{top:12px!important;right:12px!important}
+  #optikaAuthGate .optika-auth-brand{padding:0 24px}
+}
+@media(max-height:560px){
+  #optikaAuthGate{align-items:flex-start!important}
+  #optikaAuthGate .optika-auth-card{margin:auto!important;max-height:calc(100dvh - 16px)!important}
+}
+.mobile-quick-order{display:none!important}
+</style>
+
 </body>
 </html>
