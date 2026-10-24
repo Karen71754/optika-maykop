@@ -2016,6 +2016,23 @@ function createManagedProduct({name,price,description='',photo='',stock='В на
   const p=normalizeManagedProduct({id,name,description,price:Number(price),photo,photos:photo?[photo]:[],rating:5,stock,material:'',lenses:'',color:'',type:'Очки'});
   PRODUCTS.push(p);adminEditingProductId=id;saveManagedProducts();renderManagedCatalog();renderAdminProductList();loadAdminProductForm(id);return p;
 }
+function addBulkManagedProducts(){
+  const lines=String($('admBulkProducts')?.value||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+  if(!lines.length){toast('Вставь список товаров');return;}
+  const rows=[];
+  for(let i=0;i<lines.length;i++){
+    const p=lines[i].split('|').map(x=>x.trim());
+    if(p.length<2||!p[0]||p[1]===''||!Number.isFinite(Number(p[1]))||Number(p[1])<0){toast('Проверь строку '+(i+1)+': Название | Цена | Описание');return;}
+    rows.push({name:p[0],price:Number(p[1]),description:p.slice(2).join(' | ')});
+  }
+  const files=Array.from($('admBulkPhotos')?.files||[]);
+  const readOne=file=>new Promise(resolve=>{if(!file){resolve('');return;}readProductPhoto(file,resolve);});
+  Promise.all(rows.map((row,i)=>readOne(files[i]))).then(photos=>{
+    rows.forEach((row,i)=>createManagedProduct({...row,photo:photos[i]}));
+    $('admBulkProducts').value='';if($('admBulkPhotos'))$('admBulkPhotos').value='';
+    renderAdminProductList();toast('Добавлено товаров: '+rows.length);
+  }).catch(()=>toast('Не удалось добавить список товаров'));
+}
 function addManagedProduct(){
   const name=$('admNewName')?.value.trim()||'',priceText=$('admNewPrice')?.value.trim()||'',description=$('admNewDescription')?.value.trim()||'',file=$('admNewPhoto')?.files?.[0];
   if(!name){toast('Введи название товара');$('admNewName')?.focus();return;}
@@ -2375,7 +2392,7 @@ updatePaymentUi();
           <label>Описание<input id="admNewDescription" type="text" placeholder="Материал, цвет, тип линз"></label>
           <label>Фотография<input id="admNewPhoto" type="file" accept="image/*"></label>
         </div>
-        <div class="admin-actions" style="margin-top:10px"><button class="btn btn-primary" type="button" id="admAddProduct">＋ Добавить товар</button></div>
+        <label style="margin-top:12px">Добавить сразу несколько товаров<textarea id="admBulkProducts" rows="4" placeholder="Один товар на строку: Название | Цена | Описание"></textarea></label><label>Фотографии товаров в том же порядке (необязательно)<input id="admBulkPhotos" type="file" accept="image/*" multiple></label><p class="admin-note">Пример: Очки для компьютера | 1490 | Чёрная оправа. Фото сопоставляются строкам по порядку.</p><div class="admin-actions" style="margin-top:10px"><button class="btn btn-primary" type="button" id="admAddProduct">＋ Добавить товар</button><button class="btn" type="button" id="admBulkAddProducts">Добавить список товаров</button></div>
         <div id="admManagedProductsList" style="margin-top:14px"></div>
       </div>
       <div class="admin-card" id="adminProductEditor">
@@ -2387,7 +2404,7 @@ updatePaymentUi();
             <label>Название<input id="admName" type="text"></label>
             <label>Описание<input id="admDescription" type="text"></label>
             <label>Цена, ₽<input id="admPrice" type="number" min="0" step="1"></label>
-            <label>Главная фотография<input id="admPhoto" type="file" accept="image/*"></label>
+            <label>Главная фотография<input id="admPhoto" type="file" accept="image/*"></label><div class="admin-actions"><button class="btn btn-sm" type="button" id="admCropPrimary">Обрезать главную фотографию</button></div>
             <label>Дополнительные фото (до 4)<input id="admPhotos" type="file" accept="image/*" multiple></label>
             <p class="admin-note">Загрузи до 4 реальных фото: главное + дополнительные ракурсы. Новые фото сохраняются в браузере этого устройства.</p>
             <label>Ссылка на онлайн-оплату<input id="admPaymentUrl" type="url" placeholder="https://..."></label>
@@ -2441,6 +2458,7 @@ updatePaymentUi();
     document.querySelectorAll('.admin-tab').forEach(b=>b.onclick=()=>switchAdminPane(b.dataset.adminTab));
     $('admOpenProduct')?.addEventListener('click',()=>switchAdminPane('product'));
     $('admAddProduct')?.addEventListener('click',addManagedProduct);
+    $('admBulkAddProducts')?.addEventListener('click',addBulkManagedProducts);
     ['catalogSearch','catalogPrice','catalogSort'].forEach(id=>$(id)?.addEventListener(id==='catalogSearch'?'input':'change',applyManagedCatalogFilters));
     $('admOpenOrders')?.addEventListener('click',()=>switchAdminPane('orders'));
     $('admRefreshReviews')?.addEventListener('click',renderAdminReviews);
@@ -4402,5 +4420,33 @@ button.icon-btn, button[data-close], button#closeCart, button.optika-modal-close
 #optikaSwitchAccount { border:1px solid #49412e!important; box-sizing:border-box!important; }
 #optikaSwitchAccount:hover { border-color:#d4af37!important; }
 </style>
+<div class="modal" id="admCropModal" aria-hidden="true"><div class="modal-box" style="max-width:620px"><div class="section-head"><h3>Обрезка фотографии</h3><button class="icon-btn" type="button" id="admCropClose" aria-label="Закрыть">×</button></div><p class="admin-note">Настрой масштаб и положение фотографии, затем примени обрезку.</p><img id="admCropPreview" alt="Предпросмотр обрезки" style="display:block;width:100%;max-height:340px;object-fit:contain;background:#f4f4f4;border-radius:12px"><label>Масштаб<input type="range" id="admCropZoom" min="1" max="3" step="0.05" value="1"></label><label>Горизонтально<input type="range" id="admCropX" min="0" max="100" value="50"></label><label>Вертикально<input type="range" id="admCropY" min="0" max="100" value="50"></label><div class="admin-actions"><button class="btn btn-primary" type="button" id="admCropApply">Применить обрезку</button><button class="btn" type="button" id="admCropCancel">Отмена</button></div></div></div>
+<script id="optika-photo-crop-tools">
+(function(){
+ const $=id=>document.getElementById(id);let source=null,target=null,img=null,objectUrl='';
+ function close(){ $('admCropModal')?.classList.remove('show');$('overlay')?.classList.remove('show');if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl='';source=null;target=null;img=null; }
+ function values(){return {z:Number($('admCropZoom').value)||1,x:(Number($('admCropX').value)||50)/100,y:(Number($('admCropY').value)||50)/100};}
+ function render(canvasW,canvasH){
+   if(!img)return null;const {z,x,y}=values(),canvas=document.createElement('canvas');canvas.width=canvasW;canvas.height=canvasH;
+   const c=canvas.getContext('2d'),scale=Math.max(canvasW/img.naturalWidth,canvasH/img.naturalHeight)*z,w=img.naturalWidth*scale,h=img.naturalHeight*scale;
+   c.fillStyle='#fff';c.fillRect(0,0,canvasW,canvasH);c.drawImage(img,(canvasW-w)*x,(canvasH-h)*y,w,h);return canvas;
+ }
+ function preview(){const c=render(420,300);if(c)$('admCropPreview').src=c.toDataURL('image/jpeg',.88);}
+ function open(){
+   const input=$('admPhoto'),file=input?.files?.[0];if(!file){toast('Сначала выбери главную фотографию');return;}
+   source=file;target=input;img=new Image();img.onload=()=>{$('admCropZoom').value=1;$('admCropX').value=50;$('admCropY').value=50;preview();$('admCropModal').classList.add('show');$('overlay')?.classList.add('show');};
+   img.onerror=()=>toast('Не удалось открыть фото');objectUrl=URL.createObjectURL(file);img.src=objectUrl;
+ }
+ ['admCropZoom','admCropX','admCropY'].forEach(id=>$(id)?.addEventListener('input',preview));
+ $('admCropPrimary')?.addEventListener('click',open);$('admCropClose')?.addEventListener('click',close);$('admCropCancel')?.addEventListener('click',close);
+ $('admCropApply')?.addEventListener('click',()=>{
+   const canvas=render(1200,850);if(!canvas||!target)return;
+   canvas.toBlob(blob=>{if(!blob){toast('Не удалось обрезать фото');return;}
+     const dt=new DataTransfer();dt.items.add(new File([blob],source.name.replace(/\.[^.]+$/,'')+'-crop.jpg',{type:'image/jpeg'}));target.files=dt.files;
+     const p=$('admProductPreview');if(p)p.src=canvas.toDataURL('image/jpeg',.9);close();toast('Обрезка применена. Нажми «Сохранить изменения».');
+   },'image/jpeg',.9);
+ });
+})();
+</script>
 </body>
 </html>
