@@ -1115,9 +1115,10 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
   </div>
 
   <div class="compact-filters" id="compactFilters" aria-hidden="true">
-    <select id="catalogSort"><option value="popular">Сначала популярные</option><option value="cheap">Сначала дешевле</option><option value="expensive">Сначала дороже</option></select>
-    <select id="catalogPrice"><option value="all">Любая цена</option><option value="under10000">До 10 000 ₽</option><option value="10000to15000">10 000–15 000 ₽</option><option value="over15000">От 15 000 ₽</option></select>
-    <button class="btn btn-sm" id="catalogReset" type="button">Сбросить</button>
+    <div class="filter-panel-heading"><div><span class="filter-eyebrow">ПОДБОР ОЧКОВ</span><strong>Настройте фильтры</strong><small>Уточните цену и порядок товаров</small></div><span class="filter-panel-symbol" aria-hidden="true">☷</span></div>
+    <label class="filter-field"><span>Сортировка</span><select id="catalogSort"><option value="popular">Сначала популярные</option><option value="cheap">Сначала дешевле</option><option value="expensive">Сначала дороже</option></select></label>
+    <label class="filter-field"><span>Цена товара</span><select id="catalogPrice"><option value="all">Любая цена</option><option value="under10000">До 10 000 ₽</option><option value="10000to15000">10 000–15 000 ₽</option><option value="over15000">От 15 000 ₽</option></select></label>
+    <button class="filter-reset" id="catalogReset" type="button"><span aria-hidden="true">↺</span> Сбросить фильтры</button>
   </div>
 
   <div class="catalog-grid" id="catalogGrid">
@@ -4669,5 +4670,60 @@ html[data-theme="dark"] #optikaAuthGate .optika-provider{
 }
 </style>
 
+
+<style id="optika-filter-redesign-v2">
+#catalog .catalog-head{align-items:center!important;gap:16px!important;margin-bottom:18px!important}
+#catalog .catalog-head h2{letter-spacing:-.035em!important}
+#catalog .filter-toggle{flex:0 0 auto!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:10px!important;min-height:46px!important;padding:0 18px!important;border-radius:15px!important;background:var(--card,#171717)!important;color:var(--text,#f5d76e)!important;border:1px solid var(--line,#514321)!important;box-shadow:0 5px 18px rgba(0,0,0,.08)!important;font-size:14px!important;font-weight:750!important;transition:transform .18s,border-color .18s,box-shadow .18s!important}
+#catalog .filter-toggle:before{content:'☷';font-size:19px;line-height:1}
+#catalog .filter-toggle span{font-size:18px;line-height:1}
+#catalog .filter-toggle:hover,#catalog .filter-toggle.open{border-color:var(--accent,#d4af37)!important;box-shadow:0 6px 22px rgba(180,140,30,.15)!important}
+#catalog .filter-toggle:active{transform:scale(.98)}
+#catalog .catalog-search-row{gap:10px!important;margin:12px 0 16px!important;align-items:stretch!important}
+#catalog .catalog-search-wrap{min-width:140px!important}
+#catalog .catalog-search-wrap input{min-height:48px!important;border-radius:15px!important;padding-left:44px!important}
+#catalog .mini-cart-link{min-height:46px!important;padding:0 13px!important;border-radius:14px!important;border:1px solid var(--line,#ded7c7)!important;background:var(--card,#fff)!important;color:var(--text,#222)!important;text-decoration:none!important;white-space:nowrap!important}
+#catalog .mini-cart-link span{margin-left:4px!important}
+#catalog .compact-filters{display:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto!important;align-items:end!important;gap:14px!important;padding:20px!important;margin:0 0 20px!important;border-radius:22px!important;background:var(--card,#fff)!important;color:var(--text,#222)!important;border:1px solid var(--line,#ded7c7)!important;box-shadow:0 14px 36px rgba(0,0,0,.07)!important}
+#catalog .compact-filters.open{display:grid!important;animation:filterPanelIn .2s ease-out}
+@keyframes filterPanelIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+#catalog .filter-panel-heading{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:14px;padding-bottom:14px;border-bottom:1px solid var(--line,#e5dfd3)}
+#catalog .filter-panel-heading>div{display:grid;gap:4px}
+#catalog .filter-eyebrow{font-size:10px;letter-spacing:.16em;font-weight:800;color:var(--accent,#b58b26)}
+#catalog .filter-panel-heading strong{font-size:18px;letter-spacing:-.02em}
+#catalog .filter-panel-heading small{font-size:12px;color:var(--muted,#777);line-height:1.4}
+#catalog .filter-panel-symbol{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:var(--bg,#f4f1e8);font-size:24px;color:var(--accent,#b58b26)}
+#catalog .filter-field{display:grid;gap:7px;min-width:0;margin:0;font-size:12px;font-weight:750;color:var(--muted,#777)}
+#catalog .filter-field select{width:100%;min-width:0;min-height:48px;padding:0 38px 0 13px;border-radius:13px;border:1px solid var(--line,#ded7c7);background:var(--bg,#f8f6f0);color:var(--text,#222);font:inherit;font-size:14px;font-weight:650;outline:none}
+#catalog .filter-field select:focus{border-color:var(--accent,#b58b26);box-shadow:0 0 0 3px rgba(180,140,30,.12)}
+#catalog .filter-reset{min-height:46px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:0 14px;border:1px solid var(--line,#ded7c7);border-radius:13px;background:transparent;color:var(--text,#333);font-weight:750;white-space:nowrap;cursor:pointer}
+#catalog .filter-reset span{font-size:19px}
+#catalog .filter-reset:hover{border-color:var(--accent,#b58b26);background:var(--bg,#f8f6f0)}
+html[data-theme="dark"] #catalog .compact-filters{background:var(--card,#151515)!important;color:var(--text,#f5f0df)!important;border-color:var(--line,#403722)!important}
+html[data-theme="dark"] #catalog .filter-field select{background:#101010;color:#f5f0df;border-color:#49412e}
+html[data-theme="dark"] #catalog .filter-reset{color:#f5f0df;border-color:#49412e}
+html[data-theme="dark"] #catalog .filter-panel-symbol{background:#211d12;color:#e2bd52}
+html[data-theme="dark"] #catalog .filter-panel-heading{border-color:#3d3524}
+html[data-theme="dark"] #catalog .mini-cart-link{background:var(--card,#171717)!important;color:var(--text,#f5d76e)!important;border-color:var(--line,#49412e)!important}
+@media(max-width:680px){
+#catalog .catalog-head{align-items:center!important;gap:10px!important}
+#catalog .catalog-head h2{font-size:clamp(22px,6vw,30px)!important}
+#catalog .filter-toggle{min-height:42px!important;padding:0 12px!important;gap:6px!important;font-size:13px!important}
+#catalog .catalog-search-row{display:grid!important;grid-template-columns:minmax(0,1fr) auto auto!important;gap:7px!important}
+#catalog .catalog-search-wrap{grid-column:1/-1!important}
+#catalog .catalog-search-wrap input{width:100%!important;min-height:46px!important}
+#catalog .mini-cart-link{min-height:40px!important;padding:0 10px!important;justify-content:center!important;font-size:12px!important}
+#catalog .compact-filters{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:12px!important;padding:15px!important;border-radius:18px!important}
+#catalog .filter-panel-heading{padding-bottom:12px!important}
+#catalog .filter-panel-heading strong{font-size:16px!important}
+#catalog .filter-reset{grid-column:1/-1!important;width:100%!important;min-height:44px!important}
+}
+@media(max-width:360px){
+#catalog .catalog-search-row{grid-template-columns:minmax(0,1fr) auto!important}
+#catalog .mini-cart-link:last-child{grid-column:2}
+#catalog .compact-filters{grid-template-columns:1fr!important}
+#catalog .filter-reset{grid-column:auto!important}
+}
+</style>
 </body>
 </html>
