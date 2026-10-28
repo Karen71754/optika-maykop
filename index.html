@@ -4568,5 +4568,64 @@ html[data-theme="light"] #optikaAuthGate{background:#f5f2ea!important}
 }
 </style>
 
+
+<style id="optika-provider-icons-brand-style">
+/* Оригинальные цветные знаки сервисов на нейтральной карточке текущей темы */
+#optikaAuthGate .optika-provider-grid{gap:10px!important}
+#optikaAuthGate .optika-provider{
+  min-height:66px!important;
+  gap:9px!important;
+  justify-content:center!important;
+  border-radius:16px!important;
+  background:var(--card,#fff)!important;
+  color:var(--text,#222)!important;
+  border:1px solid var(--line,#ded9ce)!important;
+  box-shadow:0 1px 2px rgba(0,0,0,.035)!important;
+}
+#optikaAuthGate .optika-provider-icon{
+  flex:0 0 40px!important;
+  width:40px!important;height:40px!important;
+  display:grid!important;place-items:center!important;
+  overflow:hidden!important;
+  border-radius:11px!important;
+  background:transparent!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+#optikaAuthGate .optika-provider-icon svg{
+  display:block!important;width:100%!important;height:100%!important;
+}
+#optikaAuthGate .optika-provider-icon.google-g{
+  background:#fff!important;border-radius:11px!important;
+  border:1px solid #eee!important;
+}
+#optikaAuthGate .optika-provider-icon.google-g svg{width:36px!important;height:36px!important}
+#optikaAuthGate .optika-provider-icon.yandex-ya{
+  background:#ff3528!important;border-radius:11px!important;
+}
+#optikaAuthGate .optika-provider-icon.yandex-ya svg{width:34px!important;height:34px!important}
+#optikaAuthGate .optika-provider-icon.vk-mark{
+  background:#2787f5!important;border-radius:50%!important;
+}
+#optikaAuthGate .optika-provider-icon.vk-mark svg{width:34px!important;height:34px!important;color:#fff!important}
+#optikaAuthGate .optika-provider-icon.telegram-mark{
+  background:#2aabee!important;border-radius:50%!important;
+}
+#optikaAuthGate .optika-provider-icon.telegram-mark svg{width:34px!important;height:34px!important}
+html[data-theme="light"] #optikaAuthGate .optika-provider{
+  background:var(--card,#fff)!important;color:var(--text,#222)!important;
+  border-color:var(--line,#ded9ce)!important;
+}
+html[data-theme="dark"] #optikaAuthGate .optika-provider{
+  background:var(--card,#171717)!important;color:var(--text,#f7f0df)!important;
+  border-color:var(--line,#49412e)!important;
+}
+#optikaAuthGate .optika-provider:hover{transform:translateY(-1px)!important}
+@media(max-width:520px){
+  #optikaAuthGate .optika-provider{min-height:62px!important}
+  #optikaAuthGate .optika-provider-icon{flex-basis:38px!important;width:38px!important;height:38px!important}
+}
+</style>
+
 </body>
 </html>
