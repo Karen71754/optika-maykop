@@ -5049,5 +5049,61 @@ html[data-theme="light"] .hero .hero-proof{color:#fff!important}
 html[data-theme="light"] #contactFab .contact-main{color:#78580e!important}
 html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 </style>
+
+<script id="optika-computer-glasses-generated-photo-v1">
+(async function(){
+  try {
+    const paths = Array.from({length:8},(_,i)=>'assets/computer-glasses-2500-part'+(i+1)+'.txt');
+    const chunks = await Promise.all(paths.map(async path=>{
+      const response = await fetch(path,{cache:'force-cache'});
+      if(!response.ok) throw new Error('Не удалось загрузить часть фото: '+path);
+      return (await response.text()).trim();
+    }));
+    const base64 = chunks.join('');
+    if(base64.length < 45000 || !base64.startsWith('UklGR')) throw new Error('Файл изображения повреждён');
+    const photo = 'data:image/webp;base64,'+base64;
+    const list = Array.isArray(PRODUCTS) ? PRODUCTS : [];
+    const terms = p => [p.name,p.description,p.type,p.category,p.brand,p.material,p.lenses].filter(Boolean).join(' ').toLowerCase();
+    const computerPattern = /компьют|computer|blue\s*light|blue-light|screen glasses/;
+    let product = list.find(p=>Number(p.price)===2500 && computerPattern.test(terms(p)));
+    if(!product){
+      const exactPrice=list.filter(p=>Number(p.price)===2500);
+      if(exactPrice.length===1) product=exactPrice[0];
+    }
+    if(!product) product=list.find(p=>String(p.id)==='computer-glasses-2500');
+    if(!product){
+      product = normalizeManagedProduct({
+        id:'computer-glasses-2500',
+        name:'Компьютерные очки',
+        description:'Компьютерные очки в лаконичной чёрной оправе.',
+        price:2500,
+        brand:'OPTIKA',
+        type:'Компьютерные',
+        category:'computer',
+        color:'Чёрный',
+        material:'Лёгкая оправа',
+        lenses:'Компьютерные линзы',
+        stock:'В наличии',
+        photo:photo,
+        photos:[photo],
+        rating:5
+      });
+      PRODUCTS.push(product);
+    }
+    const oldPhotos=Array.isArray(product.photos)?product.photos.filter(src=>typeof src==='string'&&src&&src!==photo&&src!==product.photo):[];
+    product.photo=photo;
+    product.photos=[photo,...oldPhotos].slice(0,4);
+    if(typeof saveManagedProducts==='function') saveManagedProducts();
+    if(typeof renderManagedCatalog==='function') renderManagedCatalog();
+    if(typeof applyManagedCatalogFilters==='function') applyManagedCatalogFilters();
+    const staticPhoto=document.querySelector('#catalogProductCard .product-photo');
+    if(product.id==='lacoste-brown' && staticPhoto) staticPhoto.src=photo;
+    console.info('Фото компьютерных очков OPTIKA подключено');
+  } catch(error) {
+    console.error('Не удалось подключить фото компьютерных очков OPTIKA:',error);
+  }
+})();
+</script>
+
 </body>
 </html>
