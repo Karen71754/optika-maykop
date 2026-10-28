@@ -5053,13 +5053,9 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 <script id="optika-computer-glasses-generated-photo-v1">
 (async function(){
   try {
-    const paths = Array.from({length:8},(_,i)=>'assets/computer-glasses-2500-part'+(i+1)+'.txt');
-    const chunks = await Promise.all(paths.map(async path=>{
-      const response = await fetch(path,{cache:'force-cache'});
-      if(!response.ok) throw new Error('Не удалось загрузить часть фото: '+path);
-      return (await response.text()).trim();
-    }));
-    const base64 = chunks.join('');
+    const response = await fetch('assets/computer-glasses-2500.webp.b64.txt',{cache:'force-cache'});
+    if(!response.ok) throw new Error('Не удалось загрузить фото компьютерных очков');
+    const base64 = (await response.text()).trim();
     if(base64.length < 45000 || !base64.startsWith('UklGR')) throw new Error('Файл изображения повреждён');
     const photo = 'data:image/webp;base64,'+base64;
     const list = Array.isArray(PRODUCTS) ? PRODUCTS : [];
