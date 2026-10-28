@@ -2172,7 +2172,7 @@ function saveFavorites(ids){try{localStorage.setItem(FAVORITES_KEY,JSON.stringif
 function isFavorite(id){return getFavorites().includes(String(id))}
 function updateFavoritesUI(){
   const ids=getFavorites(); const count=document.getElementById('favoritesCount'); if(count)count.textContent=String(ids.length);
-  document.querySelectorAll('[data-favorite-id]').forEach(b=>{const active=ids.includes(String(b.dataset.favoriteId));b.classList.toggle('is-favorite',active);b.textContent=active?'♥':'♡';b.setAttribute('aria-label',active?'Убрать из избранного':'Добавить в избранное');b.title=active?'Убрать из избранного':'Добавить в избранное'});
+  document.querySelectorAll('[data-favorite-id]').forEach(b=>{const active=ids.includes(String(b.dataset.favoriteId));b.classList.toggle('is-favorite',active);b.textContent=active?'♥':'♡';b.setAttribute('aria-label',active?'Убрать из избранного':'Добавить в избранное');b.setAttribute('aria-pressed',String(active));b.title=active?'Убрать из избранного':'Добавить в избранное'});
 }
 function toggleFavorite(id,button){
   const ids=getFavorites(), key=String(id); const next=ids.includes(key)?ids.filter(x=>x!==key):[...ids,key]; saveFavorites(next);
