@@ -5041,14 +5041,13 @@ html[data-theme="light"] .sub,
 html[data-theme="light"] .muted,
 html[data-theme="light"] small{color:#333!important}
 
-/* Не менять белый текст поверх тёмного hero и цветные значки */
-html[data-theme="light"] .hero,
-html[data-theme="light"] .hero *,
-html[data-theme="light"] #contactFab .contact-main,
-html[data-theme="light"] #contactFab .contact-main svg{color:inherit}
+/* Сохраняем светлый текст на тёмном hero, не переопределяя кнопки */
+html[data-theme="light"] .hero{color:#fff!important}
 html[data-theme="light"] .hero .hero-lead,
 html[data-theme="light"] .hero .hero-meta-row,
 html[data-theme="light"] .hero .hero-proof{color:#fff!important}
+html[data-theme="light"] #contactFab .contact-main{color:#78580e!important}
+html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 </style>
 </body>
 </html>
