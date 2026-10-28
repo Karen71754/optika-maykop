@@ -1354,7 +1354,21 @@ function readJson(key, fallback){try{const v=JSON.parse(localStorage.getItem(key
 function readOrders(){const v=readJson('optika_orders',[]);return Array.isArray(v)?v:[];}
 
 
-function toast(t){const e=$('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2200)}
+function toast(t){
+  const e=$('toast');if(!e)return;
+  if(e._toastTimer)clearTimeout(e._toastTimer);
+  if(e._toastClearTimer)clearTimeout(e._toastClearTimer);
+  e.textContent=String(t??'');
+  e.setAttribute('role','status');
+  e.setAttribute('aria-live','polite');
+  e.classList.add('show');
+  e._toastTimer=setTimeout(()=>{
+    e.classList.remove('show');
+    e._toastClearTimer=setTimeout(()=>{
+      if(!e.classList.contains('show'))e.textContent='';
+    },320);
+  },2200);
+}
 
 function renderReviews(){
   const box=$('reviewsList');
@@ -4786,6 +4800,124 @@ html[data-theme="light"] #productModalBox .product-order-note{color:#565b62!impo
 html[data-theme="light"] #productModalBox .product-secondary .btn,html[data-theme="light"] #productModalBox .product-buy .btn-primary{background:linear-gradient(135deg,#b8860b,#e3c45b)!important;color:#19160d!important;border-color:#b8860b!important}
 html[data-theme="light"] #productModalBox .product-secondary .btn-ghost{background:#fff!important;color:#343940!important;border-color:#cfc7b7!important}
 html[data-theme="light"] #productModalBox .product-secondary .btn-ghost:hover{background:#f6f2e7!important}
+</style>
+
+<style id="optika-theme-toast-reviews-contact-fix">
+/* Уведомления избранного действительно исчезают после анимации */
+#toast{
+  opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+  transform:translateX(-50%) translateY(18px)!important;
+  transition:opacity .22s ease,transform .22s ease,visibility 0s linear .24s!important;
+  max-width:min(92vw,420px)!important;width:max-content!important;
+  text-align:center!important;overflow-wrap:anywhere!important;
+}
+#toast.show{
+  opacity:1!important;visibility:visible!important;
+  transform:translateX(-50%) translateY(0)!important;
+  transition:opacity .22s ease,transform .22s ease,visibility 0s!important;
+}
+html[data-theme="light"] #toast{
+  background:#fff!important;color:#252525!important;border:1px solid #d9c796!important;
+  box-shadow:0 8px 28px rgba(30,25,10,.18)!important;
+}
+html[data-theme="dark"] #toast{
+  background:#19160d!important;color:#f5d76e!important;border:1px solid #66531e!important;
+  box-shadow:0 10px 28px rgba(0,0,0,.42)!important;
+}
+/* Кнопка связи наследует цвета активной темы */
+html[data-theme="light"] #contactFab .contact-main{
+  background:linear-gradient(145deg,#fff,#f5f0e2)!important;
+  color:#78580e!important;border-color:#b8860b!important;
+  box-shadow:0 7px 20px rgba(50,40,15,.16),0 0 0 3px rgba(184,134,11,.10)!important;
+}
+html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
+html[data-theme="light"] #contactFab .contact-main::before{border-color:rgba(184,134,11,.42)!important}
+html[data-theme="light"] #contactFab .contact-main::after{border-color:rgba(184,134,11,.22)!important}
+html[data-theme="light"] #contactFab.open .contact-main{box-shadow:0 8px 23px rgba(50,40,15,.20),0 0 0 4px rgba(184,134,11,.14)!important}
+html[data-theme="dark"] #contactFab .contact-main{
+  background:linear-gradient(145deg,#171717,#080808)!important;
+  color:#f5d76e!important;border-color:#f5d76e!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.48),0 0 0 3px rgba(212,175,55,.12)!important;
+}
+html[data-theme="dark"] #contactFab .contact-main svg{color:#f5d76e!important}
+html[data-theme="dark"] #contactFab .contact-main::before{border-color:rgba(245,215,110,.45)!important}
+html[data-theme="dark"] #contactFab .contact-main::after{border-color:rgba(245,215,110,.2)!important}
+/* Сердечко избранного получает подходящую поверхность в каждой теме; размеры не меняются */
+html[data-theme="light"] #catalog .favorite-btn{
+  background:#fff!important;color:#9b3141!important;border-color:#d8cfc0!important;
+}
+html[data-theme="light"] #catalog .favorite-btn.is-favorite{
+  background:#fff0f2!important;color:#c21f3a!important;border-color:#d94b60!important;
+}
+html[data-theme="light"] #catalog .favorite-btn:hover{background:#fff6f7!important}
+html[data-theme="dark"] #catalog .favorite-btn{
+  background:#171717!important;color:#d6c7a1!important;border-color:#514321!important;
+}
+html[data-theme="dark"] #catalog .favorite-btn.is-favorite{
+  background:#2b1117!important;color:#ff647a!important;border-color:#b9364b!important;
+}
+html[data-theme="dark"] #catalog .favorite-btn:hover{background:#21191a!important}
+#catalog .favorite-btn::before{flex:0 0 auto!important;line-height:1!important}
+/* Контраст описаний и бирок товаров в светлой теме */
+html[data-theme="light"] .catalog-premium-card .catalog-card-desc,
+html[data-theme="light"] .popular-info p,
+html[data-theme="light"] .trust-head>p,
+html[data-theme="light"] .trust-card p,
+html[data-theme="light"] #delivery .info-card p{
+  color:#454545!important;
+}
+html[data-theme="light"] .catalog-premium-card .product-card-kicker{
+  color:#74520d!important;
+}
+html[data-theme="light"] .catalog-premium-card .product-card-specs span{
+  background:#f7f3e8!important;border:1px solid #ded2b4!important;color:#4c3b14!important;
+}
+html[data-theme="light"] #catalog .catalog-empty{
+  color:#424242!important;background:#fff!important;border-color:#cfc5b0!important;
+}
+/* Отзывы: «0 отзывов», пояснения и сами тексты остаются читаемыми */
+html[data-theme="light"] #reviews .review-summary{
+  background:#fff!important;border-color:#ddd4c2!important;color:#202020!important;
+}
+html[data-theme="light"] #reviews .review-summary strong{color:#242424!important}
+html[data-theme="light"] #reviews .review-summary span{color:#946b13!important}
+html[data-theme="light"] #reviews .review-summary small{color:#555!important;font-weight:650!important}
+html[data-theme="light"] #reviews .section-head .sub,
+html[data-theme="light"] #reviews .review-form-card>p{color:#555!important}
+html[data-theme="light"] #reviews .review-form-card h3,
+html[data-theme="light"] #reviews .review-feed-card,
+html[data-theme="light"] #reviews .review-feed-top,
+html[data-theme="light"] #reviews .reviews-empty{color:#222!important}
+html[data-theme="light"] #reviews .rev{border-color:#e4dece!important;color:#292929!important}
+html[data-theme="light"] #reviews .rev p[style]{color:#414141!important}
+html[data-theme="light"] #reviews .rev small{color:#595959!important}
+html[data-theme="light"] #reviews .reviews-empty{color:#555!important}
+html[data-theme="light"] #reviews .appstore-rating-value{color:#393939!important}
+/* Нижняя контактная секция и футер: адаптируем и фон, и текст, а не только рамки */
+html[data-theme="light"] .contacts-section{
+  background:linear-gradient(135deg,#f8f6ef,#eee7d7)!important;color:#202020!important;
+}
+html[data-theme="light"] .contacts-section h2,
+html[data-theme="light"] .contacts-section p,
+html[data-theme="light"] .contacts-section p b{color:#252525!important}
+html[data-theme="light"] .contacts-section .sub{color:#555!important}
+html[data-theme="light"] .footer{
+  background:#fff!important;color:#202020!important;border-top:1px solid #d8c79a!important;
+}
+html[data-theme="light"] .footer .footer-inner,
+html[data-theme="light"] .footer .footer-inner b{color:#202020!important}
+html[data-theme="light"] .footer .footer-inner p{color:#505050!important}
+html[data-theme="light"] .footer a{color:#76530a!important}
+html[data-theme="light"] .footer .admin-btn{
+  background:#fff!important;color:#76530a!important;border-color:#b8860b!important;
+}
+html[data-theme="light"] #delivery .info-card.white,
+html[data-theme="light"] .trust-card{
+  color:#202020!important;background:#fff!important;border-color:#ded6c5!important;
+}
+html[data-theme="light"] #delivery .info-card.white h3,
+html[data-theme="light"] .trust-card h3{color:#252525!important}
+html[data-theme="dark"] #reviews .review-summary{background:#111!important;color:#f5f0df!important}
 </style>
 </body>
 </html>
