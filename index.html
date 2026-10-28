@@ -4544,5 +4544,29 @@ html[data-theme="dark"] #optikaAuthGate{background:rgba(8,8,8,.98)!important}
 }
 </style>
 
+
+<style id="optika-auth-cover-full-viewport">
+/* Перекрываем также узкую полосу страницы справа на мобильных браузерах */
+#optikaAuthGate{
+  position:fixed!important;
+  top:0!important;left:0!important;right:0!important;bottom:0!important;
+  width:auto!important;
+  min-width:100vw!important;
+  height:100vh!important;height:100dvh!important;
+  max-height:none!important;
+  margin:0!important;
+  transform:none!important;
+  isolation:isolate!important;
+  background:#f5f2ea!important;
+  overflow-x:hidden!important;
+}
+html[data-theme="dark"] #optikaAuthGate{background:#080808!important}
+html[data-theme="light"] #optikaAuthGate{background:#f5f2ea!important}
+/* iOS Safari can expose a few pixels beyond the visual viewport */
+@supports (width:100svw){
+  #optikaAuthGate{width:100svw!important;min-width:100svw!important;left:0!important;right:auto!important}
+}
+</style>
+
 </body>
 </html>
