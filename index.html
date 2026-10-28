@@ -4515,5 +4515,34 @@ html[data-theme="light"] #optikaAuthGate .optika-provider{
 .mobile-quick-order{display:none!important}
 </style>
 
+
+<style id="optika-auth-hide-page-behind">
+/* Во время регистрации скрываем страницу и блокируем прокрутку фона */
+html:has(#optikaAuthGate.is-open),
+body:has(#optikaAuthGate.is-open){
+  overflow:hidden!important;
+  overscroll-behavior:none!important;
+}
+#optikaAuthGate{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100vh!important;
+  height:100dvh!important;
+  max-height:100dvh!important;
+  padding:10px!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  background:var(--page-overlay,rgba(8,8,8,.94))!important;
+  z-index:2147483000!important;
+}
+html[data-theme="light"] #optikaAuthGate{background:rgba(245,242,234,.98)!important}
+html[data-theme="dark"] #optikaAuthGate{background:rgba(8,8,8,.98)!important}
+#optikaAuthGate .optika-auth-card{
+  margin:auto!important;
+  position:relative!important;
+}
+</style>
+
 </body>
 </html>
