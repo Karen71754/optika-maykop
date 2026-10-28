@@ -4627,5 +4627,47 @@ html[data-theme="dark"] #optikaAuthGate .optika-provider{
 }
 </style>
 
+
+<style id="optika-provider-icons-crisp-alignment">
+/* Компактные иконки одинакового размера, выстроены по одной вертикали */
+#optikaAuthGate .optika-provider{
+  justify-content:flex-start!important;
+  text-align:left!important;
+  padding:10px 14px!important;
+  gap:10px!important;
+  min-height:58px!important;
+}
+#optikaAuthGate .optika-provider-icon{
+  flex:0 0 32px!important;
+  width:32px!important;height:32px!important;
+  margin:0!important;
+  border-radius:9px!important;
+}
+#optikaAuthGate .optika-provider-icon.google-g svg{width:28px!important;height:28px!important}
+#optikaAuthGate .optika-provider-icon.yandex-ya{
+  background:#ff3528!important;border-radius:9px!important;
+  font-family:Arial,Helvetica,sans-serif!important;
+}
+#optikaAuthGate .optika-provider-icon.yandex-ya svg{display:none!important}
+#optikaAuthGate .optika-provider-icon.yandex-ya:after{
+  content:'Я';display:block;color:#fff;font-family:Arial,Helvetica,sans-serif;
+  font-weight:800;font-size:25px;line-height:1;transform:translateY(-1px);
+}
+#optikaAuthGate .optika-provider-icon.vk-mark,
+#optikaAuthGate .optika-provider-icon.telegram-mark{border-radius:50%!important}
+#optikaAuthGate .optika-provider-icon.vk-mark svg{width:28px!important;height:28px!important}
+#optikaAuthGate .optika-provider-icon.telegram-mark svg{display:none!important}
+#optikaAuthGate .optika-provider-icon.telegram-mark:after{
+  content:'';display:block;width:25px;height:25px;background:#fff;
+  clip-path:polygon(4% 40%,96% 5%,78% 94%,53% 68%,39% 82%,39% 59%);
+  transform:rotate(-3deg);
+}
+@media(max-width:520px){
+  #optikaAuthGate .optika-provider{min-height:56px!important;padding:9px 10px!important;gap:8px!important}
+  #optikaAuthGate .optika-provider-icon{flex-basis:30px!important;width:30px!important;height:30px!important}
+  #optikaAuthGate .optika-provider-icon.yandex-ya:after{font-size:23px}
+}
+</style>
+
 </body>
 </html>
