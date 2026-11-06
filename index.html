@@ -5028,10 +5028,11 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
       }catch(_){}
       localStorage.setItem(resetKey,'done');
     }
-    if(Array.isArray(window.PRODUCTS)) window.PRODUCTS=[];
-    if(typeof window.adminEditingProductId!=='undefined') window.adminEditingProductId=null;
-    if(Array.isArray(window.cart)) window.cart=[];
-    if(typeof window.saveCart==='function') window.saveCart();
+    if(typeof PRODUCTS!=='undefined') PRODUCTS=[];
+    if(typeof adminEditingProductId!=='undefined') adminEditingProductId=null;
+    if(typeof cart!=='undefined') cart=[];
+    if(typeof currentOrderProduct!=='undefined') currentOrderProduct=null;
+    if(typeof saveCart==='function') saveCart();
     if(typeof window.renderManagedCatalog==='function') window.renderManagedCatalog();
     if(typeof window.renderAdminProductList==='function') window.renderAdminProductList();
     if(typeof window.loadAdminProductForm==='function') window.loadAdminProductForm(null);
