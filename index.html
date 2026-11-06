@@ -1085,9 +1085,13 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
   </div>
 
   <div class="compact-filters" id="compactFilters" aria-hidden="true">
-    <div class="filter-panel-heading"><div><span class="filter-eyebrow">ПОДБОР ОЧКОВ</span><strong>Настройте фильтры</strong><small>Уточните цену и порядок товаров</small></div><span class="filter-panel-symbol" aria-hidden="true">☷</span></div>
-    <label class="filter-field"><span>Сортировка</span><select id="catalogSort"><option value="popular">Сначала популярные</option><option value="cheap">Сначала дешевле</option><option value="expensive">Сначала дороже</option></select></label>
-    <label class="filter-field"><span>Цена товара</span><select id="catalogPrice"><option value="all">Любая цена</option><option value="under10000">До 10 000 ₽</option><option value="10000to15000">10 000–15 000 ₽</option><option value="over15000">От 15 000 ₽</option></select></label>
+    <div class="filter-panel-heading"><div><span class="filter-eyebrow">ПОДБОР ОЧКОВ</span><strong>Основные фильтры</strong><small>Цена, бренд и наличие — только самое нужное</small></div><span class="filter-panel-symbol" aria-hidden="true">☷</span></div>
+    <div class="filter-primary-grid">
+      <label class="filter-field"><span>Цена</span><select id="catalogPrice"><option value="all">Любая цена</option><option value="under10000">До 10 000 ₽</option><option value="10000to15000">10 000–15 000 ₽</option><option value="over15000">От 15 000 ₽</option></select></label>
+      <label class="filter-field"><span>Бренд</span><select id="catalogBrand"><option value="all">Все бренды</option></select></label>
+      <label class="filter-field"><span>Наличие</span><select id="catalogStock"><option value="all">Любое</option><option value="available">В наличии</option><option value="unavailable">Нет в наличии</option></select></label>
+    </div>
+    <details class="filter-advanced"><summary>Дополнительные настройки</summary><label class="filter-field"><span>Сортировка</span><select id="catalogSort"><option value="popular">По умолчанию</option><option value="cheap">Сначала дешевле</option><option value="expensive">Сначала дороже</option></select></label></details>
     <button class="filter-reset" id="catalogReset" type="button"><span aria-hidden="true">↺</span> Сбросить фильтры</button>
   </div>
 
@@ -1098,30 +1102,13 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
 </section>
 
 <section class="container section" id="delivery">
-  <h2>Доставка и оплата <span class="icon-inline"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 14c-1 2-1 4-1 5 2 0 4 0 6-1M9 15l-3-3c2-5 6-8 13-9 0 7-4 11-9 13Z"/><circle cx="15" cy="8" r="2"/><path d="m6 18-2 2"/></svg></span></h2>
-  <div class="cards3">
-    <div class="info-card white"><h3><span class="icon-inline"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h12v12H2zM14 9h4l4 4v4h-8z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></span> По Майкопу — 200 ₽</h3><p>В день заказа, время согласуем по телефону / WhatsApp. От 1 200 ₽ — бесплатно.</p></div>
-    <div class="info-card white"><h3><span class="icon-inline"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-7h6v7"/></svg></span> Самовывоз — 0 ₽</h3><p>Центральный рынок, Пролетарская 224, пассаж. Ежедневно 9:00–17:00.</p></div>
-    <div class="info-card white"><h3><span class="icon-inline"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span> Оплата</h3><p>СБП / картой онлайн, картой или наличными при получении.</p></div>
-    <div class="info-card white"><h3><span class="icon-inline"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10l3 3v15H4V3h3Z"/><path d="M8 10h8M8 14h8M8 18h5M14 3v4h6"/></svg></span> Заказ на сайте</h3><p>Выберите товар, заполните форму и отправьте заказ прямо с сайта — без перехода в WhatsApp.</p></div>
-  </div>
-</section>
-
-
-
-<section class="trust-section">
-  <div class="container section">
-    <div class="trust-head">
-      <span class="section-kicker">ПОЧЕМУ OPTIKA</span>
-      <h2>Всё просто и понятно</h2>
-      <p>Выбираете модель, оформляете заказ и получаете очки удобным способом.</p>
-    </div>
-    <div class="trust-grid">
-      <article class="trust-card"><div class="trust-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></div><h3>В наличии</h3><p>Актуальная модель с реальным фото и характеристиками.</p></article>
-      <article class="trust-card"><div class="trust-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg></div><h3>Доставка по Майкопу</h3><p>200 ₽, а от 1 200 ₽ — бесплатно.</p></article>
-      <article class="trust-card"><div class="trust-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-7h6v7"/></svg></div><h3>Самовывоз</h3><p>Пролетарская, 224, пассаж · 9:00–17:00.</p></article>
-      <article class="trust-card"><div class="trust-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-8 8 8.7 8.7 0 0 1-3.7-.8L3 20l1.3-4.5A8 8 0 1 1 20 11.5Z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></div><h3>Связь в один клик</h3><p>WhatsApp и Telegram открываются из круглой кнопки OPTIKA.</p></article>
-    </div>
+  <div class="delivery-unified-head"><span class="section-kicker">СЕРВИС OPTIKA</span><h2>Покупка без лишних хлопот</h2><p>Выберите удобный способ получения и оплаты — всё важное в одном месте.</p></div>
+  <div class="delivery-unified-grid">
+    <article class="delivery-unified-card"><span class="delivery-unified-icon" aria-hidden="true">↗</span><div><h3>Доставка по Майкопу</h3><p><strong>200 ₽</strong> · бесплатно при заказе от 1 200 ₽. День и время согласуем при оформлении.</p></div></article>
+    <article class="delivery-unified-card"><span class="delivery-unified-icon" aria-hidden="true">⌂</span><div><h3>Самовывоз — бесплатно</h3><p>Центральный рынок, Пролетарская, 224, пассаж. Ежедневно с 9:00 до 17:00.</p></div></article>
+    <article class="delivery-unified-card"><span class="delivery-unified-icon" aria-hidden="true">₽</span><div><h3>Удобная оплата</h3><p>СБП, картой онлайн, картой или наличными при получении.</p></div></article>
+    <article class="delivery-unified-card"><span class="delivery-unified-icon" aria-hidden="true">✓</span><div><h3>Актуальная информация</h3><p>Фото, характеристики и наличие товара указаны в карточке. Перед заказом можно уточнить детали.</p></div></article>
+    <article class="delivery-unified-card"><span class="delivery-unified-icon" aria-hidden="true">✦</span><div><h3>Помощь OPTIKA</h3><p>Нужна консультация? Напишите нам через WhatsApp или Telegram — кнопка связи всегда под рукой.</p></div></article>
   </div>
 </section>
 
@@ -1629,7 +1616,7 @@ function renderManagedCatalog(){
   grid.innerHTML=PRODUCTS.map(p=>{
     const search=[p.name,p.description,p.color,p.material,p.lenses,p.type,p.brand].filter(Boolean).join(' ').toLowerCase();
     const photo=p.photo||'';
-    return `<article class="card catalog-premium-card managed-catalog-card" data-product-id="${escapeHtml(p.id)}" data-search="${escapeHtml(search)}" data-price="${Number(p.price)||0}">
+    return `<article class="card catalog-premium-card managed-catalog-card" data-product-id="${escapeHtml(p.id)}" data-search="${escapeHtml(search)}" data-price="${Number(p.price)||0}" data-brand="${escapeHtml(String(p.brand||"").trim().toLowerCase())}" data-stock="${/нет|ожидается|под заказ|законч/i.test(String(p.stock||""))?"unavailable":"available"}">
       <div class="catalog-photo-shell" role="button" tabindex="0" onclick="openProduct('${escapeHtml(p.id)}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProduct('${escapeHtml(p.id)}')}">
         <span class="catalog-stock-label"><i></i>${escapeHtml(p.stock||'В наличии')}</span>
         ${photo?`<img class="product-photo" src="${escapeHtml(photo)}" alt="${escapeHtml(p.name)}" loading="lazy" decoding="async">`:'<div class="catalog-no-photo" role="img" aria-label="Нет фото товара"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 10h3l2 7a3 3 0 0 0 6 0l1-5h1l1 5a3 3 0 0 0 6 0l2-7h-3M7 10h10M5 10l-2-2M19 10l2-2"/></svg><span>Фото скоро появится</span></div>'}
@@ -1645,16 +1632,26 @@ function renderManagedCatalog(){
     </article>`;
   }).join('');
   updateFeaturedProduct();
+  refreshCatalogBrandOptions();
   applyManagedCatalogFilters();
+}
+function refreshCatalogBrandOptions(){
+  const select=document.getElementById('catalogBrand');if(!select)return;
+  const selected=select.value||'all';
+  const brands=[...new Set((Array.isArray(PRODUCTS)?PRODUCTS:[]).map(p=>String(p.brand||'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ru'));
+  select.innerHTML='<option value="all">Все бренды</option>'+brands.map(b=>'<option value="'+escapeHtml(b.toLowerCase())+'">'+escapeHtml(b)+'</option>').join('');
+  select.value=brands.some(b=>b.toLowerCase()===selected)?selected:'all';
 }
 function applyManagedCatalogFilters(){
   const q=(document.getElementById('catalogSearch')?.value||'').trim().toLowerCase();
   const pv=document.getElementById('catalogPrice')?.value||'all';
+  const brand=document.getElementById('catalogBrand')?.value||'all';
+  const stock=document.getElementById('catalogStock')?.value||'all';
   const sort=document.getElementById('catalogSort')?.value||'popular';
   const grid=document.getElementById('catalogGrid'); if(!grid)return;
   const cards=[...grid.querySelectorAll('.managed-catalog-card')];
   cards.sort((a,b)=>sort==='cheap'?Number(a.dataset.price)-Number(b.dataset.price):sort==='expensive'?Number(b.dataset.price)-Number(a.dataset.price):0).forEach(c=>grid.appendChild(c));
-  let count=0; cards.forEach(c=>{const n=Number(c.dataset.price||0);const okQ=!q||(c.dataset.search||'').includes(q);const okP=pv==='all'||(pv==='under10000'&&n<10000)||(pv==='10000to15000'&&n>=10000&&n<=15000)||(pv==='over15000'&&n>15000);c.style.display=okQ&&okP?'':'none';if(okQ&&okP)count++;});
+  let count=0;cards.forEach(c=>{const n=Number(c.dataset.price||0),okQ=!q||(c.dataset.search||'').includes(q),okP=pv==='all'||(pv==='under10000'&&n<10000)||(pv==='10000to15000'&&n>=10000&&n<=15000)||(pv==='over15000'&&n>15000),okBrand=brand==='all'||(c.dataset.brand||'')===brand,okStock=stock==='all'||(c.dataset.stock||'available')===stock,visible=okQ&&okP&&okBrand&&okStock;c.style.display=visible?'':'none';if(visible)count++;});
   const result=document.getElementById('catalogResultCount');if(result)result.textContent=`${count} ${count===1?'товар':'товаров'} в каталоге`;
   const empty=document.getElementById('catalogEmpty');if(empty)empty.hidden=count>0;
 }
@@ -2313,7 +2310,7 @@ updatePaymentUi();
 (function setupPolishedStorefront(){
   const basePhoto=document.querySelector('.product-photo')?.src || '';
   ['heroProductImage','popularProductImage'].forEach(id=>{const img=$(id);if(img&&basePhoto){img.src=basePhoto;}});
-  const card=$('catalogProductCard'), search=$('catalogSearch'), price=$('catalogPrice'), sort=$('catalogSort'), toggle=$('filterToggle'), panel=$('compactFilters'), empty=$('catalogEmpty'), result=$('catalogResultCount'), reset=$('catalogReset'), cartMini=$('catalogCartCount');
+  const card=$('catalogProductCard'), search=$('catalogSearch'), price=$('catalogPrice'), brand=$('catalogBrand'), stock=$('catalogStock'), sort=$('catalogSort'), toggle=$('filterToggle'), panel=$('compactFilters'), empty=$('catalogEmpty'), result=$('catalogResultCount'), reset=$('catalogReset'), cartMini=$('catalogCartCount');
   function updateMini(){if(cartMini)cartMini.textContent=cart.reduce((sum,i)=>sum+i.qty,0);}
   function applyFilter(){
     if(!card)return;
@@ -2322,14 +2319,16 @@ updatePaymentUi();
     const priceValue=price?.value||'all';
     const okSearch=!q||card.dataset.search.includes(q);
     const okPrice=priceValue==='all'||(priceValue==='under10000'&&p<10000)||(priceValue==='10000to15000'&&p>=10000&&p<=15000)||(priceValue==='over15000'&&p>15000);
-    const visible=okSearch&&okPrice;
+    const okBrand=(brand?.value||'all')==='all'||(card.dataset.brand||'')===(brand.value||'');
+    const okStock=(stock?.value||'all')==='all'||(card.dataset.stock||'available')===(stock.value||'');
+    const visible=okSearch&&okPrice&&okBrand&&okStock;
     card.style.display=visible?'':'none';
     if(empty)empty.hidden=visible;
     if(result)result.textContent=visible?'1 модель в наличии':'0 моделей по запросу';
   }
   toggle?.addEventListener('click',()=>{const open=!panel?.classList.contains('open');panel?.classList.toggle('open',open);toggle.classList.toggle('open',open);toggle.setAttribute('aria-expanded',String(open));panel?.setAttribute('aria-hidden',String(!open));});
-  search?.addEventListener('input',applyFilter); price?.addEventListener('change',applyFilter); sort?.addEventListener('change',applyFilter);
-  reset?.addEventListener('click',()=>{if(search)search.value='';if(price)price.value='all';if(sort)sort.value='popular';applyFilter();});
+  search?.addEventListener('input',applyFilter); [price,brand,stock,sort].forEach(el=>el?.addEventListener('change',applyFilter));
+  reset?.addEventListener('click',()=>{if(search)search.value='';if(price)price.value='all';if(brand)brand.value='all';if(stock)stock.value='all';if(sort)sort.value='popular';applyFilter();if(typeof applyManagedCatalogFilters==='function')applyManagedCatalogFilters();});
   const originalRenderCartForCatalog=renderCart;
   // Обновляем мини-счётчик, не вмешиваясь в основную корзину
   const originalSaveCart=saveCart;
@@ -2489,7 +2488,7 @@ updatePaymentUi();
     $('admOpenProduct')?.addEventListener('click',()=>switchAdminPane('product'));
     $('admAddProduct')?.addEventListener('click',addManagedProduct);
     $('admBulkAddProducts')?.addEventListener('click',addBulkManagedProducts);
-    ['catalogSearch','catalogPrice','catalogSort'].forEach(id=>$(id)?.addEventListener(id==='catalogSearch'?'input':'change',applyManagedCatalogFilters));
+    ['catalogSearch','catalogPrice','catalogBrand','catalogStock','catalogSort'].forEach(id=>$(id)?.addEventListener(id==='catalogSearch'?'input':'change',applyManagedCatalogFilters));
     $('admOpenOrders')?.addEventListener('click',()=>switchAdminPane('orders'));
     $('admRefreshReviews')?.addEventListener('click',renderAdminReviews);
     $('admOpenAnalytics')?.addEventListener('click',()=>switchAdminPane('analytics'));
@@ -5203,6 +5202,7 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 .face-finder-note{margin:17px 0 0;color:var(--muted,#aaa58f);font-size:11px;line-height:1.5}
 @media(max-width:760px){.face-finder-layout{grid-template-columns:1fr}.face-shape-options{grid-template-columns:repeat(2,minmax(0,1fr))}.face-finder-result{min-height:220px}.face-finder-shell{padding:20px 15px;border-radius:20px}.face-finder-progress{flex-wrap:wrap}.face-finder-progress i{width:14px}}
 @media(max-width:360px){.face-shape-option{padding:12px 6px}.face-shape-option strong{font-size:12px}.face-shape-option small{font-size:10px}}
+.delivery-unified-head{max-width:700px;margin:0 auto 22px;text-align:center}.delivery-unified-head h2{margin:7px 0 8px}.delivery-unified-head>p{margin:0;color:var(--muted,#aaa58f);line-height:1.55}.delivery-unified-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.delivery-unified-card{display:flex;align-items:flex-start;gap:14px;padding:18px;border:1px solid var(--line,#3a321f);border-radius:17px;background:var(--surface-2,#111)}.delivery-unified-icon{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:13px;background:color-mix(in srgb,var(--gold,#d4af37) 13%,transparent);color:var(--gold,#d4af37);font-size:22px;font-weight:800}.delivery-unified-card h3{margin:1px 0 6px;color:var(--text,#f5f1df);font-size:15px}.delivery-unified-card p{margin:0;color:var(--muted,#aaa58f);font-size:13px;line-height:1.55}.delivery-unified-card p strong{color:var(--gold,#d4af37)}.filter-primary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.filter-advanced{margin-top:12px;border-top:1px solid var(--line,#3a321f);padding-top:10px}.filter-advanced summary{color:var(--muted,#aaa58f);font-size:12px;font-weight:700;cursor:pointer;padding:5px 0}.filter-advanced .filter-field{margin-top:10px}@media(max-width:620px){.delivery-unified-grid{grid-template-columns:1fr}.delivery-unified-card{padding:14px}.filter-primary-grid{grid-template-columns:1fr}.filter-advanced .filter-field{max-width:none}}
 </style>
 
 
