@@ -5047,5 +5047,57 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 })();
 </script>
 
+
+<script id="optika-remove-computer-glasses-v2">
+(function(){
+  const key='optika_computer_glasses_removed_v2';
+  try{
+    if(localStorage.getItem(key)==='done') return;
+    const isComputerProduct = p => {
+      if(!p || typeof p!=='object') return false;
+      const details=[p.id,p.name,p.category,p.cat,p.type,p.description,p.brand,p.kind].join(' ').toLowerCase();
+      return /компьютер|computer|blue.?light|синего света/.test(details);
+    };
+    const readArray = k => { try { const v=JSON.parse(localStorage.getItem(k)||'[]'); return Array.isArray(v)?v:[]; } catch(_){ return []; } };
+    const removedIds=new Set();
+    const products=readArray('optika_products');
+    const kept=products.filter(p=>{ if(isComputerProduct(p)){removedIds.add(String(p.id||''));return false;} return true; });
+    localStorage.setItem('optika_products',JSON.stringify(kept));
+    const mobileKey='optika_mobile_admin_state_v1';
+    try{
+      const mobile=JSON.parse(localStorage.getItem(mobileKey)||'{}');
+      if(mobile && typeof mobile==='object' && mobile.site && typeof mobile.site==='object'){
+        if(Array.isArray(mobile.site.products)){
+          mobile.site.products=mobile.site.products.filter(p=>{if(isComputerProduct(p)){removedIds.add(String(p.id||''));return false;}return true;});
+        }
+        if(isComputerProduct(mobile.site.product)){
+          removedIds.add(String(mobile.site.product.id||''));
+          delete mobile.site.product;
+        }
+        localStorage.setItem(mobileKey,JSON.stringify(mobile));
+      }
+    }catch(_){}
+    const cart=readArray('optika_cart').filter(item=>{
+      const p=item && (item.product||item);
+      return !isComputerProduct(p) && !removedIds.has(String(item.id||p?.id||''));
+    });
+    localStorage.setItem('optika_cart',JSON.stringify(cart));
+    ['optika_favorites','optika_favorites_v1'].forEach(k=>{
+      try{
+        const raw=JSON.parse(localStorage.getItem(k)||'[]');
+        if(Array.isArray(raw)) localStorage.setItem(k,JSON.stringify(raw.filter(id=>!removedIds.has(String(id)))));
+      }catch(_){}
+    });
+    if(typeof PRODUCTS!=='undefined') PRODUCTS=kept;
+    if(typeof cart!=='undefined') window.__optikaRemovedComputerCart=true;
+    if(typeof renderManagedCatalog==='function') renderManagedCatalog();
+    if(typeof updateFeaturedProduct==='function') updateFeaturedProduct();
+    const count=document.getElementById('catalogResultCount');
+    if(count) count.textContent=kept.length+' товаров';
+    localStorage.setItem(key,'done');
+  }catch(error){ console.error('Не удалось удалить компьютерные очки OPTIKA:',error); }
+})();
+</script>
+
 </body>
 </html>
