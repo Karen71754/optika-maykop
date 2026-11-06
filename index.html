@@ -1067,56 +1067,7 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
 
 
 
-<section class="container section face-finder" id="face-shape-finder" aria-labelledby="faceFinderTitle">
-  <div class="face-finder-shell">
-    <div class="face-finder-intro">
-      <span class="section-kicker">ПЕРСОНАЛЬНЫЙ ПОДБОР · OPTIKA</span>
-      <h2 id="faceFinderTitle">Какая оправа подойдёт именно вам?</h2>
-      <p>Выберите форму лица — подскажем, на какие оправы стоит обратить внимание. Это простой ориентир, а окончательный выбор всегда за вами.</p>
-      <div class="face-finder-progress"><span>1</span><span>Выберите форму лица</span><i></i><span>2</span><span>Получите рекомендации</span></div>
-    </div>
-    <div class="face-finder-layout">
-      <div class="face-shape-options" role="group" aria-label="Выберите форму лица">
-        <button class="face-shape-option" type="button" data-face-shape="oval" aria-pressed="false">
-          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M36 7C20 7 15 23 17 43c2 20 10 35 19 35s17-15 19-35C57 23 52 7 36 7Z"/><path d="M22 36h9m10 0h9M31 36h10M32 54q4 3 8 0"/></svg></span>
-          <strong>Овальное</strong><small>Мягкие пропорции</small>
-        </button>
-        <button class="face-shape-option" type="button" data-face-shape="round" aria-pressed="false">
-          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M36 9C19 9 11 22 13 41c2 21 11 35 23 35s21-14 23-35C61 22 53 9 36 9Z"/><path d="M20 36h10m12 0h10M30 36h12M32 53q4 3 8 0"/></svg></span>
-          <strong>Круглое</strong><small>Плавные контуры</small>
-        </button>
-        <button class="face-shape-option" type="button" data-face-shape="square" aria-pressed="false">
-          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M19 12Q36 5 53 12l5 25q-1 25-22 39-21-14-22-39Z"/><path d="M20 36h10m12 0h10M30 36h12M32 54q4 2 8 0"/></svg></span>
-          <strong>Квадратное</strong><small>Выраженная линия челюсти</small>
-        </button>
-        <button class="face-shape-option" type="button" data-face-shape="heart" aria-pressed="false">
-          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M15 15Q36 3 57 15L52 43Q46 64 36 78 26 64 20 43Z"/><path d="M20 35h10m12 0h10M30 35h12M32 54q4 3 8 0"/></svg></span>
-          <strong>Сердцевидное</strong><small>Шире в области лба</small>
-        </button>
-        <button class="face-shape-option" type="button" data-face-shape="long" aria-pressed="false">
-          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M36 3C21 3 16 19 18 43c1 23 9 39 18 39s17-16 18-39C56 19 51 3 36 3Z"/><path d="M22 36h9m10 0h9M31 36h10M32 56q4 3 8 0"/></svg></span>
-          <strong>Вытянутое</strong><small>Лицо заметно длиннее ширины</small>
-        </button>
-      </div>
-      <div class="face-finder-result" id="faceFinderResult" aria-live="polite">
-        <div class="face-result-placeholder">
-          <span class="face-result-mark" aria-hidden="true">✦</span>
-          <strong>Ваш стиль начинается с формы</strong>
-          <p>Нажмите на вариант слева — здесь появятся советы по форме оправы, размеру и стилю.</p>
-        </div>
-        <div class="face-result-content" id="faceResultContent" hidden>
-          <span class="face-result-eyebrow">ВАШ РЕЗУЛЬТАТ</span>
-          <h3 id="faceResultTitle"></h3>
-          <p id="faceResultDescription"></p>
-          <div class="face-result-tags" id="faceResultTags"></div>
-          <div class="face-result-tip"><strong>Совет OPTIKA</strong><span id="faceResultTip"></span></div>
-          <button class="face-result-cta" type="button" id="faceFinderCatalog">Перейти к каталогу <span aria-hidden="true">→</span></button>
-        </div>
-      </div>
-    </div>
-    <p class="face-finder-note">Подсказки носят рекомендательный характер. Примерьте несколько вариантов и выбирайте тот, в котором вам комфортно.</p>
-  </div>
-</section>
+
 
 <section class="container section" id="catalog">
   <div class="section-head catalog-head">
@@ -1236,7 +1187,65 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
   </div>
 </footer>
 
-<div class="tryon-fixed-entry"><button class="footer-tryon-btn" id="openTryOn" type="button" aria-haspopup="dialog" aria-expanded="false"><span aria-hidden="true">✧</span> Виртуальная примерка <span aria-hidden="true">→</span></button></div>
+<div class="face-finder-page" id="faceFinderPage" aria-hidden="true">
+  <div class="face-finder-page-inner">
+    <button class="face-finder-page-close" id="closeFaceFinder" type="button" aria-label="Закрыть подбор">× <span>Назад на главную</span></button>
+    <section class="container section face-finder" id="face-shape-finder" aria-labelledby="faceFinderTitle">
+  <div class="face-finder-shell">
+    <div class="face-finder-intro">
+      <span class="section-kicker">ПЕРСОНАЛЬНЫЙ ПОДБОР · OPTIKA</span>
+      <h2 id="faceFinderTitle">Какая оправа подойдёт именно вам?</h2>
+      <p>Выберите форму лица — подскажем, на какие оправы стоит обратить внимание. Это простой ориентир, а окончательный выбор всегда за вами.</p>
+      <div class="face-finder-progress"><span>1</span><span>Выберите форму лица</span><i></i><span>2</span><span>Получите рекомендации</span></div>
+    </div>
+    <div class="face-finder-layout">
+      <div class="face-shape-options" role="group" aria-label="Выберите форму лица">
+        <button class="face-shape-option" type="button" data-face-shape="oval" aria-pressed="false">
+          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M36 7C20 7 15 23 17 43c2 20 10 35 19 35s17-15 19-35C57 23 52 7 36 7Z"/><path d="M22 36h9m10 0h9M31 36h10M32 54q4 3 8 0"/></svg></span>
+          <strong>Овальное</strong><small>Мягкие пропорции</small>
+        </button>
+        <button class="face-shape-option" type="button" data-face-shape="round" aria-pressed="false">
+          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M36 9C19 9 11 22 13 41c2 21 11 35 23 35s21-14 23-35C61 22 53 9 36 9Z"/><path d="M20 36h10m12 0h10M30 36h12M32 53q4 3 8 0"/></svg></span>
+          <strong>Круглое</strong><small>Плавные контуры</small>
+        </button>
+        <button class="face-shape-option" type="button" data-face-shape="square" aria-pressed="false">
+          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M19 12Q36 5 53 12l5 25q-1 25-22 39-21-14-22-39Z"/><path d="M20 36h10m12 0h10M30 36h12M32 54q4 2 8 0"/></svg></span>
+          <strong>Квадратное</strong><small>Выраженная линия челюсти</small>
+        </button>
+        <button class="face-shape-option" type="button" data-face-shape="heart" aria-pressed="false">
+          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M15 15Q36 3 57 15L52 43Q46 64 36 78 26 64 20 43Z"/><path d="M20 35h10m12 0h10M30 35h12M32 54q4 3 8 0"/></svg></span>
+          <strong>Сердцевидное</strong><small>Шире в области лба</small>
+        </button>
+        <button class="face-shape-option" type="button" data-face-shape="long" aria-pressed="false">
+          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M36 3C21 3 16 19 18 43c1 23 9 39 18 39s17-16 18-39C56 19 51 3 36 3Z"/><path d="M22 36h9m10 0h9M31 36h10M32 56q4 3 8 0"/></svg></span>
+          <strong>Вытянутое</strong><small>Лицо заметно длиннее ширины</small>
+        </button>
+      </div>
+      <div class="face-finder-result" id="faceFinderResult" aria-live="polite">
+        <div class="face-result-placeholder">
+          <span class="face-result-mark" aria-hidden="true">✦</span>
+          <strong>Ваш стиль начинается с формы</strong>
+          <p>Нажмите на вариант слева — здесь появятся советы по форме оправы, размеру и стилю.</p>
+        </div>
+        <div class="face-result-content" id="faceResultContent" hidden>
+          <span class="face-result-eyebrow">ВАШ РЕЗУЛЬТАТ</span>
+          <h3 id="faceResultTitle"></h3>
+          <p id="faceResultDescription"></p>
+          <div class="face-result-tags" id="faceResultTags"></div>
+          <div class="face-result-tip"><strong>Совет OPTIKA</strong><span id="faceResultTip"></span></div>
+          <button class="face-result-cta" type="button" id="faceFinderCatalog">Перейти к каталогу <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </div>
+    <p class="face-finder-note">Подсказки носят рекомендательный характер. Примерьте несколько вариантов и выбирайте тот, в котором вам комфортно.</p>
+  </div>
+</section>
+  </div>
+</div>
+<div class="fixed-tools-bar" id="fixedToolsBar">
+  <button class="fixed-tool-btn" id="openFaceFinder" type="button" aria-haspopup="dialog" aria-expanded="false"><span aria-hidden="true">◇</span> Подбор по форме лица</button>
+  <button class="fixed-tool-btn fixed-tool-tryon" id="openTryOn" type="button" aria-haspopup="dialog" aria-expanded="false"><span aria-hidden="true">✧</span> Виртуальная примерка</button>
+</div>
 
 <div class="contact-fab" id="contactFab">
   <div class="contact-panel" id="contactPanel" aria-label="Связаться с OPTIKA">
@@ -5208,6 +5217,13 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
   };
   const root=document.getElementById('face-shape-finder');
   if(!root||root.dataset.ready==='1')return;
+  const facePage=document.getElementById('faceFinderPage');
+  const toolsBar=document.getElementById('fixedToolsBar');
+  function openFaceFinder(){facePage.classList.add('is-open');facePage.setAttribute('aria-hidden','false');toolsBar.hidden=true;document.body.style.overflow='hidden';document.getElementById('openFaceFinder')?.setAttribute('aria-expanded','true');}
+  function closeFaceFinder(){facePage.classList.remove('is-open');facePage.setAttribute('aria-hidden','true');toolsBar.hidden=false;document.body.style.overflow='';document.getElementById('openFaceFinder')?.setAttribute('aria-expanded','false');}
+  document.getElementById('openFaceFinder')?.addEventListener('click',openFaceFinder);
+  document.getElementById('closeFaceFinder')?.addEventListener('click',closeFaceFinder);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&facePage.classList.contains('is-open'))closeFaceFinder();});
   root.dataset.ready='1';
   root.querySelectorAll('[data-face-shape]').forEach(button=>{
     button.addEventListener('click',()=>{
@@ -5225,6 +5241,7 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
     });
   });
   root.querySelector('#faceFinderCatalog')?.addEventListener('click',()=>{
+    closeFaceFinder();
     document.getElementById('catalog')?.scrollIntoView({behavior:'smooth',block:'start'});
   });
 })();
@@ -5269,9 +5286,18 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 
 
 <style id="optika-tryon-style">
-.tryon-fixed-entry{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:10040;width:min(360px,calc(100vw - 32px));display:flex;justify-content:center;pointer-events:none}
-.footer-tryon-btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;max-width:100%;padding:13px 22px;border:1px solid var(--gold-dark,#8f6b1e);border-radius:999px;background:linear-gradient(135deg,var(--surface-2,#111),var(--surface,#0d0d0d));color:var(--gold-light,#f5d76e);font-weight:750;letter-spacing:.01em;cursor:pointer;pointer-events:auto;box-shadow:0 8px 28px rgba(0,0,0,.28);transition:transform .2s,border-color .2s}
-.footer-tryon-btn:hover{transform:translateY(-2px);border-color:var(--gold,#d4af37)}
+.fixed-tools-bar{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:10040;width:min(760px,calc(100vw - 28px));display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:8px;border:1px solid var(--line,#3a321f);border-radius:20px;background:color-mix(in srgb,var(--surface,#0d0d0d) 94%,transparent);backdrop-filter:blur(14px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.fixed-tool-btn{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;min-height:46px;padding:10px 12px;border:1px solid var(--gold-dark,#8f6b1e);border-radius:13px;background:linear-gradient(135deg,var(--surface-2,#111),var(--surface,#0d0d0d));color:var(--gold-light,#f5d76e);font-size:13px;font-weight:750;line-height:1.2;text-align:center;cursor:pointer;transition:transform .2s,border-color .2s}
+.fixed-tool-btn:hover{transform:translateY(-2px);border-color:var(--gold,#d4af37)}
+.fixed-tool-btn>span{flex:0 0 auto;color:var(--gold,#d4af37);font-size:18px}
+.fixed-tools-bar[hidden]{display:none!important}
+.face-finder-page{position:fixed;inset:0;z-index:10045;display:none;overflow-y:auto;overscroll-behavior:contain;background:var(--bg,#050505);padding:clamp(16px,4vh,38px) 14px 100px}
+.face-finder-page.is-open{display:block}
+.face-finder-page-inner{width:min(1040px,100%);margin:0 auto}
+.face-finder-page-close{display:flex;align-items:center;gap:9px;margin:0 0 12px;padding:10px 14px;border:1px solid var(--line,#3a321f);border-radius:12px;background:var(--surface,#0d0d0d);color:var(--text,#f5f1df);font-weight:700;cursor:pointer}
+.face-finder-page-close:first-letter{font-size:22px;color:var(--gold,#d4af37)}
+.face-finder-page .face-finder{padding:0}
+.face-finder-page .face-finder-shell{max-width:100%}
 .tryon-modal{position:fixed;inset:0;z-index:10050;display:flex;visibility:hidden;opacity:0;pointer-events:none;align-items:center;justify-content:center;padding:18px;transition:opacity .18s,visibility .18s}
 .tryon-modal.is-open{visibility:visible;opacity:1;pointer-events:auto}
 .tryon-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(8px)}
@@ -5292,7 +5318,7 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 .tryon-bottom{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:12px}
 .tryon-secondary{padding:10px 15px;border:1px solid var(--line,#3a321f);border-radius:10px;background:var(--surface-2,#111);color:var(--text,#f5f1df);font-weight:650;cursor:pointer}
 .tryon-bottom p{flex:1 1 100%;margin:2px 0 0;color:var(--muted,#aaa58f);font-size:11px;line-height:1.45}
-@media(max-width:560px){.tryon-fixed-entry{width:calc(100vw - 28px);bottom:max(12px,env(safe-area-inset-bottom))}.footer-tryon-btn{font-size:13px;padding:12px 10px}.tryon-modal{padding:8px}.tryon-dialog{max-height:94vh;padding:18px 14px;border-radius:18px}.tryon-stage{min-height:220px}.tryon-controls{grid-template-columns:1fr;gap:8px}.tryon-controls label{grid-template-columns:1fr 1fr;align-items:center}.tryon-controls input{min-width:0}}
+@media(max-width:560px){.fixed-tools-bar{width:calc(100vw - 20px);bottom:max(8px,env(safe-area-inset-bottom));gap:6px;padding:6px;border-radius:16px}.fixed-tool-btn{min-height:48px;gap:5px;padding:8px 5px;font-size:11px;border-radius:11px}.fixed-tool-btn>span{font-size:16px}.face-finder-page{padding:12px 8px 90px}.face-finder-page-close{margin-bottom:9px}.tryon-modal{padding:8px}.tryon-dialog{max-height:94vh;padding:18px 14px;border-radius:18px}.tryon-stage{min-height:220px}.tryon-controls{grid-template-columns:1fr;gap:8px}.tryon-controls label{grid-template-columns:1fr 1fr;align-items:center}.tryon-controls input{min-width:0}}
 </style>
 
 
@@ -5306,8 +5332,8 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
  let stream=null,objectUrl=null,mode='';
  function status(message){$('tryonStatus').textContent=message;}
  function stopCamera(){if(stream){stream.getTracks().forEach(track=>track.stop());stream=null;}video.srcObject=null;video.hidden=true;$('tryonCapture').hidden=true;}
- function showModal(){modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';$('openTryOn')?.setAttribute('aria-expanded','true');document.querySelector('.tryon-fixed-entry')?.setAttribute('hidden','');}
- function closeModal(){modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';stopCamera();$('openTryOn')?.setAttribute('aria-expanded','false');document.querySelector('.tryon-fixed-entry')?.removeAttribute('hidden');}
+ function showModal(){modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';$('openTryOn')?.setAttribute('aria-expanded','true');$('fixedToolsBar')?.setAttribute('hidden','');}
+ function closeModal(){modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';stopCamera();$('openTryOn')?.setAttribute('aria-expanded','false');$('fixedToolsBar')?.removeAttribute('hidden');}
  function reset(){stopCamera();if(objectUrl){URL.revokeObjectURL(objectUrl);objectUrl=null;}photo.removeAttribute('src');photo.hidden=true;glasses.hidden=true;$('tryonEmpty').hidden=false;$('tryonControls').hidden=true;mode='';$('tryonSize').value=100;$('tryonPosition').value=43;$('tryonAngle').value=0;applyTransform();status('Фото обрабатывается только в вашем браузере и не отправляется на сайт.');}
  function applyTransform(){const size=Number($('tryonSize').value),pos=Number($('tryonPosition').value),angle=Number($('tryonAngle').value);glasses.style.width=size*.62+'%';glasses.style.top=pos+'%';glasses.style.transform='translate(-50%,-50%) rotate('+angle+'deg)';}
  function readyPreview(){ $('tryonEmpty').hidden=true;glasses.hidden=false;$('tryonControls').hidden=false;applyTransform();}
