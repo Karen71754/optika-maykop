@@ -105,11 +105,22 @@ h2{font-size:26px;font-weight:900;letter-spacing:-.5px}
 .header-action-btn{border:1.5px solid #8f6b1e;background:#111;border-radius:12px;padding:8px 11px;cursor:pointer;color:#f5d76e;font-weight:800;font-size:13px;white-space:nowrap;transition:.15s}
 .header-action-btn:hover{border-color:#f5d76e;background:#19160d;transform:translateY(-1px)}
 .cart-header-btn{background:#1b170d}
-.header-feature-btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:40px;padding:7px 10px}
-.header-feature-btn span{font-size:19px;line-height:1;color:#f5d76e}
-.header-feature-btn b{font-size:12px;font-weight:800}
+.header-feature-btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:42px;height:42px;padding:8px 11px;box-sizing:border-box}
+.header-feature-btn span{font-size:17px;line-height:1;color:#f5d76e;flex:0 0 auto}
+.header-feature-btn b{font-size:12px;font-weight:800;white-space:nowrap}
 @media(max-width:900px){.header-inner{gap:7px}.header-actions{gap:5px}.header-feature-btn{padding:6px 8px}}
-@media(max-width:620px){.header-feature-btn{min-width:38px;width:38px;height:42px;padding:0;border-radius:12px}.header-feature-btn b{display:none}.header-feature-btn span{font-size:21px}}
+@media(max-width:620px){
+  .header-inner{flex-wrap:wrap;row-gap:5px;padding-top:7px;padding-bottom:7px}
+  .header-inner>.logo{order:0}
+  .header-inner>.header-actions{order:1;flex:1 0 100%;width:100%;justify-content:space-between;gap:5px}
+  .header-actions>.header-action-btn{height:42px;min-height:42px;box-sizing:border-box}
+  .header-actions>.header-feature-btn{flex:1 1 0;min-width:0;width:auto;padding:5px 4px;gap:3px}
+  .header-feature-btn b{display:inline;font-size:10px;letter-spacing:-.2px}
+  .header-feature-btn span{font-size:15px}
+  .header-actions>.header-action-btn:first-child{font-size:0;min-width:38px;width:38px;padding:0}
+  .header-actions>.cart-header-btn{min-width:48px;width:48px;padding:0 5px}
+  .header-actions>.language-toggle,.header-actions>.theme-toggle,.header-actions>.optika-profile-trigger{min-width:36px;width:36px;padding:0}
+}
 
 
 /* buttons */
