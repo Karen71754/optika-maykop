@@ -1066,6 +1066,58 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
 
 
 
+
+<section class="container section face-finder" id="face-shape-finder" aria-labelledby="faceFinderTitle">
+  <div class="face-finder-shell">
+    <div class="face-finder-intro">
+      <span class="section-kicker">ПЕРСОНАЛЬНЫЙ ПОДБОР · OPTIKA</span>
+      <h2 id="faceFinderTitle">Какая оправа подойдёт именно вам?</h2>
+      <p>Выберите форму лица — подскажем, на какие оправы стоит обратить внимание. Это простой ориентир, а окончательный выбор всегда за вами.</p>
+      <div class="face-finder-progress"><span>1</span><span>Выберите форму лица</span><i></i><span>2</span><span>Получите рекомендации</span></div>
+    </div>
+    <div class="face-finder-layout">
+      <div class="face-shape-options" role="group" aria-label="Выберите форму лица">
+        <button class="face-shape-option" type="button" data-face-shape="oval" aria-pressed="false">
+          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M36 7C20 7 15 23 17 43c2 20 10 35 19 35s17-15 19-35C57 23 52 7 36 7Z"/><path d="M22 36h9m10 0h9M31 36h10M32 54q4 3 8 0"/></svg></span>
+          <strong>Овальное</strong><small>Мягкие пропорции</small>
+        </button>
+        <button class="face-shape-option" type="button" data-face-shape="round" aria-pressed="false">
+          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M36 9C19 9 11 22 13 41c2 21 11 35 23 35s21-14 23-35C61 22 53 9 36 9Z"/><path d="M20 36h10m12 0h10M30 36h12M32 53q4 3 8 0"/></svg></span>
+          <strong>Круглое</strong><small>Плавные контуры</small>
+        </button>
+        <button class="face-shape-option" type="button" data-face-shape="square" aria-pressed="false">
+          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M19 12Q36 5 53 12l5 25q-1 25-22 39-21-14-22-39Z"/><path d="M20 36h10m12 0h10M30 36h12M32 54q4 2 8 0"/></svg></span>
+          <strong>Квадратное</strong><small>Выраженная линия челюсти</small>
+        </button>
+        <button class="face-shape-option" type="button" data-face-shape="heart" aria-pressed="false">
+          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M15 15Q36 3 57 15L52 43Q46 64 36 78 26 64 20 43Z"/><path d="M20 35h10m12 0h10M30 35h12M32 54q4 3 8 0"/></svg></span>
+          <strong>Сердцевидное</strong><small>Шире в области лба</small>
+        </button>
+        <button class="face-shape-option" type="button" data-face-shape="long" aria-pressed="false">
+          <span class="face-shape-illustration" aria-hidden="true"><svg viewBox="0 0 72 88"><path d="M36 3C21 3 16 19 18 43c1 23 9 39 18 39s17-16 18-39C56 19 51 3 36 3Z"/><path d="M22 36h9m10 0h9M31 36h10M32 56q4 3 8 0"/></svg></span>
+          <strong>Вытянутое</strong><small>Лицо заметно длиннее ширины</small>
+        </button>
+      </div>
+      <div class="face-finder-result" id="faceFinderResult" aria-live="polite">
+        <div class="face-result-placeholder">
+          <span class="face-result-mark" aria-hidden="true">✦</span>
+          <strong>Ваш стиль начинается с формы</strong>
+          <p>Нажмите на вариант слева — здесь появятся советы по форме оправы, размеру и стилю.</p>
+        </div>
+        <div class="face-result-content" id="faceResultContent" hidden>
+          <span class="face-result-eyebrow">ВАШ РЕЗУЛЬТАТ</span>
+          <h3 id="faceResultTitle"></h3>
+          <p id="faceResultDescription"></p>
+          <div class="face-result-tags" id="faceResultTags"></div>
+          <div class="face-result-tip"><strong>Совет OPTIKA</strong><span id="faceResultTip"></span></div>
+          <button class="face-result-cta" type="button" id="faceFinderCatalog">Перейти к каталогу <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </div>
+    <p class="face-finder-note">Подсказки носят рекомендательный характер. Примерьте несколько вариантов и выбирайте тот, в котором вам комфортно.</p>
+  </div>
+</section>
+
 <section class="container section" id="catalog">
   <div class="section-head catalog-head">
     <div>
@@ -5098,6 +5150,80 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
     if(count) count.textContent=kept.length+' товаров';
     localStorage.setItem(key,'done');
   }catch(error){ console.error('Не удалось удалить компьютерные очки OPTIKA:',error); }
+})();
+</script>
+
+
+<style id="optika-face-finder-style">
+.face-finder{padding-top:22px;padding-bottom:34px}
+.face-finder-shell{position:relative;overflow:hidden;padding:clamp(22px,4vw,42px);border:1px solid var(--line,#3a321f);border-radius:26px;background:linear-gradient(135deg,var(--surface,#0d0d0d),var(--surface-2,#111));box-shadow:0 18px 48px rgba(0,0,0,.08)}
+.face-finder-intro{max-width:760px;margin-bottom:26px}
+.face-finder-intro h2{margin:9px 0 10px;font-size:clamp(25px,3.2vw,36px);line-height:1.12;letter-spacing:-.035em}
+.face-finder-intro>p{max-width:650px;margin:0;color:var(--muted,#aaa58f);line-height:1.65}
+.face-finder-progress{display:flex;align-items:center;gap:9px;margin-top:20px;color:var(--muted,#aaa58f);font-size:12px}
+.face-finder-progress>span:nth-of-type(odd){display:grid;place-items:center;width:22px;height:22px;border:1px solid var(--gold,#d4af37);border-radius:50%;color:var(--gold,#d4af37);font-weight:700}
+.face-finder-progress i{width:30px;height:1px;background:var(--line,#3a321f);margin:0 4px}
+.face-finder-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:18px;align-items:stretch}
+.face-shape-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.face-shape-option{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:16px 9px;border:1px solid var(--line,#3a321f);border-radius:17px;background:var(--bg,#050505);color:var(--text,#f5f1df);cursor:pointer;text-align:center;transition:border-color .18s,transform .18s,background .18s}
+.face-shape-option:hover{transform:translateY(-2px);border-color:var(--gold,#d4af37)}
+.face-shape-option[aria-pressed="true"]{border-color:var(--gold,#d4af37);background:color-mix(in srgb,var(--gold,#d4af37) 10%,var(--surface,#0d0d0d));box-shadow:inset 0 0 0 1px var(--gold,#d4af37)}
+.face-shape-illustration{display:grid;place-items:center;width:70px;height:78px}
+.face-shape-illustration svg{width:64px;height:78px;fill:none;stroke:var(--gold,#d4af37);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.face-shape-option strong{font-size:14px;line-height:1.2}
+.face-shape-option small{font-size:11px;line-height:1.35;color:var(--muted,#aaa58f)}
+.face-finder-result{min-height:250px;padding:24px;border:1px solid var(--line,#3a321f);border-radius:19px;background:var(--bg,#050505);display:flex;align-items:center}
+.face-result-placeholder{text-align:center;width:100%;color:var(--muted,#aaa58f)}
+.face-result-mark{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 14px;border-radius:50%;background:color-mix(in srgb,var(--gold,#d4af37) 13%,transparent);color:var(--gold,#d4af37);font-size:23px}
+.face-result-placeholder strong{display:block;color:var(--text,#f5f1df);font-size:17px}
+.face-result-placeholder p{max-width:290px;margin:9px auto 0;font-size:13px;line-height:1.55}
+.face-result-content{width:100%}
+.face-result-eyebrow{color:var(--gold,#d4af37);font-size:10px;font-weight:800;letter-spacing:.16em}
+.face-result-content h3{margin:8px 0;font-size:23px;line-height:1.2;color:var(--text,#f5f1df)}
+.face-result-content>p{margin:0 0 15px;color:var(--muted,#aaa58f);font-size:13px;line-height:1.6}
+.face-result-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.face-result-tags span{padding:7px 10px;border:1px solid var(--line,#3a321f);border-radius:30px;color:var(--text,#f5f1df);font-size:11px}
+.face-result-tip{display:grid;gap:5px;padding:12px 14px;border-left:2px solid var(--gold,#d4af37);background:var(--surface-2,#111);border-radius:0 10px 10px 0;font-size:12px;line-height:1.5}
+.face-result-tip strong{color:var(--gold,#d4af37);font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.face-result-tip span{color:var(--text,#f5f1df)}
+.face-result-cta{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:16px;padding:13px 15px;border:1px solid var(--gold-dark,#8f6b1e);border-radius:12px;background:linear-gradient(135deg,var(--gold,#d4af37),var(--gold-light,#f5d76e));color:#17120a;font-weight:800;cursor:pointer}
+.face-result-cta:hover{filter:brightness(1.06)}
+.face-finder-note{margin:17px 0 0;color:var(--muted,#aaa58f);font-size:11px;line-height:1.5}
+@media(max-width:760px){.face-finder-layout{grid-template-columns:1fr}.face-shape-options{grid-template-columns:repeat(2,minmax(0,1fr))}.face-finder-result{min-height:220px}.face-finder-shell{padding:20px 15px;border-radius:20px}.face-finder-progress{flex-wrap:wrap}.face-finder-progress i{width:14px}}
+@media(max-width:360px){.face-shape-option{padding:12px 6px}.face-shape-option strong{font-size:12px}.face-shape-option small{font-size:10px}}
+</style>
+
+
+<script id="optika-face-finder-script">
+(function(){
+  const recommendations={
+    oval:{title:'Овальная форма лица',description:'У овального лица обычно сбалансированные пропорции. Можно смело пробовать разные силуэты и выбирать тот, который отражает ваш характер.',tags:['Прямоугольные','Авиаторы','Кошачий глаз'],tip:'Следите за шириной оправы: она должна быть примерно по ширине лица, не слишком узкой и не чрезмерно широкой.'},
+    round:{title:'Круглая форма лица',description:'Чтобы добавить образу выразительности, попробуйте оправы с чёткой геометрией и более прямыми линиями.',tags:['Прямоугольные','Квадратные','Wayfarer'],tip:'Угловатые формы создают интересный контраст с мягкими линиями лица. Избегайте слишком маленьких круглых оправ, если хотите визуально вытянуть пропорции.'},
+    square:{title:'Квадратная форма лица',description:'Выраженные скулы и линия челюсти красиво сочетаются с более мягкими, округлыми линиями оправы.',tags:['Овальные','Круглые','Авиаторы'],tip:'Попробуйте тонкие оправы и плавные контуры — они смягчают общий силуэт, не скрывая черты лица.'},
+    heart:{title:'Сердцевидная форма лица',description:'Если лоб шире подбородка, присмотритесь к лёгким оправам, которые не перегружают верхнюю часть лица.',tags:['Овальные','Круглые','Безободковые'],tip:'Часто хорошо смотрятся тонкие дужки, светлые оттенки и модели с визуально более лёгкой нижней частью.'},
+    long:{title:'Вытянутая форма лица',description:'Для вытянутых пропорций можно выбирать оправы с большей высотой линз и выразительной верхней линией.',tags:['Крупные оправы','Wayfarer','Широкие модели'],tip:'Обратите внимание на модели с более высокими линзами и хорошей посадкой по ширине — они помогают сбалансировать пропорции.'}
+  };
+  const root=document.getElementById('face-shape-finder');
+  if(!root||root.dataset.ready==='1')return;
+  root.dataset.ready='1';
+  root.querySelectorAll('[data-face-shape]').forEach(button=>{
+    button.addEventListener('click',()=>{
+      const key=button.dataset.faceShape, data=recommendations[key];
+      if(!data)return;
+      root.querySelectorAll('[data-face-shape]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+      root.querySelector('.face-result-placeholder').hidden=true;
+      const content=root.querySelector('#faceResultContent');
+      content.hidden=false;
+      root.querySelector('#faceResultTitle').textContent=data.title;
+      root.querySelector('#faceResultDescription').textContent=data.description;
+      root.querySelector('#faceResultTip').textContent=data.tip;
+      const tags=root.querySelector('#faceResultTags');
+      tags.replaceChildren(...data.tags.map(label=>{const span=document.createElement('span');span.textContent=label;return span;}));
+    });
+  });
+  root.querySelector('#faceFinderCatalog')?.addEventListener('click',()=>{
+    document.getElementById('catalog')?.scrollIntoView({behavior:'smooth',block:'start'});
+  });
 })();
 </script>
 
