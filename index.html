@@ -5082,7 +5082,8 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
       const p=item && (item.product||item);
       return !isComputerProduct(p) && !removedIds.has(String(item.id||p?.id||''));
     });
-    localStorage.setItem('optika_cart',JSON.stringify(cart));
+    localStorage.setItem('optika_cart',JSON.stringify(savedCart));
+    if(typeof cart!=='undefined'){ cart=savedCart; if(typeof renderCart==='function') renderCart(); }
     ['optika_favorites','optika_favorites_v1'].forEach(k=>{
       try{
         const raw=JSON.parse(localStorage.getItem(k)||'[]');
@@ -5090,7 +5091,7 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
       }catch(_){}
     });
     if(typeof PRODUCTS!=='undefined') PRODUCTS=kept;
-    if(typeof cart!=='undefined') window.__optikaRemovedComputerCart=true;
+    
     if(typeof renderManagedCatalog==='function') renderManagedCatalog();
     if(typeof updateFeaturedProduct==='function') updateFeaturedProduct();
     const count=document.getElementById('catalogResultCount');
