@@ -1219,7 +1219,6 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
     <nav class="store-quick-nav" aria-label="Разделы магазина">
       <a href="#delivery">Доставка и оплата</a>
       <a href="#store-map">Адрес и карта</a>
-      <a href="tel:+79627657718">Позвонить</a>
     </nav>
     <div class="store-quick-facts" aria-label="Краткая информация">
       <div><span>ДОСТАВКА</span><b>200 ₽</b><small>Бесплатно от 1 200 ₽</small></div>
@@ -1246,16 +1245,11 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
     <div class="store-map-layout">
       <div class="store-map-frame">
         <iframe title="OPTIKA на карте Майкопа — Пролетарская, 224" src="https://maps.google.com/maps?q=Майкоп%2C%20ул.%20Пролетарская%2C%20224&t=&z=17&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        <span class="store-map-pin-label">✦ OPTIKA · Пролетарская, 224</span>
       </div>
       <div class="store-map-info">
-        <div class="store-map-photo">
-          <div class="store-map-photo-placeholder"><span aria-hidden="true">⌂</span><b>Фото входа OPTIKA</b><small>Здесь будет фотография входа, чтобы вы легко узнали магазин.</small></div>
-        </div>
         <div class="store-map-details">
           <div class="store-map-detail"><span class="store-map-detail-icon">⌖</span><div><b>Адрес</b><p>Майкоп, центральный рынок,<br>ул. Пролетарская, 224, пассаж</p></div></div>
           <div class="store-map-detail"><span class="store-map-detail-icon">◷</span><div><b>График работы</b><p>Ежедневно · 9:00–17:00</p></div></div>
-          <div class="store-map-detail"><span class="store-map-detail-icon">☎</span><div><b>Телефон</b><p><a href="tel:+79627657718">+7 962 765-77-18</a></p></div></div>
           <a class="store-map-route" href="https://yandex.ru/maps/?text=Майкоп%2C%20Пролетарская%2C%20224" target="_blank" rel="noopener">Построить маршрут <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -5535,6 +5529,31 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
  .store-quick-facts{grid-template-columns:1fr 1fr}
  .store-quick-facts>div:last-child{grid-column:1/-1}
  .store-info-dialog .store-map-photo-placeholder{align-items:flex-start;flex-direction:column;gap:7px}
+}
+</style>
+<style id="optika-store-service-cards-refresh">
+/* Сервисы в том же крупном формате, что и информационные карточки сверху */
+.store-info-dialog .delivery-unified-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.store-info-dialog .delivery-unified-card{box-sizing:border-box;min-height:150px;padding:22px 24px;align-items:flex-start;gap:16px;border:1px solid rgba(212,175,55,.38);border-radius:22px;background:linear-gradient(145deg,#191813 0%,#111 100%);box-shadow:0 8px 22px rgba(0,0,0,.2);transition:border-color .2s,background .2s,transform .2s}
+.store-info-dialog .delivery-unified-card:hover{transform:translateY(-2px);border-color:rgba(212,175,55,.72);background:linear-gradient(145deg,#201c12 0%,#12110d 100%)}
+.store-info-dialog .delivery-unified-icon{flex:0 0 46px;width:46px;height:46px;border-radius:14px;font-size:22px}
+.store-info-dialog .delivery-unified-card h3{margin:0 0 9px;color:#d8bb68;font-size:clamp(13px,1.5vw,16px);font-weight:900;letter-spacing:1.5px;text-transform:uppercase}
+.store-info-dialog .delivery-unified-card p{color:#d0c9b8;font-size:clamp(13px,1.35vw,15px);line-height:1.6}
+.store-info-dialog .delivery-unified-card p strong{display:inline-block;color:#fff8e8;font-size:clamp(20px,2vw,25px);line-height:1.3;letter-spacing:.1px}
+.store-info-dialog .delivery-unified-card:last-child:nth-child(odd){grid-column:1/-1}
+.store-info-dialog .store-map-layout{grid-template-columns:minmax(0,1fr)}
+.store-info-dialog .store-map-frame,.store-info-dialog .store-map-frame iframe{min-height:340px}
+.store-info-dialog .store-map-frame iframe{pointer-events:none}
+.store-info-dialog .store-map-info{grid-template-columns:1fr;grid-template-rows:auto}
+.store-info-dialog .store-map-details{grid-template-columns:repeat(2,minmax(0,1fr));align-items:center}
+.store-info-dialog .store-map-route{grid-column:1/-1}
+@media(max-width:760px){
+ .store-info-dialog .delivery-unified-grid{grid-template-columns:1fr;gap:10px}
+ .store-info-dialog .delivery-unified-card{min-height:120px;padding:18px;border-radius:19px}
+ .store-info-dialog .delivery-unified-card:last-child:nth-child(odd){grid-column:auto}
+ .store-info-dialog .store-map-frame,.store-info-dialog .store-map-frame iframe{min-height:260px}
+ .store-info-dialog .store-map-details{grid-template-columns:1fr}
+ .store-info-dialog .store-map-route{grid-column:auto}
 }
 </style>
 <script id="optika-store-info-modal-script">
