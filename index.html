@@ -1216,6 +1216,16 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
   <section class="store-info-dialog" role="dialog" aria-modal="true" aria-labelledby="storeInfoTitle">
     <button class="store-info-close" type="button" data-store-close aria-label="Закрыть">×</button>
     <div class="store-info-title"><span class="section-kicker">OPTIKA · МАЙКОП</span><h2 id="storeInfoTitle">Наш магазин</h2><p>Всё о магазине, доставке, оплате и способах связи — в одном месте.</p></div>
+    <nav class="store-quick-nav" aria-label="Разделы магазина">
+      <a href="#delivery">Доставка и оплата</a>
+      <a href="#store-map">Адрес и карта</a>
+      <a href="tel:+79627657718">Позвонить</a>
+    </nav>
+    <div class="store-quick-facts" aria-label="Краткая информация">
+      <div><span>ДОСТАВКА</span><b>200 ₽</b><small>Бесплатно от 1 200 ₽</small></div>
+      <div><span>САМОВЫВОЗ</span><b>Бесплатно</b><small>Центральный рынок</small></div>
+      <div><span>МЫ ОТКРЫТЫ</span><b>9:00–17:00</b><small>Ежедневно</small></div>
+    </div>
     <section class="container section" id="delivery">
   <div class="delivery-unified-head"><span class="section-kicker">СЕРВИС OPTIKA</span><h2>Покупка без лишних хлопот</h2><p>Выберите удобный способ получения и оплаты — всё важное в одном месте.</p></div>
   <div class="delivery-unified-grid">
@@ -5468,6 +5478,64 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 .store-info-dialog .store-map-heading{margin-bottom:14px}
 .store-info-dialog .store-map-layout{width:100%}
 @media(max-width:620px){.store-info-modal{padding:7px}.store-info-dialog{max-height:96vh;padding:16px 12px;border-radius:16px}.store-info-title h2{font-size:23px}}
+</style>
+<style id="optika-store-premium-refresh">
+/* Премиальная компоновка и быстрая навигация раздела «Магазин» */
+.store-info-dialog{background:linear-gradient(155deg,#111 0%,#090909 58%,#151109 100%);border:1px solid rgba(212,175,55,.48);scroll-behavior:smooth}
+.store-info-title{padding-top:2px}
+.store-info-title .section-kicker{display:inline-flex;align-items:center;gap:8px;color:#d9b84d;font-size:10px;font-weight:900;letter-spacing:2px}
+.store-info-title h2{font-size:clamp(27px,4vw,36px);letter-spacing:-.8px;color:#f8f2df}
+.store-info-title p{max-width:620px;line-height:1.6;color:#c4bda9}
+.store-quick-nav{position:sticky;top:-1px;z-index:3;display:flex;flex-wrap:wrap;gap:8px;padding:12px 0;background:linear-gradient(180deg,#111 78%,rgba(17,17,17,.92));border-bottom:1px solid rgba(212,175,55,.16)}
+.store-quick-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 13px;border:1px solid #51421e;border-radius:999px;background:#19160e;color:#f2d77d;text-decoration:none;font-size:12px;font-weight:800;transition:background .18s,border-color .18s,transform .18s}
+.store-quick-nav a:hover{background:#28200e;border-color:#d4af37;transform:translateY(-1px)}
+.store-quick-nav a:last-child{background:linear-gradient(135deg,#d4af37,#f5d76e);color:#17130a;border-color:transparent}
+.store-quick-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:15px 0 6px}
+.store-quick-facts>div{display:flex;flex-direction:column;gap:3px;min-width:0;padding:13px 15px;border:1px solid rgba(212,175,55,.28);border-radius:15px;background:linear-gradient(145deg,rgba(212,175,55,.10),rgba(255,255,255,.025))}
+.store-quick-facts span{color:#c5aa5a;font-size:9px;font-weight:900;letter-spacing:1.3px}
+.store-quick-facts b{color:#fff5d9;font-size:18px;line-height:1.25}
+.store-quick-facts small{color:#bcb49f;font-size:11px;line-height:1.35}
+.store-info-dialog #delivery,.store-info-dialog #store-map{width:100%;max-width:none;margin:0;padding:24px 0}
+.store-info-dialog .delivery-unified-head{margin-bottom:15px}
+.store-info-dialog .delivery-unified-head h2,.store-info-dialog .store-map-heading h2{font-size:clamp(21px,3vw,27px);color:#f7f0dc}
+.store-info-dialog .delivery-unified-head>p{color:#bdb5a1;font-size:13px}
+.store-info-dialog .delivery-unified-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.store-info-dialog .delivery-unified-card{display:flex;align-items:flex-start;gap:12px;min-width:0;padding:15px;border:1px solid rgba(212,175,55,.22);border-radius:15px;background:linear-gradient(145deg,#17150f,#101010);box-shadow:0 8px 22px rgba(0,0,0,.16);transition:transform .18s,border-color .18s}
+.store-info-dialog .delivery-unified-card:hover{transform:translateY(-2px);border-color:rgba(212,175,55,.6)}
+.store-info-dialog .delivery-unified-icon{display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;border:1px solid rgba(212,175,55,.32);border-radius:12px;background:rgba(212,175,55,.10);color:#f2d36c;font-size:19px}
+.store-info-dialog .delivery-unified-card h3{margin:1px 0 4px;color:#f4ecd5;font-size:14px}
+.store-info-dialog .delivery-unified-card p{margin:0;color:#c2baa7;font-size:12px;line-height:1.55}
+.store-info-dialog .delivery-unified-card strong{color:#f5d76e}
+.store-info-dialog .store-map-section{background:transparent;border:0;border-top:1px solid rgba(212,175,55,.22)}
+.store-info-dialog .store-map-heading>p{color:#bdb5a1}
+.store-info-dialog .store-map-layout{grid-template-columns:minmax(0,1.1fr) minmax(270px,.9fr);gap:12px}
+.store-info-dialog .store-map-frame,.store-info-dialog .store-map-frame iframe{min-height:330px}
+.store-info-dialog .store-map-frame{border-color:rgba(212,175,55,.42);border-radius:16px}
+.store-info-dialog .store-map-info{grid-template-rows:auto 1fr;gap:10px}
+.store-info-dialog .store-map-photo{min-height:105px;border-color:rgba(212,175,55,.22);background:radial-gradient(ellipse at 50% 120%,rgba(212,175,55,.22),transparent 65%),linear-gradient(135deg,#211b0d,#0d0d0d)}
+.store-info-dialog .store-map-photo-placeholder{min-height:105px;flex-direction:row;justify-content:flex-start;text-align:left;padding:15px}
+.store-info-dialog .store-map-photo-placeholder>span{flex:0 0 42px;width:42px;height:42px}
+.store-info-dialog .store-map-photo-placeholder small{max-width:none}
+.store-info-dialog .store-map-details{gap:11px;padding:15px;border-color:rgba(212,175,55,.22);background:#12110d}
+.store-info-dialog .store-map-detail p{color:#c4bda9}
+.store-info-dialog .store-map-route{min-height:44px;justify-content:center;gap:12px;border:0;box-shadow:0 7px 18px rgba(212,175,55,.15)}
+.store-info-close{box-shadow:0 4px 14px rgba(0,0,0,.25)}
+@media(max-width:760px){
+ .store-quick-facts{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+ .store-quick-facts>div{padding:10px 8px;border-radius:12px}
+ .store-quick-facts b{font-size:15px}
+ .store-quick-facts small{font-size:10px}
+ .store-info-dialog .delivery-unified-grid{grid-template-columns:1fr}
+ .store-info-dialog .store-map-layout{grid-template-columns:1fr}
+ .store-info-dialog .store-map-frame,.store-info-dialog .store-map-frame iframe{min-height:250px}
+}
+@media(max-width:420px){
+ .store-quick-nav{gap:6px}
+ .store-quick-nav a{flex:1 1 auto;padding:8px 9px;font-size:11px}
+ .store-quick-facts{grid-template-columns:1fr 1fr}
+ .store-quick-facts>div:last-child{grid-column:1/-1}
+ .store-info-dialog .store-map-photo-placeholder{align-items:flex-start;flex-direction:column;gap:7px}
+}
 </style>
 <script id="optika-store-info-modal-script">
 (function(){
