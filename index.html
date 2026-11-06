@@ -1441,7 +1441,8 @@ document.addEventListener('keydown', (e) => {
 let cart = readJsonArray('optika_cart');
 // Старые версии сайта хранили корзину в другом формате. Нормализуем её, чтобы страница не падала.
 if(!Array.isArray(cart)) cart=[];
-function saveCart(){localStorage.setItem('optika_cart',JSON.stringify(cart));renderCart();}
+function saveCart(){localStorage.setItem('optika_cart',JSON.stringify(savedCart));
+    if(typeof cart!=='undefined'){ cart=savedCart; if(typeof renderCart==='function') renderCart(); }renderCart();}
 function addToCart(count=1, product=SITE_PRODUCT){
   count=Math.max(1,Number(count)||1);
   product=product&&typeof product==='object'?product:SITE_PRODUCT;
@@ -5050,7 +5051,7 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 
 <script id="optika-remove-computer-glasses-v2">
 (function(){
-  const key='optika_computer_glasses_removed_v2';
+  const key='optika_computer_glasses_removed_v3';
   try{
     if(localStorage.getItem(key)==='done') return;
     const isComputerProduct = p => {
@@ -5077,7 +5078,7 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
         localStorage.setItem(mobileKey,JSON.stringify(mobile));
       }
     }catch(_){}
-    const cart=readArray('optika_cart').filter(item=>{
+    const savedCart=readArray('optika_cart').filter(item=>{
       const p=item && (item.product||item);
       return !isComputerProduct(p) && !removedIds.has(String(item.id||p?.id||''));
     });
