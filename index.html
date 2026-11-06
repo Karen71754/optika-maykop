@@ -1231,10 +1231,12 @@ button.icon-btn:hover,button[data-close]:hover,button#closeCart:hover,button.opt
   <div class="container footer-inner footer-slim">
     <div><b>OPTIKA Майкоп</b><p>Очки и аксессуары · Пролетарская, 224, пассаж</p></div>
     <div><b>Режим работы</b><p>Ежедневно 9:00–17:00<br>Доставка по Майкопу</p></div>
-    <div class="footer-tryon-entry"><button class="footer-tryon-btn" id="openTryOn" type="button"><span aria-hidden="true">✧</span> Виртуальная примерка очков <span aria-hidden="true">→</span></button></div>
+    
     <div class="admin-entry"><button class="admin-btn" id="adminEntryBtn" type="button">Вход владельца</button></div>
   </div>
 </footer>
+
+<div class="tryon-fixed-entry"><button class="footer-tryon-btn" id="openTryOn" type="button" aria-haspopup="dialog" aria-expanded="false"><span aria-hidden="true">✧</span> Виртуальная примерка <span aria-hidden="true">→</span></button></div>
 
 <div class="contact-fab" id="contactFab">
   <div class="contact-panel" id="contactPanel" aria-label="Связаться с OPTIKA">
@@ -5267,11 +5269,11 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 
 
 <style id="optika-tryon-style">
-.footer-tryon-entry{display:flex;justify-content:center;align-items:center;grid-column:1/-1;padding:12px 0 4px}
-.footer-tryon-btn{display:flex;align-items:center;justify-content:center;gap:12px;max-width:100%;padding:13px 22px;border:1px solid var(--gold-dark,#8f6b1e);border-radius:999px;background:linear-gradient(135deg,var(--surface-2,#111),var(--surface,#0d0d0d));color:var(--gold-light,#f5d76e);font-weight:750;letter-spacing:.01em;cursor:pointer;transition:transform .2s,border-color .2s}
+.tryon-fixed-entry{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:10040;width:min(360px,calc(100vw - 32px));display:flex;justify-content:center;pointer-events:none}
+.footer-tryon-btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;max-width:100%;padding:13px 22px;border:1px solid var(--gold-dark,#8f6b1e);border-radius:999px;background:linear-gradient(135deg,var(--surface-2,#111),var(--surface,#0d0d0d));color:var(--gold-light,#f5d76e);font-weight:750;letter-spacing:.01em;cursor:pointer;pointer-events:auto;box-shadow:0 8px 28px rgba(0,0,0,.28);transition:transform .2s,border-color .2s}
 .footer-tryon-btn:hover{transform:translateY(-2px);border-color:var(--gold,#d4af37)}
-.tryon-modal{position:fixed;inset:0;z-index:10050;display:none;align-items:center;justify-content:center;padding:18px}
-.tryon-modal.is-open{display:flex}
+.tryon-modal{position:fixed;inset:0;z-index:10050;display:flex;visibility:hidden;opacity:0;pointer-events:none;align-items:center;justify-content:center;padding:18px;transition:opacity .18s,visibility .18s}
+.tryon-modal.is-open{visibility:visible;opacity:1;pointer-events:auto}
 .tryon-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(8px)}
 .tryon-dialog{position:relative;z-index:1;width:min(760px,100%);max-height:min(92vh,900px);overflow:auto;padding:clamp(18px,4vw,32px);border:1px solid var(--line,#3a321f);border-radius:24px;background:var(--surface,#0d0d0d);color:var(--text,#f5f1df);box-shadow:0 24px 90px rgba(0,0,0,.4)}
 .tryon-close{position:absolute;right:14px;top:12px;width:38px;height:38px;border:1px solid var(--line,#3a321f);border-radius:50%;background:var(--surface-2,#111);color:var(--text,#f5f1df);font-size:26px;line-height:1;cursor:pointer}
@@ -5290,7 +5292,7 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 .tryon-bottom{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:12px}
 .tryon-secondary{padding:10px 15px;border:1px solid var(--line,#3a321f);border-radius:10px;background:var(--surface-2,#111);color:var(--text,#f5f1df);font-weight:650;cursor:pointer}
 .tryon-bottom p{flex:1 1 100%;margin:2px 0 0;color:var(--muted,#aaa58f);font-size:11px;line-height:1.45}
-@media(max-width:560px){.footer-tryon-entry{padding:10px 0}.footer-tryon-btn{width:100%;font-size:13px;padding:12px 10px}.tryon-modal{padding:8px}.tryon-dialog{max-height:94vh;padding:18px 14px;border-radius:18px}.tryon-stage{min-height:220px}.tryon-controls{grid-template-columns:1fr;gap:8px}.tryon-controls label{grid-template-columns:1fr 1fr;align-items:center}.tryon-controls input{min-width:0}}
+@media(max-width:560px){.tryon-fixed-entry{width:calc(100vw - 28px);bottom:max(12px,env(safe-area-inset-bottom))}.footer-tryon-btn{font-size:13px;padding:12px 10px}.tryon-modal{padding:8px}.tryon-dialog{max-height:94vh;padding:18px 14px;border-radius:18px}.tryon-stage{min-height:220px}.tryon-controls{grid-template-columns:1fr;gap:8px}.tryon-controls label{grid-template-columns:1fr 1fr;align-items:center}.tryon-controls input{min-width:0}}
 </style>
 
 
@@ -5304,8 +5306,8 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
  let stream=null,objectUrl=null,mode='';
  function status(message){$('tryonStatus').textContent=message;}
  function stopCamera(){if(stream){stream.getTracks().forEach(track=>track.stop());stream=null;}video.srcObject=null;video.hidden=true;$('tryonCapture').hidden=true;}
- function showModal(){modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';$('openTryOn')?.setAttribute('aria-expanded','true');}
- function closeModal(){modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';stopCamera();$('openTryOn')?.setAttribute('aria-expanded','false');}
+ function showModal(){modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';$('openTryOn')?.setAttribute('aria-expanded','true');document.querySelector('.tryon-fixed-entry')?.setAttribute('hidden','');}
+ function closeModal(){modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';stopCamera();$('openTryOn')?.setAttribute('aria-expanded','false');document.querySelector('.tryon-fixed-entry')?.removeAttribute('hidden');}
  function reset(){stopCamera();if(objectUrl){URL.revokeObjectURL(objectUrl);objectUrl=null;}photo.removeAttribute('src');photo.hidden=true;glasses.hidden=true;$('tryonEmpty').hidden=false;$('tryonControls').hidden=true;mode='';$('tryonSize').value=100;$('tryonPosition').value=43;$('tryonAngle').value=0;applyTransform();status('Фото обрабатывается только в вашем браузере и не отправляется на сайт.');}
  function applyTransform(){const size=Number($('tryonSize').value),pos=Number($('tryonPosition').value),angle=Number($('tryonAngle').value);glasses.style.width=size*.62+'%';glasses.style.top=pos+'%';glasses.style.transform='translate(-50%,-50%) rotate('+angle+'deg)';}
  function readyPreview(){ $('tryonEmpty').hidden=true;glasses.hidden=false;$('tryonControls').hidden=false;applyTransform();}
