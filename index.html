@@ -5414,5 +5414,32 @@ html[data-theme="light"] #contactFab .contact-main svg{color:#78580e!important}
 })();
 </script>
 
+
+<style id="optika-header-equal-controls">
+/* Все функции в шапке имеют одинаковую ширину и высоту */
+.header-actions{display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr));align-items:stretch;flex:1 1 auto;min-width:0;gap:7px}
+.header-actions>.header-action-btn{display:flex;align-items:center;justify-content:center;width:100%;min-width:0;max-width:none;height:42px;min-height:42px;padding:6px 7px;box-sizing:border-box;white-space:normal;line-height:1.1}
+.header-actions>.header-feature-btn{flex:initial;gap:4px;padding:6px 7px}
+.header-actions>.header-feature-btn b{display:inline;font-size:11px;line-height:1.05;white-space:normal;text-align:center}
+.header-actions>.header-feature-btn span{flex:0 0 auto;font-size:16px}
+.header-actions>.header-action-btn:first-child{font-size:13px;min-width:0;width:100%;padding:6px 7px}
+.header-actions>.language-toggle,.header-actions>.theme-toggle,.header-actions>.optika-profile-trigger{min-width:0;width:100%;padding:6px 7px}
+.header-actions>.cart-header-btn{min-width:0;width:100%;padding:6px 7px}
+@media(max-width:900px){
+  .header-actions{gap:5px}
+  .header-actions>.header-action-btn{padding-left:4px;padding-right:4px}
+}
+@media(max-width:620px){
+  .header-inner>.header-actions{display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr));flex:1 0 100%;width:100%;gap:5px;justify-content:stretch}
+  .header-actions>.header-action-btn{width:100%;min-width:0;max-width:none;height:42px;min-height:42px;padding:5px 2px;border-radius:10px;font-size:10px}
+  .header-actions>.header-feature-btn{flex:initial;min-width:0;width:100%;padding:5px 2px;gap:2px}
+  .header-actions>.header-feature-btn b{display:block;font-size:9px;letter-spacing:-.25px;line-height:1.05;white-space:normal}
+  .header-actions>.header-feature-btn span{font-size:14px}
+  .header-actions>.header-action-btn:first-child{font-size:10px;min-width:0;width:100%;padding:5px 2px}
+  .header-actions>.cart-header-btn{min-width:0;width:100%;padding:5px 2px}
+  .header-actions>.language-toggle,.header-actions>.theme-toggle,.header-actions>.optika-profile-trigger{min-width:0;width:100%;padding:5px 2px}
+}
+</style>
+
 </body>
 </html>
